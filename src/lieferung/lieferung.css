@@ -1,0 +1,8 @@
+/* Layout für das Formular */
+form {
+    max-width: 30em;
+
+    border: 1px solid #d0d0d0;
+    background: #f0f0f0;
+    padding: 1em;
+}
