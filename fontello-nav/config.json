@@ -23,6 +23,12 @@
       "css": "basket",
       "code": 59392,
       "src": "modernpics"
+    },
+    {
+      "uid": "9937d762aee170b7350b15dd02dd34a3",
+      "css": "cab",
+      "code": 61881,
+      "src": "fontawesome"
     }
   ]
 }
