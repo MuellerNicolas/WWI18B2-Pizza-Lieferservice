@@ -1,30 +1,53 @@
 window.addEventListener("load", () => {
+    //Variablen
     let countdown = document.getElementById("countdown");
-    let running = false;
-    let lastUpdate = 0;
+    let buttonStart = document.getElementById("startCountdown");
 
-    let stoppuhr = event => {
-        let start = let now = Date.now();
-        running = !running;
-        lastUpdate = Date.now();
-    };
+    //Variablen Anzeige
+    let aktiv = false;
+    let zaehler = 1800000;  //in Millisekunden
+    let letztesUpdate = 0;
 
-    let displayAktualisieren = () => {
+    //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
+    buttonStart.addEventListener("click", () => {
+        aktiv = true
+        letztesUpdate = Date.now();
+    });
+
+    //Ständiges aktualisieren des Displays
+    let countdownAktualisieren = () => {
         let now = Date.now();
 
-        if (now - lastUpdate >= 1000) {
-            lastUpdate = now;
+        if (now - letztesUpdate >= 1000) {
+            letztesUpdate = now;
 
-            if (running && counter > 0) {
-                counter--;
+            if (aktiv && zaehler > 0) {
+                zaehler = zaehler - 1000; //1 Sekunde abziehen
             } else {
-                running = false;
+                aktiv = false;
             }
         }
-        countdown.textContent = counter;
-        // Kontinuierliches Aufrufen der Funktion
-        window.requestAnimationFrame(displayAktualisieren);
-    };
 
-    window.requestAnimationFrame(displayAktualisieren);
+        //Anpassung des Ausgabeformats
+        let sekunden = parseInt((zaehler/1000)%60)
+        , minuten = parseInt((zaehler/(1000*60))%60);
+        if (minuten < 10) {
+            minuten = "0" + minuten + " Minuten "
+        } else {
+            minuten = minuten + " Minuten "
+        }
+        if (sekunden < 10){
+            sekunden = "0" + sekunden + " Sekunden"
+        } else {
+            sekunden = sekunden + " Sekunden"
+        }
+        let zaehlerFormat = minuten + sekunden;
+
+        //Countdown anzeigen
+        countdown.textContent = zaehlerFormat;
+        
+        // Kontinuierliches Aufrufen der Funktion
+        window.requestAnimationFrame(countdownAktualisieren);
+    };
+    window.requestAnimationFrame(countdownAktualisieren);
 });

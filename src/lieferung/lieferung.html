@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <title>Bestellübersicht</title>
         <link rel="stylesheet" href="lieferung.css"/>
-        <style src="lieferung.js"></style>
+        <script src="lieferung.js"></script>
     </head>
     <body>
         <h1>Bestellübersicht</h1>
-        <form onsubmit = "validateForm(event)">
+        <form onsubmit = "stoppuhr(event)">
             <!-- action   = "contact-form.php"
             method   = "POST"> -->
 
@@ -33,6 +33,7 @@
             <!-- Submit Button zum Absenden -->
             <input type="submit" value="Jetzt bestellen" />
         </form>
+        <button id="startCountdown">Submit</button>
         <div id="countdown"></div>
     </body>
 </html>
