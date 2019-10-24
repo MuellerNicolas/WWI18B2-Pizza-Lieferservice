@@ -119,6 +119,9 @@ header nav a:visited i {
 header nav a:hover i {
     color: var(--text-color);
 }
+header nav a: i {
+    color: var(--text-color);
+}
 
 
 /* Linkes Menü */
