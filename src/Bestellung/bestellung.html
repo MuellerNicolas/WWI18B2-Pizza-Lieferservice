@@ -5,17 +5,51 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <script src="bestellung.js"></script>
+        <script>
+            window.addEventListener("load", () => {
+                let bestellung = new Bestellung();
+                bestellung.klick();
+            });
+        </script>
     </head>
     <body>
         <header>
-            <div class="pizza-from-menu">
-                <<h1>Pizzas von der Karte</h1>
-                <ul class = "Pizzasorten">
-                    <li>
+        </header>
+        <body>
+            <div>
+                <<h1>Pizzen von der Karte</h1>
+                <ul id="pizzaAuswaehlen">
+                    <li id=auswahlZeile>
 
-                        Pizza 1
+                        Pizza
                         <select name="dropdown">
-                            <<option value="Margherita">Margherita</option>
+                            <option value="Margherita">Margherita</option>
+                            <option value="Funghi">Funghi</option>
+                            <option value="Vegetariana">Vegetariana</option>
+                            <option value="Napoli">Napoli</option>
+                            <option value="Prosciutto">Prosciutto</option>
+                            <option value="Salami">Salami</option>
+                        </select>
+                        <input type="radio" name="groesse" value="klein">
+                        klein
+                        <input type="radio" name="groesse" value="gross">
+                        groß
+                        <label for="Pizza1">
+                        <input id="Pizza1" type="number" min="0" value="0">
+                        Stk.</label>
+
+                    </li>
+                    <button id="addPizzaFromMenu"> + Pizza </button>
+                </ul>
+            </div>
+            <div>
+                <h1>Pizzen selbst kreieren</h1>
+                <ul>
+                    <li>
+                        Pizza
+                        <select name="dropdown">
+                            <<option value="käse">Käse</option>
                         </select>
                         <input type="radio" name="groesse" value="klein">
                         <input type="radio" name="groesse" value="gross">
@@ -24,36 +58,12 @@
                         Stk.</label>
 
                     </li>
-                    <li>
-                        <label for="Pizza2">
-                        Pizza 2 <input id="Pizza2" type="number" min="0" value="0">
-                        Stk.</label>
-                    </li>
-                    <li>
-                        <label for="Pizza3">
-                        Pizza 3 <input id="Pizza3" type="number" min="0" value="0">
-                        Stk.</label>
-                    </li>
-                    <li>
-                        <label for="Pizza4">
-                        Pizza 4 <input id="Pizza4" type="number" min="0" value="0">
-                        Stk.</label>
-                    </li>
-                    <li>
-                        <label for="Pizza5">
-                        Pizza 5 <input id="Pizza5" type="number" min="0" value="0">
-                        Stk.</label>
-                    </li>
-                    <li>
-                        <label for="Pizza6">
-                        Pizza 6 <input id="Pizza6" type="number" min="0" value="0">
-                        Stk.</label>
-                    </li>
+                    <button id="addTopping"> + Zutat </button>
+                    <button id="addPizza"> + Pizza </button>
                 </ul>
             </div>
-            <div class="pizza-self-creation">
-                <h1>Pizzas selbst kreieren</h1>
+            <div>
+                <button id="order"> Bestellen </button>
             </div>
-        </header>
     </body>
 </html>

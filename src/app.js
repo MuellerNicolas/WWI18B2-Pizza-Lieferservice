@@ -5,6 +5,8 @@ class App {
     // halloString = "Hallo, Welt";
 
     constructor() {
+        this._title = title;
+        this._pages = pages;
         this.database = new Database();
     }
 
