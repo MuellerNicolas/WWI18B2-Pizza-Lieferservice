@@ -68,7 +68,8 @@ body {
 /* Allgemeine Darstellung der Menüzeile */
 header {
     --text-color: white;
-    --icon-color: rgb(0, 90, 115);
+    /* --icon-color: rgb(0, 90, 115); */
+    --icon-color: rgb(255, 255, 255);
 }
 header nav {
     padding: var(--content-padding);
@@ -106,6 +107,7 @@ header nav a:visited {
 }
 
 header nav a:hover {
+    /* Farbe beim Hovern */
     color: var(--icon-color);
 }
 
@@ -117,6 +119,10 @@ header nav a:visited i {
 header nav a:hover i {
     color: var(--text-color);
 }
+header nav a: i {
+    color: var(--text-color);
+}
+
 
 /* Linkes Menü */
 header nav .menu-left {

@@ -1,12 +1,39 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
     <head>
         <meta charset="utf-8">
         <title>Bestellübersicht</title>
         <link rel="stylesheet" href="lieferung.css"/>
+        <script src="lieferung.js"></script>
     </head>
     <body>
         <h1>Bestellübersicht</h1>
+        <form onsubmit = "stoppuhr(event)">
+            <!-- action   = "contact-form.php"
+            method   = "POST"> -->
 
+            <div>
+                <!-- Angabe des Name sowie der Lieferadresse -->
+                <div>
+                    <label for="name">
+                        Vor- und Nachname:
+                    <span class="required">*</span>
+                    </label>
+                    <input name="name" type="text" placeholder="Vorname Nachname" />
+                </div>
+                <div>
+                    <label for="adresse">
+                        Adresse: (Form: PLZ, Straße Hausnummer)
+                        <span class="required">*</span>
+                    </label>
+                    <!-- Eingabefeld für Lieferadresse mit klar definierter Syntax -->
+                    <input name="name" type="text" placeholder="13337 Mustertraße 30" />
+                </div>
+            </div>
+            <!-- Submit Button zum Absenden -->
+            <input type="submit" value="Jetzt bestellen" />
+        </form>
+        <button id="startCountdown">Submit</button>
+        <div id="countdown"></div>
     </body>
 </html>
