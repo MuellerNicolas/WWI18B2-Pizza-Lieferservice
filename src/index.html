@@ -33,6 +33,16 @@
         <script>
             // Warten, bis die Seite komplett geladen wurde
             window.addEventListener("load", () => {
+                let pages = [{
+                    url: "^/$",
+                    klass: Info,
+                },{
+                    url: "^/Detail/(.*)$",
+                    klass: Bestellung,
+                },{
+                    url: ".*",
+                    klass: Lieferung,
+                }];
                 let app = new App();
                 app.run();
             });
