@@ -2,13 +2,13 @@
 <html lang="de">
     <head>
         <meta charset="utf-8">
-        <title>Bestellübersicht</title>
+        <title>Meine Bestellung</title>
         <link rel="stylesheet" href="lieferung.css"/>
         <script src="lieferung.js"></script>
     </head>
     <body>
-        <h1>Bestellübersicht</h1>
-        <form onsubmit = "stoppuhr(event)">
+        <h1>Bestellbestätigung & Lieferverfolgung</h1>
+        <form id="formular" onsubmit = "stoppuhr(event)">
             <!-- action   = "contact-form.php"
             method   = "POST"> -->
 
@@ -34,9 +34,11 @@
             <input id = "formularSubmit" type="submit" value="Jetzt bestellen" />
             <!-- type = button??? -->
         </form>
-        <button id="startCountdown">Submit</button>
+        <button id="startCountdown">Lieferung tracken</button>
         <div id="countdown"></div>
-        <div id="statusBild"><div>
+        <div id="statusDiv">
+            <img id="statusBild"/>
+        </div>
 
 
     </body>

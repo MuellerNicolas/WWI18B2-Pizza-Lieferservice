@@ -3,11 +3,13 @@ window.addEventListener("load", () => {
     let countdown = document.getElementById("countdown");
     let buttonStart = document.getElementById("startCountdown");
     let statusBild = document.getElementById("statusBild");
-    // let formularSubmit = document.getElementById("formularSubmit");
+    let bestellStatus = "";
+    let bestellStatusGeaendert;
 
     //Variablen Anzeige
     let aktiv = false;
-    let zaehler = 1800000;  //in Millisekunden
+    let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde
+    let zaehler = zaehlerInitial;
     let letztesUpdate = 0;
 
     //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
@@ -16,20 +18,16 @@ window.addEventListener("load", () => {
         letztesUpdate = Date.now();
     });
 
-    // formularSubmit.addEventListener("click, () => {
-    //     aktiv = true;
-    //     letztesUpdate = Date.now();
-    // });
-
-    // let stoppuhr = event => {
-    //     aktiv = true;
-    //     letztesUpdate = Date.now();
-    // };
-
     //Ständiges aktualisieren des Displays
     let countdownAktualisieren = () => {
+        //Performanceboost: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
+        if(zaehler==0){
+            return;
+        }
+        //Zeitpunkt
         let now = Date.now();
 
+        //Herunterzählen
         if (now - letztesUpdate >= 1000) {
             letztesUpdate = now;
 
@@ -58,9 +56,37 @@ window.addEventListener("load", () => {
         //Countdown anzeigen
         countdown.textContent = zaehlerFormat;
 
-        //StatutsBild Aktualisieren
-        //if(countdown <= 1800000){   //In Zubereitung
-        //    statusBild.        }
+        //Funktion zum aktualisieren des Bildes
+        //Um nicht dauerhaft das Bild zu aktualisieren erfolgt,
+        //die Aktualisierung nur wenn der Bestellungsstatus geändert wurde
+        if(zaehler == 0){
+            bestellStatus = "zugestellt";
+            bestellStatusGeaendert = true;
+        }else if(zaehler < (zaehlerInitial * (2/3))){  //nach 1/3 der Zeit erfolgt die Zustellung
+            bestellStatus = "in_Zustellung";
+            bestellStatusGeaendert = true;
+        } else if(zaehler < zaehlerInitial){
+            bestellStatus = "in_Zubereitung";
+            bestellStatusGeaendert = true;
+        }
+
+        //Bestellungsstatus hat sich geändert, richtiges Bild zuweisen
+        if(bestellStatusGeaendert === true){
+            switch (bestellStatus) {
+                case "in_Zubereitung":
+                    statusBild.src = "pics/zubereitung_koch.png";
+                    bestellStatusGeaendert = false;
+                    break;
+                    case "in_Zustellung":
+                    statusBild.src = "pics/lieferant.png";
+                    bestellStatusGeaendert = false;
+                    break;
+                case "zugestellt":
+                    statusBild.src = "pics/haus.png";
+                    bestellStatusGeaendert = false;
+                    break;
+            }
+        }
 
         // Kontinuierliches Aufrufen der Funktion
         window.requestAnimationFrame(countdownAktualisieren);
