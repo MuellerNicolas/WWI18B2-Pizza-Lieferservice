@@ -2,6 +2,8 @@ window.addEventListener("load", () => {
     //Variablen
     let countdown = document.getElementById("countdown");
     let buttonStart = document.getElementById("startCountdown");
+    let statusBild = document.getElementById("statusBild");
+    // let formularSubmit = document.getElementById("formularSubmit");
 
     //Variablen Anzeige
     let aktiv = false;
@@ -10,9 +12,19 @@ window.addEventListener("load", () => {
 
     //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
     buttonStart.addEventListener("click", () => {
-        aktiv = true
+        aktiv = true;
         letztesUpdate = Date.now();
     });
+
+    // formularSubmit.addEventListener("click, () => {
+    //     aktiv = true;
+    //     letztesUpdate = Date.now();
+    // });
+
+    // let stoppuhr = event => {
+    //     aktiv = true;
+    //     letztesUpdate = Date.now();
+    // };
 
     //Ständiges aktualisieren des Displays
     let countdownAktualisieren = () => {
@@ -45,7 +57,11 @@ window.addEventListener("load", () => {
 
         //Countdown anzeigen
         countdown.textContent = zaehlerFormat;
-        
+
+        //StatutsBild Aktualisieren
+        //if(countdown <= 1800000){   //In Zubereitung
+        //    statusBild.        }
+
         // Kontinuierliches Aufrufen der Funktion
         window.requestAnimationFrame(countdownAktualisieren);
     };
