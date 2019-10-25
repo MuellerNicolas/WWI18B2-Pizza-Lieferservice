@@ -1,22 +1,37 @@
 
 class Bestellung{
 
-    constructor(app) {
-        this._app = app;
+    constructor{
+
     }
 
-    addListItem () {
-        var myLi = document.createElement('li');
-        var myContent = document.createTextNode('Eine sehr dynamische Seite');
-        myLi.appendChild(myContent);
-        var Ausgabebereich = document.getElementById('pizzaAuswaehlen');
-        Ausgabebereich.appendChild(myLi);
+    klick () {
+        let pizzaMenuButton = document.getElementById("addPizzaFromMenu");
+        pizzaMenuButton.addEventListener("click", addPizzaFromMenu);
+
+        let toppingButton = document.querySelector("addTopping");
+        toppingButton.addEventListener("click", () => this.addTopping);
+
+        let pizzaIndividualButton = document.querySelector("addPizza");
+        pizzaIndividualButton.addEventListener("click", () => this.addPizza);
+
+        let bestellenButton = document.querySelector("order");
+        bestellenButton.addEventListener("click", /*Methode*/);
+
     }
 
-    init () {
-        var element  = document.getElementById ('addPizzaFromMenu');
-        element.addEventListener ('click', addAChild);
+    addPizzaFromMenu () {
+        //neue Pizzazeile hinzufügen
+        // let liste = document.getElementById("pizzaAuswaehlen");
+        // let liElement = document.getElementById("auswahlZeile");
+        // liste.appendChild(liElement);
+        alert ("Hello!");
     }
 
-    document.addEventListener('DOMContentLoaded', init);
+    addTopping(){
+        //neue Toppingzeile hinzufügen
+    }
+
+    addPizza(){
+        //neue Pizzazeile hinzufügen (selbstkreierte Pizza)
     }
