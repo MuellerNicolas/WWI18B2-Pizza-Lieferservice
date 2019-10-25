@@ -3,6 +3,7 @@ window.addEventListener("load", () => {
     let countdown = document.getElementById("countdown");
     let buttonStart = document.getElementById("startCountdown");
     let statusBild = document.getElementById("statusBild");
+    let statusText = document.getElementById("statusText")
     let bestellStatus = "";
     let bestellStatusGeaendert;
 
@@ -75,14 +76,17 @@ window.addEventListener("load", () => {
             switch (bestellStatus) {
                 case "in_Zubereitung":
                     statusBild.src = "pics/zubereitung_koch.png";
+                    statusText.textContent = "In Zubereitung";
                     bestellStatusGeaendert = false;
                     break;
                     case "in_Zustellung":
                     statusBild.src = "pics/lieferant.png";
+                    statusText.textContent = "In Zustellung";
                     bestellStatusGeaendert = false;
                     break;
                 case "zugestellt":
                     statusBild.src = "pics/haus.png";
+                    statusText.textContent = "Zugestellt";
                     bestellStatusGeaendert = false;
                     break;
             }
