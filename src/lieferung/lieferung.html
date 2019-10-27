@@ -7,7 +7,7 @@
         <script src="lieferung.js"></script>
     </head>
     <body>
-        <h1>Bestellbestätigung & Lieferverfolgung</h1>
+        <h1 class="flex">Bestellbestätigung & Lieferverfolgung</h1>
         <form id="formular" onsubmit = "stoppuhr(event)">
             <!-- action   = "contact-form.php"
             method   = "POST"> -->
@@ -36,9 +36,11 @@
         </form>
         <button id="startCountdown">Lieferung tracken</button>
         <div id="countdown"></div>
-        <div id="statusDiv">
-            <img id="statusBild"/>
-            <p id="statusText">
+        <div id="statusDiv" class="center">
+            <img id="statusBild" height="20%" width="20%"/>
+            <div>
+                <p id="statusText">
+            </div>
             </p>
         </div>
 
