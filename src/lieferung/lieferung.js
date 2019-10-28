@@ -1,3 +1,10 @@
+//Der Zähler für den Countdown wurde als globale Variable definiert,
+// damit der Countdown auch nach gestartetem Tracking und
+// darauf folgenden Unterseiten wechseln fortlaufend runter zählt.
+// Ähnlich ist dies beim flag status, dass angiebt ob der Countdown läuft
+let zaehler = 0;
+let status = false;
+
 class Lieferung {
     /**
      * Konstruktor
@@ -102,15 +109,18 @@ class Lieferung {
         let bestellStatusGeaendert;
 
         //Variablen Anzeige
-        let aktiv = false;
         let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde
-        let zaehler = zaehlerInitial;
         let letztesUpdate = 0;
-
+        let aktiv = false;  //Wird benötigt um doppeltes Herunterzählen zu verhindern
         //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
         buttonStart.addEventListener("click", () => {
-            aktiv = true;
-            letztesUpdate = Date.now();
+            if(status === false){
+                aktiv = true;
+                letztesUpdate = Date.now();
+                zaehler = zaehlerInitial;
+               window.requestAnimationFrame(countdownAktualisieren);
+               status = true;
+            }
         });
 
         //Ständiges aktualisieren des Displays
