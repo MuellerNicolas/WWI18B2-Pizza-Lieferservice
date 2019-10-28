@@ -1,3 +1,39 @@
+class Lieferung {
+    /**
+     * Konstruktor
+     * @param {App} app Zentrale Instanz der App-Klasse
+     */
+    constructor (app) {
+        this._app = app;
+    }
+
+    /**
+     * Seite anzeigen. Wird von der App-Klasse aufgerufen.
+     */
+    async show(matches) {
+        // Anzuzeigenden Seiteninhalt nachladen
+        let html = await fetch("lieferung/lieferung.html");
+        let css = await fetch("lieferung/lieferung.css");
+
+        if (html.ok && css.ok) {
+            html = await html.text();
+            css = await css.text();
+        } else {
+            console.error("Fehler beim Laden des HTML/CSS-Inhalts");
+            return;
+        }
+
+        // Seite zur Anzeige bringen
+        this._pageDom = document.createElement("div");
+        this._pageDom.innerHTML = html;
+
+        this._app.setPageTitle("Lieferung verfolgen", {isSubPage: true});
+        this._app.setPageCss(css);
+        this._app.setPageContent(this._pageDom);
+    }
+}
+
+/*
 window.addEventListener("load", () => {
     //Variablen
     let countdown = document.getElementById("countdown");
@@ -57,6 +93,8 @@ window.addEventListener("load", () => {
         //Countdown anzeigen
         countdown.textContent = zaehlerFormat;
 
+<<<<<<< HEAD
+=======
         //Funktion zum aktualisieren des Bildes
         //Um nicht dauerhaft das Bild zu aktualisieren erfolgt,
         //die Aktualisierung nur wenn der Bestellungsstatus geändert wurde
@@ -92,8 +130,10 @@ window.addEventListener("load", () => {
             }
         }
 
+>>>>>>> 54a0b559d5daff49f49b38a7f137a3195e1e1cfe
         // Kontinuierliches Aufrufen der Funktion
         window.requestAnimationFrame(countdownAktualisieren);
     };
     window.requestAnimationFrame(countdownAktualisieren);
 });
+*/

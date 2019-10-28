@@ -13,10 +13,6 @@
         <!-- Klasse Database: Verwaltet die Daten der Anwendung -->
         <script src="database.js"></script>
 
-        <!-- TODO: Klasse App ausprogrammieren -->
-        <!-- TODO: Klasse PageNotFound anlegen und ausprogrammieren -->
-        <!-- TODO: Klasse PageOverview zu Ende programmieren -->
-        <!-- TODO: Klasse PageDetail zu Ende programmieren -->
         <script src="info/info.js"></script>
         <script src="bestellung/bestellung.js"></script>
         <script src="lieferung/lieferung.js"></script>
@@ -30,6 +26,8 @@
         <link rel="stylesheet" href="elements/tab-buttons.css" />
         <link rel="stylesheet" href="elements/form.css" />
 
+        <style id="page-css"></style>
+
         <script>
             // Warten, bis die Seite komplett geladen wurde
             window.addEventListener("load", () => {
@@ -37,11 +35,14 @@
                     url: "^/$",
                     klass: Info,
                 },{
-                    url: "^/Detail/(.*)$",
+                    url: "^/Bestellung/$",
                     klass: Bestellung,
                 },{
-                    url: ".*",
+                    url: "^/Lieferung/$",
                     klass: Lieferung,
+                },{
+                    url: ".*",
+                    klass: PageNotFound,
                 }];
                 let app = new App("Pizzalieferdienst", pages);
                 app.run();
@@ -75,19 +76,19 @@
                 <!-- Übergreifendes App-Menü -->
                 <ul class="menu-right small-screen-hidden">
                     <li>
-                        <a href="#/info">
+                        <a href="#/">
                             <i class="icon-warehouse"></i>
                                 Startseite
                         </a>
                     </li>
                     <li>
-                        <a href="#/bestellung">
+                        <a href="#/Bestellung/">
                             <i class="icon-food"></i>
                                 Bestellung
                         </a>
                     </li>
                     <li>
-                        <a href="#/lieferung">
+                        <a href="#/Lieferung/">
                             <i class="icon-cab"></i>
                                 Lieferung
                         </a>
