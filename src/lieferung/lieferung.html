@@ -1,49 +1,41 @@
-<!DOCTYPE html>
-<html lang="de">
-    <head>
-        <meta charset="utf-8">
-        <title>Meine Bestellung</title>
-        <link rel="stylesheet" href="lieferung.css"/>
-        <script src="lieferung.js"></script>
-    </head>
-    <body>
-        <h1 class="flex">Bestellbestätigung & Lieferverfolgung</h1>
-        <form id="formular" onsubmit = "stoppuhr(event)">
-            <!-- action   = "contact-form.php"
-            method   = "POST"> -->
+<div>
+    <h1 class="flex">Bestellbestätigung & Lieferverfolgung</h1>
+    <form id="formular" onsubmit = "stoppuhr(event)">
+        <!-- action   = "contact-form.php"
+        method   = "POST"> -->
 
+        <div>
+            <!-- Angabe des Name sowie der Lieferadresse -->
             <div>
-                <!-- Angabe des Name sowie der Lieferadresse -->
-                <div>
-                    <label for="name">
-                        Vor- und Nachname:
+                <label for="name">
+                    Vor- und Nachname:
                     <span class="required">*</span>
-                    </label>
-                    <input name="name" type="text" placeholder="Vorname Nachname" />
-                </div>
-                <div>
-                    <label for="adresse">
-                        Adresse: (Form: PLZ, Straße Hausnummer)
-                        <span class="required">*</span>
-                    </label>
-                    <!-- Eingabefeld für Lieferadresse mit klar definierter Syntax -->
-                    <input name="name" type="text" placeholder="13337 Mustertraße 30" />
-                </div>
+                </label>
+                <input name="name" type="text" placeholder="Vorname Nachname" />
             </div>
-            <!-- Submit Button zum Absenden -->
-            <input id = "formularSubmit" type="submit" value="Jetzt bestellen" />
-            <!-- type = button??? -->
-        </form>
-        <button id="startCountdown">Lieferung tracken</button>
-        <div id="countdown"></div>
-        <div id="statusDiv" class="center">
-            <img id="statusBild" height="20%" width="20%"/>
             <div>
-                <p id="statusText">
+                <label for="adresse">
+                    Adresse: (Form: PLZ, Straße Hausnummer)
+                    <span class="required">*</span>
+                </label>
+                <!-- Eingabefeld für Lieferadresse mit klar definierter Syntax -->
+                <input name="name" type="text" placeholder="13337 Mustertraße 30" />
             </div>
-            </p>
         </div>
+        <!-- Submit Button zum Absenden -->
+        <input id = "formularSubmit" type="submit" value="Jetzt bestellen" />
+        <!-- type = button??? -->
+    </form>
 
+    <button id="startCountdown">Lieferung tracken</button>
 
-    </body>
-</html>
+    <div id="countdown"></div>
+
+    <div id="statusDiv" class="center">
+        <img id="statusBild" height="20%" width="20%"/>
+        <div>
+            <p id="statusText">
+            </div>
+        </p>
+    </div>
+</div>
