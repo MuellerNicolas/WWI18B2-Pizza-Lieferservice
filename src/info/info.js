@@ -61,6 +61,5 @@ class Info {
         });
     }
 
-    tabItem.addEventListener("bestellen", event => {
-            switchPage(event.target);
+
 }
