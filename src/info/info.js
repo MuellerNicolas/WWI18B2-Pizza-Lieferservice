@@ -50,19 +50,19 @@ class Info {
      * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
      * mit den HTML-Templates dieser Seite.
      */
-    _renderBoatTiles(pageDom) {
-        let mainElement = pageDom.querySelector("main");
-        let templateElement = pageDom.querySelector("#template-tile");
-
-        this._app.database.getAllRecords().forEach(boat => {
-            let html = templateElement.innerHTML;
-            html = html.replace("{HREF}", `#/Detail/${boat.id}`);
-            html = html.replace("{IMG}", boat.img);
-            html = html.replace("{NAME}", boat.name);
-
-            mainElement.innerHTML += html;
-        });
-    }
+    // _renderBoatTiles(pageDom) {
+    //     let mainElement = pageDom.querySelector("main");
+    //     let templateElement = pageDom.querySelector("#template-tile");
+    //
+    //     this._app.database.getAllRecords().forEach(boat => {
+    //         let html = templateElement.innerHTML;
+    //         html = html.replace("{HREF}", `#/Detail/${boat.id}`);
+    //         html = html.replace("{IMG}", boat.img);
+    //         html = html.replace("{NAME}", boat.name);
+    //
+    //         mainElement.innerHTML += html;
+    //     });
+    // }
 
 
 }
