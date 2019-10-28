@@ -60,4 +60,7 @@ class Info {
             mainElement.innerHTML += html;
         });
     }
+
+    tabItem.addEventListener("bestellen", event => {
+            switchPage(event.target);
 }
