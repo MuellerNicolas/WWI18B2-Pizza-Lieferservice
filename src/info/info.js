@@ -33,6 +33,11 @@ class Info {
         this._pageDom.innerHTML = html;
 //         this._renderBoatTiles(this._pageDom);
 
+        let kreierenButton = this._pageDom.querySelector("#kreieren");
+        kreierenButton.addEventListener("click", () => {
+            location.hash = "#/Bestellung/";
+        });
+
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
