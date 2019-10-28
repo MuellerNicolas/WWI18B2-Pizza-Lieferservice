@@ -38,6 +38,11 @@ class Info {
             location.hash = "#/Bestellung/";
         });
 
+        let bestellenButton = this._pageDom.querySelector("#bestellen");
+        bestellenButton.addEventListener("click", () => {
+            location.hash = "#/Bestellung/";
+        });
+
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
