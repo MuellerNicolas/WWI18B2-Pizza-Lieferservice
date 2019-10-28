@@ -1,69 +1,48 @@
-<link rel="stylesheet" href="bestellung/bestellung.css" />
 
-<<!DOCTYPE html>
-<html lang="de" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <script src="bestellung.js"></script>
-        <script>
-            window.addEventListener("load", () => {
-                let bestellung = new Bestellung();
-                bestellung.klick();
-            });
-        </script>
-    </head>
-    <body>
-        <header>
-        </header>
-        <body>
-            <div>
-                <<h1>Pizzen von der Karte</h1>
-                <ul id="pizzaAuswaehlen">
-                    <li id=auswahlZeile>
+<div>
+    <<h1>Pizzen von der Karte</h1>
+    <ul id="pizzaAuswaehlen">
+        <li id=auswahlZeile>
+            Pizza
+            <select name="dropdown">
+                <option value="Margherita">Margherita</option>
+                <option value="Funghi">Funghi</option>
+                <option value="Vegetariana">Vegetariana</option>
+                <option value="Napoli">Napoli</option>
+                <option value="Prosciutto">Prosciutto</option>
+                <option value="Salami">Salami</option>
+            </select>
+            <input type="radio" name="groesse" value="klein">
+            klein
+            <input type="radio" name="groesse" value="gross">
+            groß
+            <label for="Pizza1">
+            <input id="Pizza1" type="number" min="0" value="0">
+            Stk.</label>
 
-                        Pizza
-                        <select name="dropdown">
-                            <option value="Margherita">Margherita</option>
-                            <option value="Funghi">Funghi</option>
-                            <option value="Vegetariana">Vegetariana</option>
-                            <option value="Napoli">Napoli</option>
-                            <option value="Prosciutto">Prosciutto</option>
-                            <option value="Salami">Salami</option>
-                        </select>
-                        <input type="radio" name="groesse" value="klein">
-                        klein
-                        <input type="radio" name="groesse" value="gross">
-                        groß
-                        <label for="Pizza1">
-                        <input id="Pizza1" type="number" min="0" value="0">
-                        Stk.</label>
+        </li>
+        <button id="addPizzaFromMenu"> + Pizza </button>
+    </ul>
+</div>
+<div>
+    <h1>Pizzen selbst kreieren</h1>
+    <ul>
+        <li>
+            Pizza
+            <select name="dropdown">
+                <option value="käse">Käse</option>
+            </select>
+            <input type="radio" name="groesse" value="klein">
+            <input type="radio" name="groesse" value="gross">
+            <label for="Pizza1">
+            <input id="Pizza1" type="number" min="0" value="0">
+            Stk.</label>
+        </li>
 
-                    </li>
-                    <button id="addPizzaFromMenu"> + Pizza </button>
-                </ul>
-            </div>
-            <div>
-                <h1>Pizzen selbst kreieren</h1>
-                <ul>
-                    <li>
-                        Pizza
-                        <select name="dropdown">
-                            <<option value="käse">Käse</option>
-                        </select>
-                        <input type="radio" name="groesse" value="klein">
-                        <input type="radio" name="groesse" value="gross">
-                        <label for="Pizza1">
-                        <input id="Pizza1" type="number" min="0" value="0">
-                        Stk.</label>
-
-                    </li>
-                    <button id="addTopping"> + Zutat </button>
-                    <button id="addPizza"> + Pizza </button>
-                </ul>
-            </div>
-            <div>
-                <button id="order"> Bestellen </button>
-            </div>
-    </body>
-</html>
+        <button id="addTopping"> + Zutat </button>
+        <button id="addPizza"> + Pizza </button>
+    </ul>
+</div>
+<div>
+    <button id="order"> Bestellen </button>
+</div>
