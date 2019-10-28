@@ -29,15 +29,13 @@ class Info {
         }
 
         // Seite zur Anzeige bringen
-        let pageDom = document.createElement("div");
-        pageDom.innerHTML = html;
-
-        this._renderBoatTiles(pageDom);
+        this._pageDom = document.createElement("div");
+        this._pageDom.innerHTML = html;
+//         this._renderBoatTiles(this._pageDom);
 
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
-        this._app.setPageHeader(pageDom.querySelector("header"));
-        this._app.setPageContent(pageDom.querySelector("main"));
+        this._app.setPageContent(this._pageDom);
     }
 
     /**
