@@ -37,7 +37,7 @@
 .card {
     display: inline-block;
     width: 30%;
-
+    
     border: 1px solid darkgrey;
     border-radius: 0.5em;
     background: rgba(245, 245, 245);
