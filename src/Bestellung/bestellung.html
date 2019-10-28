@@ -1,6 +1,6 @@
 
 <div>
-    <<h1>Pizzen von der Karte</h1>
+    <h1>Pizzen von der Karte</h1>
     <ul id="pizzaAuswaehlen">
         <li id=auswahlZeile>
             Pizza
@@ -12,13 +12,11 @@
                 <option value="Prosciutto">Prosciutto</option>
                 <option value="Salami">Salami</option>
             </select>
-            <input type="radio" name="groesse" value="klein">
-            klein
-            <input type="radio" name="groesse" value="gross">
-            groß
-            <label for="Pizza1">
-            <input id="Pizza1" type="number" min="0" value="0">
-            Stk.</label>
+            <label>
+                <input type="radio" name="groesse" value="klein">klein
+                <input type="radio" name="groesse" value="gross">groß
+                <input id="PizzaMenu1" type="number" min="0" value="0">Stk.
+            </label>
 
         </li>
         <button id="addPizzaFromMenu"> + Pizza </button>
@@ -30,12 +28,22 @@
         <li>
             Pizza
             <select name="dropdown">
-                <option value="käse">Käse</option>
+                <option value="brokkoli">Brokkoli</option>
+                <option value="champignons">Champignons</option>
+                <option value="mozarella">Mozarella</option>
+                <option value="lachs">Lachs</option>
+                <option value="oliven">Oliven</option>
+                <option value="paprika">Paprika</option>
+                <option value="rucola">Rucola</option>
+                <option value="salami">Salami</option>
+                <option value="schinkenGekocht">Schinken(gekocht)</option>
+                <option value="schinkenRoh">Schinken(roh)</option>
+                <option value="zwiebel">Zwiebel</option>
             </select>
-            <input type="radio" name="groesse" value="klein">
-            <input type="radio" name="groesse" value="gross">
-            <label for="Pizza1">
-            <input id="Pizza1" type="number" min="0" value="0">
+            <input type="radio" name="groesse" value="klein">klein
+            <input type="radio" name="groesse" value="gross">groß
+            <label for="PizzaIndividual1">
+            <input id="PizzaIndividual1" type="number" min="0" value="0">
             Stk.</label>
         </li>
 

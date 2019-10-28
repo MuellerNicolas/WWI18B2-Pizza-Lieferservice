@@ -49,7 +49,13 @@ class Bestellung{
     }
 
     _onAddPizzaFromMenuClicked(){
-        alert("Add Pizza from Menu!");
+        // alert("Add Pizza from Menu!");
+        const sourceObject = this._pageDom.querySelector("auswahlZeile");
+        let requiredObj = document.createElement("LI");
+        requiredObj = JSON.parse(JSON.stringify(sourceObject));
+        document.querySelector("pizzaAuswaehlen").innerHTML =
+        "targetObject li = "+requiredObj;
+
     }
 
     _onAddToppingClicked() {

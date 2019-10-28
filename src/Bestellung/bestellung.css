@@ -1,0 +1,9 @@
+/* Stylesheet für die Klasse Bestellung*/
+
+div > ul {
+    list-style: none;
+}
+
+div > ul> li > label {
+    font-size: 60%;
+}
