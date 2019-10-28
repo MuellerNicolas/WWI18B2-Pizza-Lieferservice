@@ -35,6 +35,61 @@ class Lieferung {
         this._app.setPageContent(this._pageDom);
 
         //////////////////////////////////
+        //     Formularüberprüfung      //
+        //////////////////////////////////
+
+        let validateForm = event => {
+            let formular = document.getElementById("formular");
+            let korrekt = true;
+            let ausgabe = "";
+
+            // Vorname muss angegeben sein
+            if (form.vorname.value == "") {
+                korrekt = false;
+                message += "Bitte geben Sie ihren Vornamen ein. <br />";
+            }
+            // Nachname muss angegeben sein
+            if (form.nachname.value == "") {
+                korrekt = false;
+                message += "Bitte geben Sie ihren Nachnamen ein. <br />";
+            }
+            // Postleitzahl muss angegeben sein
+            if (form.plz.value == "" && form.plz.value.toString().length != 5) {
+                korrekt = false;
+                message += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
+            }
+            // Ort muss angegeben sein
+            if (form.ort.value == "") {
+                korrekt = false;
+                message += "Bitte geben Sie einen korrekten Ort ein. <br />";
+            }
+            // Straße muss angegeben sein
+            if (form.strasse.value == "") {
+                korrekt = false;
+                message += "Bitte geben Sie eine korrekte Straße ein. <br />";
+            }
+            // Hausnummer muss angegeben sein
+            if (form.hausnummer.value == "") {
+                korrekt = false;
+                message += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
+            }
+            // Ergebnis anzeigen
+            let ergebnisElement = document.getElementById("ergebnis");
+
+            if (korrekt) {
+                message = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
+                ergebnisElement.classList.add("korrekt");
+            } else {
+                ergebnisElement.classList.remove("korrekt");
+            }
+
+            ergebnisElement.innerHTML = message;
+
+            if (!korrekt) {
+                event.preventDefault();
+            }
+        }
+        //////////////////////////////////
         //         Tracking             //
         //////////////////////////////////
 

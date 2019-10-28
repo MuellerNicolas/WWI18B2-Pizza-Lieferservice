@@ -16,3 +16,10 @@ form {
     align-items: center;
     justify-content: center;
 }
+
+#ergebnis{
+    color: red;
+}
+#ergebnis.korrekt{
+    color: green;
+}

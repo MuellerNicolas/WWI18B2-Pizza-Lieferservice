@@ -1,31 +1,56 @@
 <div>
     <h1 class="flex">Bestellbestätigung & Lieferverfolgung</h1>
-    <form id="formular" onsubmit = "stoppuhr(event)">
-        <!-- action   = "contact-form.php"
-        method   = "POST"> -->
+    <form id="formular" onsubmit = "validateForm(event)">
+
+          <!-- action   = "contact-form.php"
+          method   = "POST"> -->
 
         <div>
-            <!-- Angabe des Name sowie der Lieferadresse -->
+            <!-- Angabe des Namen sowie der Lieferadresse -->
             <div>
-                <label for="name">
-                    Vor- und Nachname:
+                <label for="vorname">
+                    Vorname:
                     <span class="required">*</span>
                 </label>
-                <input name="name" type="text" placeholder="Vorname Nachname" />
+                <input name="vorname" type="text" placeholder="Max" />
+                <label for="nachname">
+                    Nachname:
+                    <span class="required">*</span>
+                </label>
+                <input name="nachname" type="text" placeholder="Mustermann" />
             </div>
             <div>
-                <label for="adresse">
-                    Adresse: (Form: PLZ, Straße Hausnummer)
+                <label for="plz">
+                    Postleitzahl:
                     <span class="required">*</span>
                 </label>
-                <!-- Eingabefeld für Lieferadresse mit klar definierter Syntax -->
-                <input name="name" type="text" placeholder="13337 Mustertraße 30" />
+                <input name="plz" type="number" placeholder="76133" />
+
+                <label for="ort">
+                    Ort:
+                    <span class="required">*</span>
+                </label>
+                <input name="ort" type="text" placeholder="Karlsruhe" />
+
+                <label for="strasse">
+                    Straße:
+                    <span class="required">*</span>
+                </label>
+                <input name="strasse" type="text" placeholder="Musterstraße" />
+
+                <label for="hausnummer">
+                    Hausnummer:
+                    <span class="required">*</span>
+                </label>
+                <input name="strasse" type="text" placeholder="Musterstraße" />
             </div>
         </div>
         <!-- Submit Button zum Absenden -->
-        <input id = "formularSubmit" type="submit" value="Jetzt bestellen" />
+        <input type="submit" value="Jetzt bestellen" />
         <!-- type = button??? -->
     </form>
+
+    <div id="ergebnis"></div>
 
     <button id="startCountdown">Lieferung tracken</button>
 
@@ -34,8 +59,7 @@
     <div id="statusDiv" class="center">
         <img id="statusBild" height="20%" width="20%"/>
         <div>
-            <p id="statusText">
-            </div>
-        </p>
+            <p id="statusText"></p>
+        </div>
     </div>
 </div>
