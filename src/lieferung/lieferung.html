@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <h1 class="flex">Bestellbestätigung & Lieferverfolgung</h1>
     <form id="formular" onsubmit = "validateForm(event)">
 
@@ -7,42 +7,53 @@
 
         <div>
             <!-- Angabe des Namen sowie der Lieferadresse -->
-            <div>
-                <label for="vorname">
-                    Vorname:
-                    <span class="required">*</span>
-                </label>
-                <input name="vorname" type="text" placeholder="Max" />
-                <label for="nachname">
-                    Nachname:
-                    <span class="required">*</span>
-                </label>
-                <input name="nachname" type="text" placeholder="Mustermann" />
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="vorname">
+                        Vorname:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="vorname" type="text" placeholder="Max" />
+                </div>
+                <div class="col-md-6">
+                    <label for="nachname">
+                        Nachname:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="nachname" type="text" placeholder="Mustermann" />
+                </div>
             </div>
-            <div>
-                <label for="plz">
-                    Postleitzahl:
-                    <span class="required">*</span>
-                </label>
-                <input name="plz" type="number" placeholder="76133" />
-
-                <label for="ort">
-                    Ort:
-                    <span class="required">*</span>
-                </label>
-                <input name="ort" type="text" placeholder="Karlsruhe" />
-
-                <label for="strasse">
-                    Straße:
-                    <span class="required">*</span>
-                </label>
-                <input name="strasse" type="text" placeholder="Musterstraße" />
-
-                <label for="hausnummer">
-                    Hausnummer:
-                    <span class="required">*</span>
-                </label>
-                <input name="strasse" type="text" placeholder="Musterstraße" />
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="plz">
+                        Postleitzahl:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="plz" type="number" placeholder="76133" />
+                </div>
+                <div class="col-md-6">
+                    <label for="ort">
+                        Ort:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="ort" type="text" placeholder="Karlsruhe" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="strasse">
+                        Straße:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="strasse" type="text" placeholder="Musterstraße" />
+                </div>
+                <div class="col-md-6">
+                    <label for="hausnummer">
+                        Hausnummer:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="hausnummer" type="text" placeholder="Musterstraße" />
+                </div>
             </div>
         </div>
         <!-- Submit Button zum Absenden -->
