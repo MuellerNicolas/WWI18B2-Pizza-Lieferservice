@@ -1,9 +1,72 @@
-//Der Zähler für den Countdown wurde als globale Variable definiert,
+//////////////////////////////////
+//     Formularüberprüfung      //
+//////////////////////////////////
+let validiereBestellung = event => {
+    debugger;
+    let formular = document.getElementById("formular");
+    let korrekt = true;
+    let ausgabe = "";
+
+    // Vorname muss angegeben sein
+    if (formular.vorname.value == "") {
+        korrekt = false;
+        ausgabe += "Bitte geben Sie ihren Vornamen ein. <br />";
+    }
+    // Nachname muss angegeben sein
+    if (formular.nachname.value == "") {
+        korrekt = false;
+        ausgabe += "Bitte geben Sie ihren Nachnamen ein. <br />";
+    }
+    // Postleitzahl muss angegeben sein
+    if (formular.plz.value == "" || formular.plz.value.toString().length != 5) {
+        korrekt = false;
+        ausgabe += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
+    }
+    // Ort muss angegeben sein
+    if (formular.ort.value == "") {
+        korrekt = false;
+        ausgabe += "Bitte geben Sie einen korrekten Ort ein. <br />";
+    }
+    // Straße muss angegeben sein
+    if (formular.strasse.value == "") {
+        korrekt = false;
+        ausgabe += "Bitte geben Sie eine korrekte Straße ein. <br />";
+    }
+    // Hausnummer muss angegeben sein
+    if (formular.hausnummer.value == "") {
+        korrekt = false;
+        ausgabe += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
+    }
+    // Ergebnis anzeigen
+    let ergebnisElement = document.getElementById("ergebnis");
+
+    if (korrekt) {
+        ausgabe = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
+        ergebnisElement.classList.add("korrekt");
+    } else {
+        ergebnisElement.classList.remove("korrekt");
+    }
+
+    ergebnisElement.innerHTML = ausgabe;
+
+    // if (!korrekt) {
+        event.preventDefault();
+    // } else {
+    if(korrekt){
+        bestellt = true;
+    }
+}
+
+// Der Zähler für den Countdown wurde als globale Variable definiert,
 // damit der Countdown auch nach gestartetem Tracking und
 // darauf folgenden Unterseiten wechseln fortlaufend runter zählt.
 // Ähnlich ist dies beim flag status, dass angiebt ob der Countdown läuft
 let zaehler = 0;
 let status = false;
+
+// Das flag bestellt deaktiviert das Tracking solange das Bestellformular
+// nicht abgesendet wurde
+let bestellt = false;
 
 class Lieferung {
     /**
@@ -41,61 +104,7 @@ class Lieferung {
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
 
-        //////////////////////////////////
-        //     Formularüberprüfung      //
-        //////////////////////////////////
 
-        let validateForm = event => {
-            let formular = document.getElementById("formular");
-            let korrekt = true;
-            let ausgabe = "";
-
-            // Vorname muss angegeben sein
-            if (form.vorname.value == "") {
-                korrekt = false;
-                message += "Bitte geben Sie ihren Vornamen ein. <br />";
-            }
-            // Nachname muss angegeben sein
-            if (form.nachname.value == "") {
-                korrekt = false;
-                message += "Bitte geben Sie ihren Nachnamen ein. <br />";
-            }
-            // Postleitzahl muss angegeben sein
-            if (form.plz.value == "" && form.plz.value.toString().length != 5) {
-                korrekt = false;
-                message += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
-            }
-            // Ort muss angegeben sein
-            if (form.ort.value == "") {
-                korrekt = false;
-                message += "Bitte geben Sie einen korrekten Ort ein. <br />";
-            }
-            // Straße muss angegeben sein
-            if (form.strasse.value == "") {
-                korrekt = false;
-                message += "Bitte geben Sie eine korrekte Straße ein. <br />";
-            }
-            // Hausnummer muss angegeben sein
-            if (form.hausnummer.value == "") {
-                korrekt = false;
-                message += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
-            }
-            // Ergebnis anzeigen
-            let ergebnisElement = document.getElementById("ergebnis");
-
-            if (korrekt) {
-                message = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
-                ergebnisElement.classList.add("korrekt");
-            } else {
-                ergebnisElement.classList.remove("korrekt");
-            }
-
-            ergebnisElement.innerHTML = message;
-
-            if (!korrekt) {
-                event.preventDefault();
-            }
-        }
         //////////////////////////////////
         //         Tracking             //
         //////////////////////////////////
@@ -114,7 +123,7 @@ class Lieferung {
         let aktiv = false;  //Wird benötigt um doppeltes Herunterzählen zu verhindern
         //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
         buttonStart.addEventListener("click", () => {
-            if(status === false){
+            if(status === false && bestellt === true){
                 aktiv = true;
                 letztesUpdate = Date.now();
                 zaehler = zaehlerInitial;
