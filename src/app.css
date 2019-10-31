@@ -67,9 +67,9 @@ body {
 
 /* Allgemeine Darstellung der Menüzeile */
 header {
-    --text-color: white;
+    --text-color: black;
     /* --icon-color: rgb(0, 90, 115); */
-    --icon-color: rgb(255, 255, 255);
+    --icon-color: black;
 }
 header nav {
     padding: var(--content-padding);
@@ -78,6 +78,7 @@ header nav {
 
 header nav i {
     color: var(--icon-color);
+    opacity: 0.8;
 }
 
 header nav .page-name {
@@ -104,11 +105,13 @@ header nav a:visited {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.25s;
+    opacity: 0.8;
 }
 
 header nav a:hover {
     /* Farbe beim Hovern */
     color: var(--icon-color);
+    opacity: 1;
 }
 
 header nav a i,
@@ -118,9 +121,11 @@ header nav a:visited i {
 
 header nav a:hover i {
     color: var(--text-color);
+    opacity: 1;
 }
 header nav a: i {
     color: var(--text-color);
+    opacity: 0.8;
 }
 
 
