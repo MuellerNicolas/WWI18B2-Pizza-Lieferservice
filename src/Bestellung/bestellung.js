@@ -50,11 +50,11 @@ class Bestellung{
 
     _onAddPizzaFromMenuClicked(){
         // alert("Add Pizza from Menu!");
-        const sourceObject = this._pageDom.querySelector("auswahlZeile");
-        let requiredObj = document.createElement("LI");
-        requiredObj = JSON.parse(JSON.stringify(sourceObject));
-        document.querySelector("pizzaAuswaehlen").innerHTML =
-        "targetObject li = "+requiredObj;
+        var listenitem = this._pageDom.querySelector("auswahlZeile");
+        var liste = this._pageDom.querySelector("pizzaAuswaehlen");
+
+        liste.appendchild(listenitem.cloneNode(true));
+
 
     }
 

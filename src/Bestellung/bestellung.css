@@ -7,3 +7,7 @@ div > ul {
 div > ul> li > label {
     font-size: 60%;
 }
+
+div > ul > li > label > input[type = number]{
+    width: 45px;
+}
