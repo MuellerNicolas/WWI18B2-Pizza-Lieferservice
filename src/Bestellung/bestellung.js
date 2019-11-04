@@ -67,5 +67,10 @@ class Bestellung{
         let div = document.createElement("div");
         div.classList.add("large");
         div.appendChild(clonedRow);
-        row.parentNode.insertBefore(div, row);    }
+        row.parentNode.insertBefore(div, row);
+    }
+
+    _onDeletePizzaFromMenuClicked() {
+        alert("Pizza gelöscht")
+    }
 }
