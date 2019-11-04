@@ -5,12 +5,16 @@
         <div id="pizzaFromMenu">
             <div class="row" id="auswahlZeileMenu">
                 <div class="col-md-1">
-                    <button id="deletePizzaFromMenu"> - </button>
+                    <button class="btn-sm" id="deletePizzaFromMenu">
+                        <i class="icon-cancel"></i>
+                    </button>
+                </div>
+                <div class="col-md-3">
                     Pizza
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <select name="dropdown">
-                        <option value="Waehlen">Bitte Waehlen</option>
+                        <option value="Waehlen">Bitte Wählen</option>
                         <option value="Margherita">Margherita</option>
                         <option value="Funghi">Funghi</option>
                         <option value="Vegetariana">Vegetariana</option>
@@ -19,18 +23,23 @@
                         <option value="Salami">Salami</option>
                     </select>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-5">
                     <label id="kleinGross">
-                        <input type="radio" name="groesse" value="klein"> klein
-                        <input type="radio" name="groesse" value="gross"> groß
-                        <input id="stueck1" type="number" min="0" value="0"> Stk.
+                        <input type="radio" name="groesseM" value="klein" checked="checked"> klein
+                        &nbsp
+                        <input type="radio" name="groesseM" value="gross"> groß
+                        &nbsp
+                        &nbsp
+                        <input id="stueck1" type="number" min="0" value="0"> Stück
                     </label>
                 </div
             </div>
         </div>
         <div class="row">
-            <div Class="col">
-                <button id="addPizzaFromMenu"> + Pizza </button>
+            <div Class="col-md-1">
+            </div>
+            <div class="col-md-11">
+                <button class="btn-sm" id="addPizzaFromMenu"> + Pizza </button>
             </div>
         </div>
     </div>
@@ -39,47 +48,53 @@
         <div id="pizzaFromMenu">
             <div class="row" id="auswahlZeileIndividuell">
                 <div class="col-md-1">
+                    <button class="btn-sm" id="deletePizzaFromMenu">
+                        <i class="icon-cancel"></i>
+                    </button>
+                </div>
+                <div class="col-md-1">
                     Pizza
                 </div>
                 <div class="col-md-2">
-                    Individuell
+                    <input type="checkbox" name="brokkoli" value="brokkoli"> Brokkoli <br>
+                    <input type="checkbox" name="lachs" value="lachs"> Lachs <br>
+                    <input type="checkbox" name="oliven" value="oliven"> Oliven <br>
+                    <input type="checkbox" name="peperoni" value="peperoni"> Peperoni <br>
+                    <input type="checkbox" name="salami" value="salami"> Salami <br>
+                    <input type="checkbox" name="speck" value="speck"> Speck <br>
+                </div>
+                <div class="col-md-3">
+                    <input type="checkbox" name="champignons" value="champignons"> Champignons <br>
+                    <input type="checkbox" name="mozarella" value="mozarella"> Mozarella <br>
+                    <input type="checkbox" name="paprika" value="paprika"> Paprika <br>
+                    <input type="checkbox" name="rucola" value="rucola"> Rucola <br>
+                    <input type="checkbox" name="schinken" value="schinken"> Schinken <br>
+                    <input type="checkbox" name="zwiebel" value="zwiebel"> Zwiebel <br>
+                    <br>
                 </div>
                 <div class="col-md-5">
                     <label for="PizzaIndividual1">
-                        <input type="radio" name="klein" value="klein"> klein
-                        <input type="radio" name="gross" value="gross"> groß
-                        <input id="stueck2" type="number" min="0" value="0"> Stk.
+                        <input type="radio" name="groesseI" value="klein" checked="checked"> klein
+                        &nbsp
+                        <input type="radio" name="groesseI" value="gross"> groß
+                        &nbsp
+                        &nbsp
+                        <input id="stueck2" type="number" min="0" value="0"> Stück
                     </label>
                 </div>
-                <div class="col-md-2">
-                    <div class="ml-0">
-                        <input type="radio" name="brokkoli" value="brokkoli"> Brokkoli <br>
-                        <input type="radio" name="champignons" value="champignons"> Champignons <br>
-                        <input type="radio" name="mozarella" value="mozarella"> Mozarella <br>
-                        <input type="radio" name="lachs" value="lachs"> Lachs <br>
-                        <input type="radio" name="oliven" value="oliven"> Oliven <br>
-                        <input type="radio" name="paprika" value="paprika"> Paprika <br>
-                    </div>
-                </div>
-                <div class="col-md-2.5">
-                        <input type="radio" name="peperoni" value="peperoni"> Peperoni <br>
-                        <input type="radio" name="rucola" value="rucola"> Rucola <br>
-                        <input type="radio" name="salami" value="salami"> Salami <br>
-                        <input type="radio" name="schinkenGekocht" value="schinkenGekocht"> Schinken(Gekocht) <br>
-                        <input type="radio" name="schinkenRoh" value="schinkenRoh"> Schinken(Roh) <br>
-                        <input type="radio" name="zwiebel" value="zwiebel"> Zwiebel <br>
-                        <br>
-                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <button id="addPizzaIndividual"> + Pizza </button>
+                <button  class="btn-sm" id="addPizzaIndividual"> + Pizza </button>
+                <br>
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <button id="order"> Bestellen </button>
+            <div class="col-md-9">
+            </div>
+            <div class="col-md-3">
+                <button  class="btn-sm" id="order"> Bestellen </button>
             </div>
         </div>
     </div>
