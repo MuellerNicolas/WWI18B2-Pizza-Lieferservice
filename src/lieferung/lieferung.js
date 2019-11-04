@@ -45,7 +45,7 @@ let validiereBestellung = event => {
     } else {
         ergebnisElement.classList.remove("korrekt");
     }
-    debugger;
+    
     ergebnisElement.innerHTML = ausgabe;
 
     // if (!korrekt) {
