@@ -38,7 +38,7 @@ class Database {
             // Dabei können beliebig viele "Collections" angesprochen werden,
             // die in etwa den Tabellen einer klassischen Datenbank entsprechen.
             this._db = firebase.firestore();
-            this._books = this._db.collection("bestellungen");
+            this._bestellungen = this._db.collection("bestellungen");
         } catch(e) {
 
         }

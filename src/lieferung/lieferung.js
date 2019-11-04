@@ -2,7 +2,6 @@
 //     Formularüberprüfung      //
 //////////////////////////////////
 let validiereBestellung = event => {
-    debugger;
     let formular = document.getElementById("formular");
     let korrekt = true;
     let ausgabe = "";
@@ -46,7 +45,7 @@ let validiereBestellung = event => {
     } else {
         ergebnisElement.classList.remove("korrekt");
     }
-
+    debugger;
     ergebnisElement.innerHTML = ausgabe;
 
     // if (!korrekt) {
@@ -54,6 +53,18 @@ let validiereBestellung = event => {
     // } else {
     if(korrekt){
         bestellt = true;
+
+        //////////////////////////////////
+        //   GoogleFirebase speichern   //
+        //////////////////////////////////
+        database._db.collection("bestellungen").add({
+            vorname: formular.vorname.value,
+            nachname: formular.nachname.value,
+            plz: formular.plz.value,
+            ort: formular.ort.value,
+            strasse: formular.strasse.value,
+            hausnummer: formular.hausnummer.value
+        })
     }
 }
 
