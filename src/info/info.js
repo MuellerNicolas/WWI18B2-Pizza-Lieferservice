@@ -43,10 +43,19 @@ class Info {
             location.hash = "#/Bestellung/";
         });
 
+
+
+        let feedbackButton = this._pageDom.querySelector("#feedback");
+        bestellenButton.addEventListener("click", () => {
+            
+        });
+
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
     }
+
+
 
     /**
      * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf

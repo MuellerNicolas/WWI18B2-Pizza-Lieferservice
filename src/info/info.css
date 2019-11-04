@@ -37,11 +37,12 @@
 .card {
     display: inline-block;
     width: 30%;
-    
+
     border: 1px solid darkgrey;
     border-radius: 0.5em;
     background: rgba(245, 245, 245);
     padding: 0.5em;
+    margin: 0.5em;
 
     transition: transform 0.5s, background 0.5s;
     transform: scale(1);
@@ -56,5 +57,25 @@
 .card img {
     display: block;
     width: 100%;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.buttons{
+    float: left;
+     width: 30%;
+     margin-right: 30%;
+     padding: 20px;
+     box-sizing: border-box;
+}
+
+.auswahl{
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.abfrageFeedback{
+    margin-top: 5em;
+    margin-right: 30%;
+    padding: 20px;
 }

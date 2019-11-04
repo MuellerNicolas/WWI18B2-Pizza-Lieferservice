@@ -35,16 +35,14 @@ class Datenbank {
                 id:          3,
                 img:        "info/pizzabilder/pizza_Vegetariana.jpg",
                 name:       "Pizza Vegetariana",
-                beschr:     "Nicht nur für unsere vegetarischen Freunde ein Gaumenschmauß!
-                             Pizza mit hausgemachter Tomatensauce, saisonalem Gemüse und Mozarella",
+                beschr:     "Pizza mit hausgemachter Tomatensauce, saisonalem Gemüse und Mozarella",
                 preisKlein: "6,50€",
                 preisGross: "8,50€",
             },{
                 id:          4,
                 img:        "info/pizzabilder/pizza_Napoli.jpg",
                 name:       "Piza Napoli",
-                beschr:     "Bella Italia! Pizza mit hausgemachter Tomatensauce, Sardellen,
-                             Kapern, Oliven und Mozarella",
+                beschr:     "Pizza mit hausgemachter Tomatensauce, Sardellen, Kapern, Oliven und Mozarella",
                 preisKlein: "7,00€",
                 preisGross: "9,00€",
             },{

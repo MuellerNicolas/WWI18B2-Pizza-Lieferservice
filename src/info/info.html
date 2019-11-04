@@ -1,15 +1,18 @@
 <div>
-      <h1>Herzlich Willkommen bei Ihrem Pizza-Lieferservice
-      <h2>
-        <b>Pizza Bella Italia</b> <br />
-        Erzbergerstraße 121<br />
-        76133 Karlsruhe
-      </h2>
+    <h1>Herzlich Willkommen bei Ihrem Pizza-Lieferservice</h1>
+    <div class="container">
+         <div class="row">
+              <h2>
+                <b>Pizza Bella Italia</b> <br />
+                Erzbergerstraße 121<br />
+                76133 Karlsruhe
+              </h2>
+        </div>
+    </div>
 </div>
 
 <div>
       <h3>Unsere Klassiker</h3>
-
       <div class="card">
         <img src="info/pizzabilder/pizza_margherita.jpg" />
         <b>Pizza Margherita</b> <br />
@@ -32,7 +35,6 @@
         <img src="info/pizzabilder/pizza_Vegetariana.jpg" />
         <b>Pizza Vegetariana</b> <br />
         <small>
-          Nicht nur für unsere vegetarischen Freunde ein Gaumenschmauß!
           Pizza mit hausgemachter Tomatensauce, saisonalem Gemüse und Mozarella
         </small>
       </div>
@@ -64,26 +66,110 @@
       </div>
 </div>
 
-<div>
-      <br />
-      <b>Nichts passendes für Sie dabei?</b> <br />
-      <small>Kein Problem! Sie können bei uns selbstverständlich auch Ihre
-        eigene Pizza kreieren. Ihrer Kreativität sind keine Grenzen gesetzt.
-      </small>
 
-      <form>
-        <button type = "button" id="kreieren">Pizza kreieren</button>
-        <button type = "button" id="bestellen">Pizza bestellen</button>
-      </form>
+<div class="auswahl">
+    <b>Nichts passendes für Sie dabei?</b> <br />
+    <div>Kein Problem! Sie können bei uns selbstverständlich auch Ihre
+        eigene Pizza kreieren. Ihrer Kreativität sind keine Grenzen gesetzt.
+    </div>
+    <div class="buttons"
+        <form>
+            <button type = "button" id="kreieren">Pizza kreieren</button>
+            <button type = "button" id="bestellen">Pizza bestellen</button>
+        </form>
+    </div>
 </div>
-    <footer>
-                © Der Pizza-Lieferservice
-                <nav>
-                    <ul>
-                        <li> <a>Startseite</a> </li>
-                        <li> <a>Bestellung</a> </li>
-                        <li> <a>Lieferung</a> </li>
-                        <li> <a>Impressum</a> </li>
-                    </ul>
-                </nav>
-            </footer>
+
+<div>
+    <div class="abfrageFeedback">
+        </br>
+        <b>Wie zufrieden waren Sie mit Ihrer Bestellung?</b> </br>
+        <div>
+            Lassen Sie uns gerne Ihr Feedback da, sodass wir uns weiterhin verbessern können.
+            Vielen Dank im Voraus!
+        </div>
+    </div>
+    <div class="buttons"
+        <form>
+            <button type = "button" id="feedback">Feedback abgeben</button>
+        </form>
+    </div>
+</div>
+
+<div class="conatiner">
+    <div class="feedback">
+        <div class= "row">
+            <div class="col-md-3">
+                <label for="geschmack">
+                    Geschmack:
+                    <span class="required">*</span>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <input type="radio" id="gut" name="geschmack" value="sehr gut">
+                <label for="gut"> sehr gut</label>
+            </div>
+            <div class="col-md-3">
+                <input type="radio" id="okay" name="geschmack" value="mittel">
+                <label for="okay"> mittel</label>
+            </div>
+            <div class="col-md-3">
+                <fieldset>
+                    <input type="radio" id="schlecht" name="geschmack" value="schlecht">
+                    <label for="schlecht"> schlecht</label>
+                </fieldset>
+            </div>
+        </div>
+        <div class= "row">
+            <div class="col-md-3">
+                <label for="bestellvorgang">
+                    Bestellvorgang:
+                    <span class="required">*</span>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <input type="radio" id="gut" name="bestellvorgang" value="sehr gut">
+                <label for="gut"> sehr gut</label>
+            </div>
+            <div class="col-md-3">
+                <input type="radio" id="okay" name="bestellvorgang" value="mittel">
+                <label for="okay"> mittel</label>
+            </div>
+            <div class="col-md-3">
+                <fieldset>
+                    <input type="radio" id="schlecht" name="bestellvorgang" value="schlecht">
+                    <label for="schlecht"> schlecht</label>
+                </fieldset>
+            </div>
+        </div>
+        <div class= "row">
+            <div class="col-md-3">
+                <label for="Auswahl">
+                    Auswahl:
+                    <span class="required">*</span>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <input type="radio" id="gut" name="auswahl" value="sehr gut">
+                <label for="gut"> sehr gut</label>
+            </div>
+            <div class="col-md-3">
+                <input type="radio" id="okay" name="auswahl" value="mittel">
+                <label for="okay"> mittel</label>
+            </div>
+            <div class="col-md-3">
+                <fieldset>
+                    <input type="radio" id="schlecht" name="auswahl" value="schlecht">
+                    <label for="schlecht"> schlecht</label>
+                </fieldset>
+            </div>
+        </div>
+        <div class= "row">
+            <div class="col-md-6">
+                <label for="sonstiges">
+                    Sonstiges:
+                    <span class="required">*</span>
+                </label>
+                <input name="sonstiges" type="text" placeholder="sonstige Anmerkungen" />
+            </div>
+        </div>
