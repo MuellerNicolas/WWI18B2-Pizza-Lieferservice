@@ -16,6 +16,10 @@ form {
     align-items: center;
     justify-content: center;
 }
+.zentrieren {
+    margin-left: auto;
+    margin-right: auto; .
+}
 
 #ergebnis{
     color: red;
