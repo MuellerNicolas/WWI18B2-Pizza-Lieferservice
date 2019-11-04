@@ -79,3 +79,26 @@
     margin-right: 30%;
     padding: 20px;
 }
+
+/* Layout für das Formular */
+form {
+    max-width: 30em;
+
+    border: 1px solid #d0d0d0;
+    background: #f0f0f0;
+    padding: 1em;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.zentrieren {
+    margin-left: auto;
+    margin-right: auto; .
+}
