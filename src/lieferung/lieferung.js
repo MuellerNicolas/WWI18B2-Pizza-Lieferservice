@@ -1,14 +1,3 @@
-// Der Zähler für den Countdown wurde als globale Variable definiert,
-// damit der Countdown auch nach gestartetem Tracking und
-// darauf folgenden Unterseiten wechseln fortlaufend runter zählt.
-// Ähnlich ist dies beim flag status, dass angiebt ob der Countdown läuft
-// let zaehler = 0;
-// let status = false;
-
-// Das flag bestellt deaktiviert das Tracking solange das Bestellformular
-// nicht abgesendet wurde
-// let bestellt = false;
-
 class Lieferung {
     /**
      * Konstruktor
@@ -17,8 +6,10 @@ class Lieferung {
     constructor (app) {
         this._app = app;
         this.zaehler = app._zaehler;
+        //Verhindern Race Condition im Countdown:
         this.status = app._status;
         this.bestellt = app.bestellt;
+        this.aktiv = app.aktiv;
     }
 
     /**
@@ -68,26 +59,21 @@ class Lieferung {
         //Variablen Anzeige
         let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde
         let letztesUpdate = 0;
-        let aktiv = false;  //Wird benötigt um doppeltes Herunterzählen zu verhindern
-        //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
+
         buttonStart.addEventListener("click", () => {
             if(this.status === false && this.bestellt === true){
-                aktiv = true;
+                this.status = true;
+                this._app._status = this.status;
+                this.aktiv = true;
+                this._app._aktiv = this.aktiv;
                 letztesUpdate = Date.now();
                 this._app._zaehler = zaehlerInitial;
-                // countdown.classList.remove("unsichtbar");
-                // zaehler = zaehlerInitial;
-               window.requestAnimationFrame(countdownAktualisieren);
-               this.status = true;
+                window.requestAnimationFrame(countdownAktualisieren);
             }
         });
 
         //Ständiges aktualisieren des Displays
         let countdownAktualisieren = () => {
-            debugger;
-            // if(!aktiv){
-            //     countdown.classList.add("unsichtbar");
-            // }
             let zaehler = this._app._zaehler;
             //Performanceboost: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
@@ -100,11 +86,12 @@ class Lieferung {
             if (now - letztesUpdate >= 1000) {
                 letztesUpdate = now;
 
-                if (aktiv && zaehler > 0) {
+                if (this.aktiv && zaehler > 0) {
                     zaehler = zaehler - 1000; //1 Sekunde abziehen
                     this._app._zaehler = zaehler;
                 } else {
-                    aktiv = false;
+                    this.aktiv = false;
+                    this._app._aktiv = this.aktiv;
                 }
             }
 
@@ -126,7 +113,7 @@ class Lieferung {
             //Countdown anzeigen
             countdown.textContent = zaehlerFormat;
 
-            //Funktion zum aktualisieren des Bildes
+            //Abfrage zum aktualisieren des Bildes
             //Um nicht dauerhaft das Bild zu aktualisieren erfolgt,
             //die Aktualisierung nur wenn der Bestellungsstatus geändert wurde
             if(zaehler == 0){

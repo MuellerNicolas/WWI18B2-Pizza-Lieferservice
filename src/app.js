@@ -34,9 +34,11 @@ class App {
         this._title = title;
         this._pages = pages;
         this.database = new Database();
+        //Variablen für das Tracking
         this._zaehler = 0;
         this._status = false;
         this._bestellt = false;
+        this._aktiv = false;
     }
 
     run() {
