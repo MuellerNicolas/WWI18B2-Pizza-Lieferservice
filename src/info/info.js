@@ -64,8 +64,6 @@ class Info {
         this._app.setPageContent(this._pageDom);
     }
 
-
-
     /**
      * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
      * der Startseite erzeugt.

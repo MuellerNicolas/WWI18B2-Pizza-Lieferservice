@@ -2,16 +2,16 @@
     <div class="big-title">Herzlich Willkommen bei Ihrem Pizza-Lieferservice</div>
     <div class="container">
          <div class="row">
-              <h2>
+              <div class="text">
                 Pizza Bella Italia <br />
                 Erzbergerstraße 121<br />
                 76133 Karlsruhe
-              </h2>
+              </div>
         </div>
     </div>
 </div>
 
-<div>
+<div class="klassiker">
       <div class="title">Unsere Klassiker</div>
       <div class="card">
         <img src="info/pizzabilder/pizza_margherita.jpg" />
@@ -111,15 +111,19 @@
                         Geschmack:
                     </label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <input type="radio" id="neutral" name="geschmack" value="neutral" checked="checked">
+                    <label for="neutral"> neutral</label>
+                </div>
+                <div class="col-md-2">
                     <input type="radio" id="gut" name="geschmack" value="sehr gut">
                     <label for="gut"> sehr gut</label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="radio" id="okay" name="geschmack" value="mittel">
                     <label for="okay"> mittel</label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <fieldset>
                         <input type="radio" id="schlecht" name="geschmack" value="schlecht">
                         <label for="schlecht"> schlecht</label>
@@ -132,15 +136,19 @@
                         Bestellvorgang:
                     </label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <input type="radio" id="neutral" name="bestellvorgang" value="neutral" checked="checked">
+                    <label for="neutral"> neutral</label>
+                </div>
+                <div class="col-md-2">
                     <input type="radio" id="gut" name="bestellvorgang" value="sehr gut">
                     <label for="gut"> sehr gut</label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="radio" id="okay" name="bestellvorgang" value="mittel">
                     <label for="okay"> mittel</label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <fieldset>
                         <input type="radio" id="schlecht" name="bestellvorgang" value="schlecht">
                         <label for="schlecht"> schlecht</label>
@@ -153,15 +161,19 @@
                         Auswahl:
                     </label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <input type="radio" id="neutral" name="auswahl" value="neutral" checked="checked">
+                    <label for="neutral"> neutral</label>
+                </div>
+                <div class="col-md-2">
                     <input type="radio" id="gut" name="auswahl" value="sehr gut">
                     <label for="gut"> sehr gut</label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="radio" id="okay" name="auswahl" value="mittel">
                     <label for="okay"> mittel</label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <fieldset>
                         <input type="radio" id="schlecht" name="auswahl" value="schlecht">
                         <label for="schlecht"> schlecht</label>
@@ -181,6 +193,9 @@
                 <form>
                     <button type = "button" id="senden">Feedback absenden</button>
                 </form>
+            </div>
+            <div id="fehlerausgabe" class="row">
+
             </div>
         </form>
     </div>
