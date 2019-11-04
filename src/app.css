@@ -37,6 +37,34 @@ body {
     background: none;
 }
 
+footer {
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 2px;
+
+    padding: 0.5em;
+    color: white;
+    font-size: 95%;
+}
+
+footer nav > ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer nav > ul > li {
+    display: inline-block;
+    margin-right: 1em;
+}
+a, a:visited {
+    color: rgb(246, 178, 188);
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}
+
 @media (min-width: 40em) {
     html {
         font-size: 15pt;
