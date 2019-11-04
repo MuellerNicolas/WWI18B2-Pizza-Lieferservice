@@ -1,73 +1,3 @@
-//////////////////////////////////
-//     Formularüberprüfung      //
-//////////////////////////////////
-let validiereBestellung = event => {
-    let formular = document.getElementById("formular");
-    let korrekt = true;
-    let ausgabe = "";
-
-    // Vorname muss angegeben sein
-    if (formular.vorname.value == "") {
-        korrekt = false;
-        ausgabe += "Bitte geben Sie ihren Vornamen ein. <br />";
-    }
-    // Nachname muss angegeben sein
-    if (formular.nachname.value == "") {
-        korrekt = false;
-        ausgabe += "Bitte geben Sie ihren Nachnamen ein. <br />";
-    }
-    // Postleitzahl muss angegeben sein
-    if (formular.plz.value == "" || formular.plz.value.toString().length != 5) {
-        korrekt = false;
-        ausgabe += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
-    }
-    // Ort muss angegeben sein
-    if (formular.ort.value == "") {
-        korrekt = false;
-        ausgabe += "Bitte geben Sie einen korrekten Ort ein. <br />";
-    }
-    // Straße muss angegeben sein
-    if (formular.strasse.value == "") {
-        korrekt = false;
-        ausgabe += "Bitte geben Sie eine korrekte Straße ein. <br />";
-    }
-    // Hausnummer muss angegeben sein
-    if (formular.hausnummer.value == "") {
-        korrekt = false;
-        ausgabe += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
-    }
-    // Ergebnis anzeigen
-    let ergebnisElement = document.getElementById("ergebnis");
-
-    if (korrekt) {
-        ausgabe = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
-        ergebnisElement.classList.add("korrekt");
-    } else {
-        ergebnisElement.classList.remove("korrekt");
-    }
-    
-    ergebnisElement.innerHTML = ausgabe;
-
-    // if (!korrekt) {
-        event.preventDefault();
-    // } else {
-    if(korrekt){
-        bestellt = true;
-
-        //////////////////////////////////
-        //   GoogleFirebase speichern   //
-        //////////////////////////////////
-        database._db.collection("bestellungen").add({
-            vorname: formular.vorname.value,
-            nachname: formular.nachname.value,
-            plz: formular.plz.value,
-            ort: formular.ort.value,
-            strasse: formular.strasse.value,
-            hausnummer: formular.hausnummer.value
-        })
-    }
-}
-
 // Der Zähler für den Countdown wurde als globale Variable definiert,
 // damit der Countdown auch nach gestartetem Tracking und
 // darauf folgenden Unterseiten wechseln fortlaufend runter zählt.
@@ -110,6 +40,9 @@ class Lieferung {
         // Seite zur Anzeige bringen
         this._pageDom = document.createElement("div");
         this._pageDom.innerHTML = html;
+
+        let formElement = this._pageDom.querySelector("form");
+        formElement.addEventListener("submit", this._onFormSubmitClicked);
 
         this._app.setPageTitle("Lieferung verfolgen", {isSubPage: true});
         this._app.setPageCss(css);
@@ -220,5 +153,76 @@ class Lieferung {
             window.requestAnimationFrame(countdownAktualisieren);
         };
         window.requestAnimationFrame(countdownAktualisieren);
+    }
+
+    /**
+     * Formulareingaben prüfen und in der Datenbank speichern
+     */
+    _onFormSubmitClicked(event) {
+        let formular = event.target;
+        let korrekt = true;
+        let ausgabe = "";
+
+        // Vorname muss angegeben sein
+        if (formular.vorname.value == "") {
+            korrekt = false;
+            ausgabe += "Bitte geben Sie ihren Vornamen ein. <br />";
+        }
+        // Nachname muss angegeben sein
+        if (formular.nachname.value == "") {
+            korrekt = false;
+            ausgabe += "Bitte geben Sie ihren Nachnamen ein. <br />";
+        }
+        // Postleitzahl muss angegeben sein
+        if (formular.plz.value == "" || formular.plz.value.toString().length != 5) {
+            korrekt = false;
+            ausgabe += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
+        }
+        // Ort muss angegeben sein
+        if (formular.ort.value == "") {
+            korrekt = false;
+            ausgabe += "Bitte geben Sie einen korrekten Ort ein. <br />";
+        }
+        // Straße muss angegeben sein
+        if (formular.strasse.value == "") {
+            korrekt = false;
+            ausgabe += "Bitte geben Sie eine korrekte Straße ein. <br />";
+        }
+        // Hausnummer muss angegeben sein
+        if (formular.hausnummer.value == "") {
+            korrekt = false;
+            ausgabe += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
+        }
+        // Ergebnis anzeigen
+        let ergebnisElement = document.getElementById("ergebnis");
+
+        if (korrekt) {
+            ausgabe = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
+            ergebnisElement.classList.add("korrekt");
+        } else {
+            ergebnisElement.classList.remove("korrekt");
+        }
+
+        ergebnisElement.innerHTML = ausgabe;
+
+        // if (!korrekt) {
+            event.preventDefault();
+        // } else {
+        if(korrekt){
+            bestellt = true;
+
+            //////////////////////////////////
+            //   GoogleFirebase speichern   //
+            //////////////////////////////////
+            this._app.database.saveBestellung({
+                id: str(Math.random() * 1000000),
+                vorname: formular.vorname.value,
+                nachname: formular.nachname.value,
+                plz: formular.plz.value,
+                ort: formular.ort.value,
+                strasse: formular.strasse.value,
+                hausnummer: formular.hausnummer.value
+            });
+        }
     }
 }

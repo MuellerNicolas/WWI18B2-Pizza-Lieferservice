@@ -33,6 +33,10 @@ html {
     --content-padding: 1rem;
 }
 
+body {
+    background: none;
+}
+
 @media (min-width: 40em) {
     html {
         font-size: 15pt;
@@ -67,9 +71,9 @@ body {
 
 /* Allgemeine Darstellung der Menüzeile */
 header {
-    --text-color: black;
+    --text-color: white;
     /* --icon-color: rgb(0, 90, 115); */
-    --icon-color: black;
+    --icon-color: white;
 }
 header nav {
     padding: var(--content-padding);
@@ -78,7 +82,7 @@ header nav {
 
 header nav i {
     color: var(--icon-color);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 header nav .page-name {
@@ -105,7 +109,7 @@ header nav a:visited {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.25s;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 header nav a:hover {
@@ -125,7 +129,7 @@ header nav a:hover i {
 }
 header nav a: i {
     color: var(--text-color);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 

@@ -1,3 +1,13 @@
+.zentriert  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
 /* Layout für das Formular */
 form {
     max-width: 30em;
