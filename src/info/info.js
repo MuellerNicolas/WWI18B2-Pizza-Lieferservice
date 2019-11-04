@@ -44,17 +44,21 @@ class Info {
         });
 
 
+        let feedbackContainer = this._pageDom.querySelector("#feedback-container");
+        let feedbackButton = this._pageDom.querySelector("#feedback");
 
-        /*let feedbackButton = this._pageDom.querySelector("#feedback");
         feedbackButton.addEventListener("click", () => {
-
+            feedbackButton.classList.add("hidden");
+            feedbackContainer.classList.remove("hidden");
         });
 
-        let sendenkButton = this._pageDom.querySelector("#senden");
+        let sendenButton = this._pageDom.querySelector("#senden");
         sendenButton.addEventListener("click", () => {
-
+            feedbackButton.classList.remove("hidden");
+            feedbackContainer.classList.add("hidden");
+            alert("Vielen Dank für Ihr Feedback!");
         });
-*/
+
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
