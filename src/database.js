@@ -23,7 +23,7 @@ class Database {
         // Diese Informationen müssen aus der Firebase-Konsole ermittelt
         // werden, indem dort ein neues Projekt mit einer neuen Datenbank
         // angelegt und diese dann mit einer neuen App verknüpft wird.
-        try{
+        //try{
             firebase.initializeApp({
                 apiKey: "AIzaSyBvvY1ivHWBmIyY69AQK77LQ_kDCCRQ-kU",
                 authDomain: "webprog-pizza-lieferservice.firebaseapp.com",
@@ -39,16 +39,16 @@ class Database {
             // die in etwa den Tabellen einer klassischen Datenbank entsprechen.
             this._db = firebase.firestore();
             this._bestellungen = this._db.collection("bestellungen");
-        } catch(e) {
-
-        }
+    //     } catch(e) {
+    //
+    //     }
     }
 
     /**
-     * Speichern einer neuen Bestellung.
+     * Speichern einer neuen Bestellung
      */
     saveBestellung(bestellung) {
-        this._bestellunge.doc(bestellung.id).set(bestellung);
+        this._bestellungen.doc(bestellung.id).set(bestellung);
     }
 
     // /**

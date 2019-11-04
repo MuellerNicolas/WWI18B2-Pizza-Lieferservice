@@ -16,6 +16,7 @@ class Lieferung {
      */
     constructor (app) {
         this._app = app;
+
     }
 
     /**
@@ -42,7 +43,8 @@ class Lieferung {
         this._pageDom.innerHTML = html;
 
         let formElement = this._pageDom.querySelector("form");
-        formElement.addEventListener("submit", this._onFormSubmitClicked);
+        formElement.addEventListener("submit", event => this._onFormSubmitClicked(event));  //Ohne anonyme Funktion mit _onFormSubmitClicked würde er hier
+                                                                                            //als das this Element das Formularelement ansehen, wodruch nicht auf _app zugegriffen werden kann
 
         this._app.setPageTitle("Lieferung verfolgen", {isSubPage: true});
         this._app.setPageCss(css);
@@ -205,23 +207,23 @@ class Lieferung {
 
         ergebnisElement.innerHTML = ausgabe;
 
-        // if (!korrekt) {
-            event.preventDefault();
-        // } else {
+        event.preventDefault();
+
         if(korrekt){
             bestellt = true;
-
+            debugger;
             //////////////////////////////////
             //   GoogleFirebase speichern   //
             //////////////////////////////////
+
             this._app.database.saveBestellung({
-                id: str(Math.random() * 1000000),
-                vorname: formular.vorname.value,
-                nachname: formular.nachname.value,
-                plz: formular.plz.value,
-                ort: formular.ort.value,
-                strasse: formular.strasse.value,
-                hausnummer: formular.hausnummer.value
+                "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
+                "vorname": formular.vorname.value,
+                "nachname": formular.nachname.value,
+                "plz": formular.plz.value,
+                "ort": formular.ort.value,
+                "strasse": formular.strasse.value,
+                "hausnummer": formular.hausnummer.value
             });
         }
     }
