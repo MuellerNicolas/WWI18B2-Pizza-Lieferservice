@@ -34,6 +34,9 @@ class App {
         this._title = title;
         this._pages = pages;
         this.database = new Database();
+        this._zaehler = 0;
+        this._status = false;
+        this._bestellt = false;
     }
 
     run() {

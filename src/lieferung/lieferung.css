@@ -5,9 +5,6 @@
     align-items: center;
 }
 
-
-
-
 /* Layout für das Formular */
 form {
     max-width: 30em;
@@ -26,9 +23,21 @@ form {
     align-items: center;
     justify-content: center;
 }
-.zentrieren {
-    margin-left: auto;
-    margin-right: auto; .
+
+/* Ausblenden der Pfeile in Eingabefelder vom Typ number */
+/* Normale Browser und Chrome */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.unsichtbar{
+    visibility: hidden;
 }
 
 #ergebnis{

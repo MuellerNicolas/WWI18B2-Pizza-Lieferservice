@@ -2,12 +2,12 @@
 // damit der Countdown auch nach gestartetem Tracking und
 // darauf folgenden Unterseiten wechseln fortlaufend runter zählt.
 // Ähnlich ist dies beim flag status, dass angiebt ob der Countdown läuft
-let zaehler = 0;
-let status = false;
+// let zaehler = 0;
+// let status = false;
 
 // Das flag bestellt deaktiviert das Tracking solange das Bestellformular
 // nicht abgesendet wurde
-let bestellt = false;
+// let bestellt = false;
 
 class Lieferung {
     /**
@@ -16,7 +16,9 @@ class Lieferung {
      */
     constructor (app) {
         this._app = app;
-
+        this.zaehler = app._zaehler;
+        this.status = app._status;
+        this.bestellt = app.bestellt;
     }
 
     /**
@@ -69,17 +71,24 @@ class Lieferung {
         let aktiv = false;  //Wird benötigt um doppeltes Herunterzählen zu verhindern
         //Button der den Countdown triggert --> zu ersetzen durch onsubmit!!!
         buttonStart.addEventListener("click", () => {
-            if(status === false && bestellt === true){
+            if(this.status === false && this.bestellt === true){
                 aktiv = true;
                 letztesUpdate = Date.now();
-                zaehler = zaehlerInitial;
+                this._app._zaehler = zaehlerInitial;
+                // countdown.classList.remove("unsichtbar");
+                // zaehler = zaehlerInitial;
                window.requestAnimationFrame(countdownAktualisieren);
-               status = true;
+               this.status = true;
             }
         });
 
         //Ständiges aktualisieren des Displays
         let countdownAktualisieren = () => {
+            debugger;
+            // if(!aktiv){
+            //     countdown.classList.add("unsichtbar");
+            // }
+            let zaehler = this._app._zaehler;
             //Performanceboost: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
                 return;
@@ -93,6 +102,7 @@ class Lieferung {
 
                 if (aktiv && zaehler > 0) {
                     zaehler = zaehler - 1000; //1 Sekunde abziehen
+                    this._app._zaehler = zaehler;
                 } else {
                     aktiv = false;
                 }
@@ -210,8 +220,7 @@ class Lieferung {
         event.preventDefault();
 
         if(korrekt){
-            bestellt = true;
-            debugger;
+            this.bestellt = true;
             //////////////////////////////////
             //   GoogleFirebase speichern   //
             //////////////////////////////////
