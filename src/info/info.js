@@ -44,10 +44,19 @@ class Info {
         });
 
 
-
+        let feedbackContainer = this._pageDom.querySelector("#feedback-container");
         let feedbackButton = this._pageDom.querySelector("#feedback");
-        bestellenButton.addEventListener("click", () => {
-            
+
+        feedbackButton.addEventListener("click", () => {
+            feedbackButton.classList.add("hidden");
+            feedbackContainer.classList.remove("hidden");
+        });
+
+        let sendenButton = this._pageDom.querySelector("#senden");
+        sendenButton.addEventListener("click", () => {
+            feedbackButton.classList.remove("hidden");
+            feedbackContainer.classList.add("hidden");
+            alert("Vielen Dank für Ihr Feedback!");
         });
 
         this._app.setPageTitle("Startseite");

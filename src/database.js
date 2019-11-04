@@ -44,6 +44,13 @@ class Database {
         }
     }
 
+    /**
+     * Speichern einer neuen Bestellung.
+     */
+    saveBestellung(bestellung) {
+        this._bestellunge.doc(bestellung.id).set(bestellung);
+    }
+
     // /**
     //  * Hilfsfunktion zum Anlegen von Demodaten. Die Daten werden nur angelegt,
     //  * wenn die Collection komplett leer ist.

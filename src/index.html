@@ -6,6 +6,16 @@
         <link rel="shortcut icon" href="pics/Pizza_icon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
+        <!-- Bootstrap Stylesheets und Javascript -->
+        <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script> -->
+        <!-- <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script> -->
+
+        <!-- Google Firebase, The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
         <!-- Klasse App: Steuert die gesamte Anwendung -->
         <script src="app.js"></script>
         <link rel="stylesheet" href="app.css" />
@@ -26,27 +36,11 @@
         <link rel="stylesheet" href="elements/tab-buttons.css" />
         <link rel="stylesheet" href="elements/form.css" />
 
-        <!-- Bootstrap Stylesheets und Javascript -->
-        <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script> -->
-        <!-- <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script> -->
-
-        <!-- Google Firebase, The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-
         <style id="page-css"></style>
 
         <script>
-            //Datenbankobjekt erzeugen
-            let database;
             // Warten, bis die Seite komplett geladen wurde
             window.addEventListener("load", () => {
-                database = new Database();
-
                 let pages = [{
                     url: "^/$",
                     klass: Info,

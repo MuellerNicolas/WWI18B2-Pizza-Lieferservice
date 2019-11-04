@@ -80,13 +80,15 @@
     padding: 20px;
 }
 
+
 /* Layout für das Formular */
 form {
-    max-width: 30em;
+    max-width: 60em;
 
-    border: 1px solid #d0d0d0;
+    border: 2px solid #d0d0d0;
     background: #f0f0f0;
     padding: 1em;
+    margin-top: 5em;
 }
 
 .center {
@@ -97,6 +99,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 .zentrieren {
     margin-left: auto;

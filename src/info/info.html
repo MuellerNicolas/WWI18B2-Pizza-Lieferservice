@@ -82,8 +82,8 @@
 
 <div>
     <div class="abfrageFeedback">
-        </br>
-        <b>Wie zufrieden waren Sie mit Ihrer Bestellung?</b> </br>
+        <br/>
+        <b>Wie zufrieden waren Sie mit Ihrer Bestellung?</b> <br/>
         <div>
             Lassen Sie uns gerne Ihr Feedback da, sodass wir uns weiterhin verbessern können.
             Vielen Dank im Voraus!
@@ -96,11 +96,14 @@
     </div>
 </div>
 
-<div class="conatiner">
-    <b class="flex">Feedback</b>
+<div id="feedback-container" class="conatiner hidden">
     <div class="zentrieren">
         <form id="formular">
-
+            <div class="row">
+                <div class="col">
+                        <div class="feedback-title flex">Feedback-Bogen</div>
+                </div>
+            </div>
             <div class= "row">
                 <div class="col-md-3">
                     <label for="geschmack">
@@ -173,3 +176,11 @@
                     <input name="sonstiges" type="text" placeholder="sonstige Anmerkungen" />
                 </div>
             </div>
+            <div class="row">
+                <form>
+                    <button type = "button" id="senden">Feedback absenden</button>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
