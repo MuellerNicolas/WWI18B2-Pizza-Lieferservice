@@ -60,3 +60,22 @@
     margin-bottom: 1em;
     margin-top: 1em;
 }
+
+.buttons{
+    float: left;
+     width: 30%;
+     margin-right: 30%;
+     padding: 20px;
+     box-sizing: border-box;
+}
+
+.auswahl{
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.feedback{
+    margin-top: 5em;
+    margin-right: 30%;
+    padding: 20px;
+}
