@@ -105,3 +105,25 @@ form {
     margin-left: auto;
     margin-right: auto; .
 }
+.big-title{
+    font-size:40pt;
+    font-weight:bold;
+    font-family:arial,
+}
+
+.title{
+    font-size:28pt;
+    font-weight:bold;
+    font-family:arial,
+}
+
+.text-size{
+    font-size:19pt;
+    font-family: arial;
+}
+
+.text-pizza-name{
+    font-size:23pt;
+    font-weight:bold;
+    font-family:arial,
+}
