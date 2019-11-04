@@ -45,11 +45,16 @@ class Info {
 
 
 
-        let feedbackButton = this._pageDom.querySelector("#feedback");
-        bestellenButton.addEventListener("click", () => {
-            
+        /*let feedbackButton = this._pageDom.querySelector("#feedback");
+        feedbackButton.addEventListener("click", () => {
+
         });
 
+        let sendenkButton = this._pageDom.querySelector("#senden");
+        sendenButton.addEventListener("click", () => {
+
+        });
+*/
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
