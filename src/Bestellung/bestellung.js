@@ -33,6 +33,9 @@ class Bestellung{
         let buttonAddPizzaFromMenu = this._pageDom.querySelector("#addPizzaFromMenu");
         buttonAddPizzaFromMenu.addEventListener("click", () => this._onAddPizzaFromMenuClicked());
 
+        let buttonDeletePizzaFromMenu = this._pageDom.querySelector("#deletePizzaFromMenu");
+        buttonDeletePizzaFromMenu.addEventListener("click", () => this._onDeletePizzaFromMenuClicked());
+
         let buttonAddPizzaIndividual = this._pageDom.querySelector("#addPizzaIndividual");
         buttonAddPizzaIndividual.addEventListener("click", () => this._onAddIndividualClicked());
 
@@ -46,17 +49,23 @@ class Bestellung{
     }
 
     _onAddPizzaFromMenuClicked(){
-        // alert("Add Pizza from Menu!");
+        let row = document.querySelector("#auswahlZeileMenu");
+        let target = document.querySelector("#pizzaFromMenu");
 
-        let row = this._pageDom.querySelector("auswahlZeile");
-        let target = this._pageDom.querySelector("pizzaFromMenu");
-
-        target.appendchild(row.cloneNode(true));
-
-
+        let clonedRow = row.cloneNode(true);
+        let div = document.createElement("div");
+        div.classList.add("large");
+        div.appendChild(clonedRow);
+        row.parentNode.insertBefore(div, row);
     }
 
     _onAddIndividualClicked() {
-        alert("Add individual Pizza!")
-    }
+        let row = document.querySelector("#auswahlZeileIndividuell");
+        let target = document.querySelector("#pizzaIndividuell");
+
+        let clonedRow = row.cloneNode(true);
+        let div = document.createElement("div");
+        div.classList.add("large");
+        div.appendChild(clonedRow);
+        row.parentNode.insertBefore(div, row);    }
 }
