@@ -33,9 +33,6 @@ class Bestellung{
         let buttonAddPizzaFromMenu = this._pageDom.querySelector("#addPizzaFromMenu");
         buttonAddPizzaFromMenu.addEventListener("click", () => this._onAddPizzaFromMenuClicked());
 
-        let buttonAddTopping = this._pageDom.querySelector("#addTopping");
-        buttonAddTopping.addEventListener("click", () => this._onAddToppingClicked());
-
         let buttonAddPizzaIndividual = this._pageDom.querySelector("#addPizzaIndividual");
         buttonAddPizzaIndividual.addEventListener("click", () => this._onAddIndividualClicked());
 
@@ -50,16 +47,13 @@ class Bestellung{
 
     _onAddPizzaFromMenuClicked(){
         // alert("Add Pizza from Menu!");
-        var listenitem = this._pageDom.querySelector("auswahlZeile");
-        var liste = this._pageDom.querySelector("pizzaAuswaehlen");
 
-        liste.appendchild(listenitem.cloneNode(true));
+        let row = this._pageDom.querySelector("auswahlZeile");
+        let target = this._pageDom.querySelector("pizzaFromMenu");
+
+        target.appendchild(row.cloneNode(true));
 
 
-    }
-
-    _onAddToppingClicked() {
-        alert("Add Topping!");
     }
 
     _onAddIndividualClicked() {

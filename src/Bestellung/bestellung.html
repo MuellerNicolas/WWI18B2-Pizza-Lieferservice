@@ -1,57 +1,79 @@
 
-<div>
-    <h1>Pizzen von der Karte</h1>
-    <ul id="pizzaAuswaehlen">
-        <li id="auswahlZeile">
-            Pizza
-            <select name="dropdown">
-                <option value="Margherita">Margherita</option>
-                <option value="Funghi">Funghi</option>
-                <option value="Vegetariana">Vegetariana</option>
-                <option value="Napoli">Napoli</option>
-                <option value="Prosciutto">Prosciutto</option>
-                <option value="Salami">Salami</option>
-            </select>
-            <label>
-                <input type="radio" name="groesse" value="klein">klein
-                <input type="radio" name="groesse" value="gross">groß
-                <input id="PizzaMenu1" type="number" min="0" value="0">Stk.
-            </label>
-        </li>
-        <section id="test">
-        </section>
-        <button id="addPizzaFromMenu"> + Pizza </button>
-    </ul>
-</div>
-<div>
-    <h1>Pizzen selbst kreieren</h1>
-    <ul>
-        <li>
-            Pizza
-            <select name="dropdown">
-                <option value="brokkoli">Brokkoli</option>
-                <option value="champignons">Champignons</option>
-                <option value="mozarella">Mozarella</option>
-                <option value="lachs">Lachs</option>
-                <option value="oliven">Oliven</option>
-                <option value="paprika">Paprika</option>
-                <option value="rucola">Rucola</option>
-                <option value="salami">Salami</option>
-                <option value="schinkenGekocht">Schinken(gekocht)</option>
-                <option value="schinkenRoh">Schinken(roh)</option>
-                <option value="zwiebel">Zwiebel</option>
-            </select>
-            <label for="PizzaIndividual1">
-            <input type="radio" name="groesse" value="klein">klein
-            <input type="radio" name="groesse" value="gross">groß
-            <input id="PizzaIndividual1" type="number" min="0" value="0">
-            Stk.</label>
-        </li>
-
-        <button id="addTopping"> + Zutat </button>
-        <button id="addPizzaIndividual"> + Pizza </button>
-    </ul>
-</div>
-<div>
-    <button id="order"> Bestellen </button>
+<div class = "container-fluid">
+    <div id="pizzaFromMenu">
+        <h1 class="flex">Pizzen von der Karte</h1>
+        <div class="row" id="auswahlZeile">
+            <div class="col-md-1">
+                Pizza
+            </div>
+            <div class="col-md-2">
+                <select name="dropdown">
+                    <option value="Margherita">Margherita</option>
+                    <option value="Funghi">Funghi</option>
+                    <option value="Vegetariana">Vegetariana</option>
+                    <option value="Napoli">Napoli</option>
+                    <option value="Prosciutto">Prosciutto</option>
+                    <option value="Salami">Salami</option>
+                </select>
+            </div>
+            <div class="col-md-9">
+                <label id="kleinGross">
+                    <input type="radio" name="groesse" value="klein"> klein
+                    <input type="radio" name="groesse" value="gross"> groß
+                    <input id="stueck1" type="number" min="0" value="0"> Stk.
+                </label>
+            </div
+        </div>
+        <div class="row">
+            <div Class="col">
+                <button id="addPizzaFromMenu"> + Pizza </button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1 class="flex">Pizzen selbst kreieren</h1>
+        <div class="row">
+            <div class="col-md-1">
+                Pizza
+            </div>
+            <div class="col-md-2">
+                Individuell
+            </div>
+            <div class="col-md-5">
+                <label for="PizzaIndividual1">
+                    <input type="radio" name="klein" value="klein"> klein
+                    <input type="radio" name="gross" value="gross"> groß
+                    <input id="stueck2" type="number" min="0" value="0"> Stk.
+                </label>
+            </div>
+            <div class="col-md-2">
+                <div class="ml-0">
+                    <input type="radio" name="brokkoli" value="brokkoli"> Brokkoli <br>
+                    <input type="radio" name="champignons" value="champignons"> Champignons <br>
+                    <input type="radio" name="mozarella" value="mozarella"> Mozarella <br>
+                    <input type="radio" name="lachs" value="lachs"> Lachs <br>
+                    <input type="radio" name="oliven" value="oliven"> Oliven <br>
+                    <input type="radio" name="paprika" value="paprika"> Paprika <br>
+                </div>
+            </div>
+            <div class="col-md-2.5">
+                    <input type="radio" name="peperoni" value="peperoni"> Peperoni <br>
+                    <input type="radio" name="rucola" value="rucola"> Rucola <br>
+                    <input type="radio" name="salami" value="salami"> Salami <br>
+                    <input type="radio" name="schinkenGekocht" value="schinkenGekocht"> Schinken(Gekocht) <br>
+                    <input type="radio" name="schinkenRoh" value="schinkenRoh"> Schinken(Roh) <br>
+                    <input type="radio" name="zwiebel" value="zwiebel"> Zwiebel <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button id="addPizzaIndividual"> + Pizza </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button id="order"> Bestellen </button>
+            </div>
+        </div>
+    </div>
 </div>
