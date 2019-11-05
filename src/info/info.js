@@ -41,7 +41,7 @@ class Info {
         // Seite zur Anzeige bringen
         this._pageDom = document.createElement("div");
         this._pageDom.innerHTML = html;
-//        this._renderPizzaTiles(this._pageDom);
+        this._renderPizzaTiles(this._pageDom);
 
         let kreierenButton = this._pageDom.querySelector("#kreieren");
         kreierenButton.addEventListener("click", () => {
@@ -91,7 +91,7 @@ class Info {
 
               this._app.datenbank.getAllRecords().forEach(pizza => {
                   let html = templateElement.innerHTML;
-                  html = html.replace("{HREF}", `#/Detail/${pizza.id}`);
+                  html = html.replace("{ID}", pizza.id);
                   html = html.replace("{IMG}", pizza.img);
                   html = html.replace("{NAME}", pizza.name);
 
