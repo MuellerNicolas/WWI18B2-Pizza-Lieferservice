@@ -1,76 +1,91 @@
-<div class="zentriert">
-        <h1>Bestellbestätigung & Lieferverfolgung</h1>
+<h1 class="mittig">Bestellbestätigung & Lieferverfolgung</h1>
+<div class="container-fluid box">
+    <div class="row">
+        <!-- Linke Seite -->
+        <div class="col-md-6 abstand">
+            <form id="formular">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="vorname">
+                                Vorname:
+                                <span class="required">*</span>
+                            </label>
+                            <input name="vorname" type="text"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nachname">
+                                Nachname:
+                                <span class="required">*</span>
+                            </label>
+                            <input name="nachname" type="text"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="plz">
+                                Postleitzahl:
+                                <span class="required">*</span>
+                            </label>
+                            <input name="plz" type="number"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ort">
+                                Ort:
+                                <span class="required">*</span>
+                            </label><br />
+                            <input name="ort" type="text"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="strasse">
+                                Straße:
+                                <span class="required">*</span>
+                            </label><br />
+                            <input name="strasse" type="text"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="hausnummer">
+                                Hausnummer:
+                                <span class="required">*</span>
+                            </label>
+                            <input name="hausnummer" type="number"/>
+                        </div>
+                    </div>
 
-        <form id="formular">
+                    <div class="row">
+                        <div class="col">
+                            <input style="margin-top: 1em" class = "btn-sm" type="submit" value="Jetzt bestellen" />
+                        </div>
+                    </div>
+                </div>
+                <div id="ergebnis"></div>
+            </form>
+        </div>
+        <!-- Rechte Seite -->
+        <div class="col-md-6 abstand">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="vorname">
-                            Vorname:
-                            <span class="required">*</span>
-                        </label>
-                        <input name="vorname" type="text"/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="nachname">
-                            Nachname:
-                            <span class="required">*</span>
-                        </label>
-                        <input name="nachname" type="text"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="plz">
-                            Postleitzahl:
-                            <span class="required">*</span>
-                        </label>
-                        <input name="plz" type="number"/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="ort">
-                            Ort:
-                            <span class="required">*</span>
-                        </label><br />
-                        <input name="ort" type="text"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="strasse">
-                            Straße:
-                            <span class="required">*</span>
-                        </label><br />
-                        <input name="strasse" type="text"/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="hausnummer">
-                            Hausnummer:
-                            <span class="required">*</span>
-                        </label>
-                        <input name="hausnummer" type="number"/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <input style="margin-top: 1em" class = "btn-sm" type="submit" value="Jetzt bestellen" />
+                    <div class="col-md-12">
+                        Gesamtkosten:
                     </div>
                 </div>
             </div>
-        </form>
-</div>
+        </div>
+    </div>
+    <!-- Unterer Bereich -->
+    <div class="row">
+        <div class="col-md-12 zentriert">
+            <button id="startCountdown" class="btn-lg abstand">Lieferung tracken</button>
+            <div id="countdown"></div>
 
-<div id="ergebnis" class="zentriert"></div>
-
-<div class="zentriert">
-    <button id="startCountdown" class="btn-lg ">Lieferung tracken</button>
-</div>
-<div id="countdown" class="zentriert"></div>
-
-<div id="statusDiv" class="zentriert">
-    <img id="statusBild" height="20%" width="20%"/>
-    <div>
-        <p id="statusText"></p>
+            <div id="statusDiv" class="zentriert">
+                <img id="statusBild" height="20%" width="20%"/>
+                <div>
+                    <p id="statusText"></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

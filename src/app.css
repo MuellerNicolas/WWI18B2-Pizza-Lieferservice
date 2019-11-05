@@ -274,3 +274,7 @@ main a:visited {
 main a:hover {
     color: red;
 }
+
+.mittig{
+    text-align: center;
+}
