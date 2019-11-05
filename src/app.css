@@ -108,6 +108,17 @@ header nav {
     color: var(--text-color);
 }
 
+footer nav{
+    text-color: white;
+    padding: var(--content-padding);
+    color: var(--text-color);
+}
+
+a, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
 header nav i {
     color: var(--icon-color);
     opacity: 0.9;
