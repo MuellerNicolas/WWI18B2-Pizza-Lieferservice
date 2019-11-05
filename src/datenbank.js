@@ -17,7 +17,7 @@ class Datenbank {
         this._data = [
             {
                 id:          1,
-                img:        "info/pizzabilder/pizza_margherita.jpg",
+                img:        "pizzabilder/1.jpg",
                 name:       "Pizza Margherita",
                 beschr:     "Die klassische Variante mit hausgemachter Tomatensauce,
                             frischem Basilikum und Mozarella",
@@ -25,37 +25,35 @@ class Datenbank {
                 preisGross: "7,50€",
             },{
                 id:          2,
-                img:        "info/pizzabilder/pizza_funghi.jpg",
+                img:        "pizzabilder/2.jpg",
                 name:       "Pizza Funghi",
-                beschr:     "Pizza mit hausgemachter Tomatensauce, frische Champions
-                             und Mozarella",
+                beschr:     "Pizza mit hausgemachter Tomatensauce, frische Champions und Mozarella",
                 preisKlein: "6,00€",
                 preisGross: "8,00€",
             },{
                 id:          3,
-                img:        "info/pizzabilder/pizza_Vegetariana.jpg",
+                img:        "pizzabilder/3.jpg",
                 name:       "Pizza Vegetariana",
                 beschr:     "Pizza mit hausgemachter Tomatensauce, saisonalem Gemüse und Mozarella",
                 preisKlein: "6,50€",
                 preisGross: "8,50€",
             },{
                 id:          4,
-                img:        "info/pizzabilder/pizza_Napoli.jpg",
+                img:        "pizzabilder/4.jpg",
                 name:       "Piza Napoli",
                 beschr:     "Pizza mit hausgemachter Tomatensauce, Sardellen, Kapern, Oliven und Mozarella",
                 preisKlein: "7,00€",
                 preisGross: "9,00€",
             },{
                 id:          5,
-                img:        "info/pizzabilder/pizza_Prosciutto.jpg",
+                img:        "pizzabilder/5.jpg",
                 name:       "Pizza Prosciutto",
-                beschr:     "Pizza mit hausgemachter Tomatensauce, rohem Schinken,
-                             frischem Rucola, Parmesan und Mozarella",
+                beschr:     "Pizza mit hausgemachter Tomatensauce, rohem Schinken, frischem Rucola, Parmesan und Mozarella",
                 preisKlein: "7,00€",
                 preisGross: "9,00€",
             },{
                 id:          6,
-                img:        "info/pizzabilder/pizza_Salami.jpg",
+                img:        "pizzabilder/6.jpg",
                 name:       "Pizza Salami",
                 beschr:     "Pizza mit hausgemachter Tomatensauce, Salami und frischem Basilikum",
                 preisKlein: "7,00€",

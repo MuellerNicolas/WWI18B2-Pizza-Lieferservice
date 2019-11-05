@@ -13,8 +13,8 @@
 }
 
 .tile img {
-    width: 20em;
-    height: 20em;
+/*    width: 20em;
+    height: 20em; */
     max-width: 100%;
     object-fit: cover;
     display: block;
@@ -26,8 +26,7 @@
     text-decoration: none;
 }
 
-.tile:hover {
-    background: white;
+/*    background: white;
     transform: scale(1.01) rotate(0.5deg);
     cursor: pointer;
 }
@@ -36,7 +35,7 @@
     display: inline-block;
     width: 30%;
     /* festgesetzte Höhe*/
-    height: 480pt;
+/*    height: 480pt;
     border: 1px solid darkgrey;
     border-radius: 0.5em;
     background: rgba(245, 245, 245);
@@ -59,7 +58,7 @@
     margin-bottom: 1em;
     margin-top: 1em;
 }
-
+*/
 .buttons{
     float: left;
      width: 30%;
@@ -105,6 +104,8 @@ form {
     margin-right: auto; .
 }
 .big-title{
+    margin-left: auto;
+    margin-right auto;
     font-size:23pt;
     font-weight:bold;
     font-family:arial,

@@ -29,11 +29,22 @@ class Info {
         }
 
         // Seite zur Anzeige bringen
-        this._pageDom = document.createElement("div");
-        this._pageDom.innerHTML = html;
-//         this._renderBoatTiles(this._pageDom);
+        let pageDom = document.createElement("div");
+        pageDom.innerHTML = html;
 
-/*        let kreierenButton = this._pageDom.querySelector("#kreieren");
+        this._renderPizzaTiles(pageDom);
+
+        this._app.setPageTitle("Startseite");
+        this._app.setPageCss(css);
+        this._app.setPageHeader(pageDom.querySelector("header"));
+        this._app.setPageContent(this._pageDom);
+
+        // Seite zur Anzeige bringen
+        //this._pageDom = document.createElement("div");
+        //this._pageDom.innerHTML = html;
+//        this._renderPizzaTiles(this._pageDom);
+
+        let kreierenButton = this._pageDom.querySelector("#kreieren");
         kreierenButton.addEventListener("click", () => {
             location.hash = "#/Bestellung/";
         });
@@ -58,34 +69,34 @@ class Info {
             feedbackContainer.classList.add("hidden");
             alert("Vielen Dank für Ihr Feedback!");
         });
-*/
 
-        this._app.setPageTitle("Startseite");
-        this._app.setPageCss(css);
-        this._app.setPageContent(this._pageDom);
+
+        function button_click(id) {
+	           if (feedback-container.getElementById(id).checked == true) {
+		                 alert ("Der Button " + id + " wurde ausgewählt.");
+	           } else{
+		                 alert ("Der Button " + id + " wurde abgewählt.");
+             }
+           }
     }
+           /**
+           * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
+           * der Startseite erzeugt.
+           *
+           * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
+           * mit den HTML-Templates dieser Seite.
+           */
+          _renderPizzaTiles(pageDom) {
+              let mainElement = pageDom.querySelector("main");
+              let templateElement = pageDom.querySelector("#template-tile");
 
-/*    // Seite zur Anzeige bringen
-    let pageDom = document.createElement("div");
-    pageDom.innerHTML = html;
+              this._app.datenbank.getAllRecords().forEach(pizza => {
+                  let html = templateElement.innerHTML;
+                  html = html.replace("{HREF}", `#/Detail/${pizza.id}`);
+                  html = html.replace("{IMG}", pizza.img);
+                  html = html.replace("{NAME}", pizza.name);
 
-    this._renderPizzaTiles(pageDom);
-
-    this._app.setPageTitle("Startseite");
-    this._app.setPageCss(css);
-    this._app.setPageHeader(pageDom.querySelector("header"));
-    this._app.setPageContent(pageDom.querySelector("main"));
-}
-
-
-    /**
-     * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
-     * der Startseite erzeugt.
-     *
-     * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
-     * mit den HTML-Templates dieser Seite.
-     */
-
-
-
+                  mainElement.innerHTML += html;
+              });
+          }
 }
