@@ -36,12 +36,11 @@ class Info {
 
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
-        this._app.setPageHeader(pageDom.querySelector("header"));
         this._app.setPageContent(this._pageDom);
 
         // Seite zur Anzeige bringen
-        //this._pageDom = document.createElement("div");
-        //this._pageDom.innerHTML = html;
+        this._pageDom = document.createElement("div");
+        this._pageDom.innerHTML = html;
 //        this._renderPizzaTiles(this._pageDom);
 
         let kreierenButton = this._pageDom.querySelector("#kreieren");

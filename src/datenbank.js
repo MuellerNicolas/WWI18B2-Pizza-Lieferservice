@@ -19,8 +19,7 @@ class Datenbank {
                 id:          1,
                 img:        "pizzabilder/1.jpg",
                 name:       "Pizza Margherita",
-                beschr:     "Die klassische Variante mit hausgemachter Tomatensauce,
-                            frischem Basilikum und Mozarella",
+                beschr:     "Die klassische Variante mit hausgemachter Tomatensauce, frischem Basilikum und Mozarella",
                 preisKlein: "5,50€",
                 preisGross: "7,50€",
             },{

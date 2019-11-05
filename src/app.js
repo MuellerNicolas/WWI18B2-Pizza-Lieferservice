@@ -33,7 +33,7 @@ class App {
     constructor(title, pages) {
         this._title = title;
         this._pages = pages;
-        debugger;
+        
         this.datenbank = new Datenbank();
         this._currentPageObject = null;
 
