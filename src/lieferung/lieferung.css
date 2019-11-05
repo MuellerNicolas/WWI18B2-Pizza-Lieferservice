@@ -25,7 +25,7 @@ form {
 }
 
 /* Ausblenden der Pfeile in Eingabefelder vom Typ number */
-/* Normale Browser und Chrome */
+/* Gängige Browser und Chrome */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
