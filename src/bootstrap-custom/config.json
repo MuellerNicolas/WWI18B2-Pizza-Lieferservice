@@ -1,8 +1,0 @@
-{
-  "vars": {},
-  "css": [
-    "grid.less",
-    "forms.less"
-  ],
-  "js": []
-}
