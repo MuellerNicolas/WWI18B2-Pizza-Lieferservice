@@ -65,7 +65,7 @@ class Info {
         this._app.setPageContent(this._pageDom);
     }
 
-    // Seite zur Anzeige bringen
+/*    // Seite zur Anzeige bringen
     let pageDom = document.createElement("div");
     pageDom.innerHTML = html;
 
@@ -85,19 +85,7 @@ class Info {
      * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
      * mit den HTML-Templates dieser Seite.
      */
-    _renderPizzaTiles(pageDom) {
-        let mainElement = pageDom.querySelector("main");
-        let templateElement = pageDom.querySelector("#template-tile");
 
-        this._app.database.getAllRecords().forEach(pizza => {
-            let html = templateElement.innerHTML;
-            html = html.replace("{HREF}", `#/Detail/${pizza.id}`);
-            html = html.replace("{IMG}", pizza.img);
-            html = html.replace("{NAME}", pizza.name);
-
-            mainElement.innerHTML += html;
-        });
-    }
 
 
 }
