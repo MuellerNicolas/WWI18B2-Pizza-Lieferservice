@@ -33,7 +33,7 @@ class Info {
         this._pageDom.innerHTML = html;
 //         this._renderBoatTiles(this._pageDom);
 
-        let kreierenButton = this._pageDom.querySelector("#kreieren");
+/*        let kreierenButton = this._pageDom.querySelector("#kreieren");
         kreierenButton.addEventListener("click", () => {
             location.hash = "#/Bestellung/";
         });
@@ -58,11 +58,25 @@ class Info {
             feedbackContainer.classList.add("hidden");
             alert("Vielen Dank für Ihr Feedback!");
         });
+*/
 
         this._app.setPageTitle("Startseite");
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
     }
+
+    // Seite zur Anzeige bringen
+    let pageDom = document.createElement("div");
+    pageDom.innerHTML = html;
+
+    this._renderPizzaTiles(pageDom);
+
+    this._app.setPageTitle("Startseite");
+    this._app.setPageCss(css);
+    this._app.setPageHeader(pageDom.querySelector("header"));
+    this._app.setPageContent(pageDom.querySelector("main"));
+}
+
 
     /**
      * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
@@ -71,19 +85,19 @@ class Info {
      * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
      * mit den HTML-Templates dieser Seite.
      */
-    // _renderBoatTiles(pageDom) {
-    //     let mainElement = pageDom.querySelector("main");
-    //     let templateElement = pageDom.querySelector("#template-tile");
-    //
-    //     this._app.database.getAllRecords().forEach(boat => {
-    //         let html = templateElement.innerHTML;
-    //         html = html.replace("{HREF}", `#/Detail/${boat.id}`);
-    //         html = html.replace("{IMG}", boat.img);
-    //         html = html.replace("{NAME}", boat.name);
-    //
-    //         mainElement.innerHTML += html;
-    //     });
-    // }
+    _renderPizzaTiles(pageDom) {
+        let mainElement = pageDom.querySelector("main");
+        let templateElement = pageDom.querySelector("#template-tile");
+
+        this._app.database.getAllRecords().forEach(pizza => {
+            let html = templateElement.innerHTML;
+            html = html.replace("{HREF}", `#/Detail/${pizza.id}`);
+            html = html.replace("{IMG}", pizza.img);
+            html = html.replace("{NAME}", pizza.name);
+
+            mainElement.innerHTML += html;
+        });
+    }
 
 
 }
