@@ -39,6 +39,9 @@ class App {
         this._status = false;
         this._bestellt = false;
         this._aktiv = false;
+
+        //Variable für dynamische Bezeichnung der Reihen
+        this._ele_nr = 1;
     }
 
     run() {

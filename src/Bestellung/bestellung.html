@@ -3,7 +3,7 @@
     <div>
         <h1 class="flex">Pizzen von der Karte</h1>
         <div id="pizzaFromMenu">
-            <div class="row" id="auswahlZeileMenu">
+            <div class="row" id="auswahlZeileMenu1">
                 <div class="col-md-1">
                     <button class="btn-sm" id="deletePizzaFromMenu">
                         <i class="icon-cancel"></i>
@@ -24,10 +24,10 @@
                     </select>
                 </div>
                 <div class="col-md-5">
-                    <label id="kleinGross">
-                        <input type="radio" name="groesseM" value="klein" checked="checked"> klein
+                    <label id="kleinGrossM1">
+                        <input id="groesseMEins1" type="radio" name="groesseM1" value="klein" checked="checked"> klein
                         &nbsp
-                        <input type="radio" name="groesseM" value="gross"> groß
+                        <input id="groesseMZwei1"type="radio" name="groesseM1" value="gross"> groß
                         &nbsp
                         &nbsp
                         <input id="stueck1" type="number" min="0" value="0"> Stück
@@ -74,9 +74,9 @@
                 </div>
                 <div class="col-md-5">
                     <label for="PizzaIndividual1">
-                        <input type="radio" name="groesseI" value="klein" checked="checked"> klein
+                        <input type="radio" name="groesseI1" value="klein" checked="checked"> klein
                         &nbsp
-                        <input type="radio" name="groesseI" value="gross"> groß
+                        <input type="radio" name="groesseI1" value="gross"> groß
                         &nbsp
                         &nbsp
                         <input id="stueck2" type="number" min="0" value="0"> Stück
@@ -85,7 +85,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3">
                 <button  class="btn-sm" id="addPizzaIndividual"> + Pizza </button>
                 <br>
             </div>
