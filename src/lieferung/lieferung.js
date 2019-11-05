@@ -208,10 +208,18 @@ class Lieferung {
 
         if(korrekt){
             this.bestellt = true;
+            
+            //Eingabefelder leeren
+            formular.vorname.value = "";
+            formular.nachname.value = "";
+            formular.plz.value = "";
+            formular.ort.value = "";
+            formular.strasse.value = "";
+            formular.hausnummer.value = "";
+
             //////////////////////////////////
             //   GoogleFirebase speichern   //
             //////////////////////////////////
-
             this._app.database.saveBestellung({
                 "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
                 "vorname": formular.vorname.value,
