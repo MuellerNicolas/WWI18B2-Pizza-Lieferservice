@@ -50,7 +50,8 @@ class Database {
      * Speichern einer neuen Bestellung
      */
     saveBestellung(bestellung) {
-        this._bestellungen.doc(bestellung.id).set(bestellung);
+        // this._bestellungen.doc(bestellung.id).set(bestellung);
+        this._bestellungen.doc().set(bestellung);
     }
 
     savePizza(pizza) {

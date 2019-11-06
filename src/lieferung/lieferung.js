@@ -216,6 +216,22 @@ class Lieferung {
             //nach erfolgter Bestellung den Bestellbutton ausblenden
             document.getElementById("bestellbestätigung").classList.add("unsichtbar");
 
+            //////////////////////////////////
+            //   GoogleFirebase speichern   //
+            //////////////////////////////////
+            this._app.database.saveBestellung({
+                // "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
+                "vorname": formular.vorname.value,
+                "nachname": formular.nachname.value,
+                "plz": formular.plz.value,
+                "ort": formular.ort.value,
+                "strasse": formular.strasse.value,
+                "hausnummer": formular.hausnummer.value
+            },
+            {
+                "pizzen": this._pizzenArray
+            });
+
             //Eingabefelder leeren
             formular.vorname.value = "";
             formular.nachname.value = "";
@@ -223,19 +239,6 @@ class Lieferung {
             formular.ort.value = "";
             formular.strasse.value = "";
             formular.hausnummer.value = "";
-
-            //////////////////////////////////
-            //   GoogleFirebase speichern   //
-            //////////////////////////////////
-            // this._app.database.saveBestellung({
-            //     "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
-            //     "vorname": formular.vorname.value,
-            //     "nachname": formular.nachname.value,
-            //     "plz": formular.plz.value,
-            //     "ort": formular.ort.value,
-            //     "strasse": formular.strasse.value,
-            //     "hausnummer": formular.hausnummer.value
-            // });
         }
     }
 }
