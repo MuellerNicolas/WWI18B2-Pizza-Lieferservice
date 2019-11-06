@@ -75,6 +75,7 @@ class Bestellung{
         clonedRow.setAttribute("id", new_row_id);
         clonedRow.querySelector("#deletePizzaFromMenu1").setAttribute("id", new_btn_id);
         clonedRow.querySelector("#deletePizzaFromMenu" + this.ele_nr).addEventListener("click", () => this._onDeletePizzaFromMenuClicked(clonedRow));
+        clonedRow.querySelector("#stueck").value = "0";
 
         //Klon hinzufügen
         let tempObj=target.lastChild;
@@ -86,7 +87,7 @@ class Bestellung{
 
     }
 
-    _onAddIndividualClicked() {
+/*    _onAddIndividualClicked() {
         let row = document.querySelector("#auswahlZeileIndividuell");
         let target = document.querySelector("#pizzaIndividuell");
 
@@ -96,7 +97,7 @@ class Bestellung{
         div.appendChild(clonedRow);
         row.parentNode.insertBefore(div, row);
     }
-
+*/
 
     _onDeletePizzaFromMenuClicked(clonedRow) {
         if(clonedRow == null){
@@ -117,6 +118,7 @@ class Bestellung{
         let pizzen = new Array;
         let zaehler = 0;
 
+        //Überprüfung, ob alle benötigten Felder ausgefüllt wurden
         for(let i = 1; i <= this.ele_nr; i++) {
             let row = document.querySelector("#auswahlZeileMenu" + i);
             if(row == null){
@@ -140,6 +142,7 @@ class Bestellung{
                     korrekt = false;
                     alert("Bitte geben Sie die gewünschte Stückzahl an.");
                 } else {
+                    //Speichern der Pizzadaten in einem Array
                     let p = new Pizza;
                     p.sorte = selectedPizzaSorte;
                     p.groesse = selectedGroesse;
@@ -150,9 +153,9 @@ class Bestellung{
             }
         }
 
-
+        //Umwandlung des pizzaarrays in Object (notwendig für Speicherung in Datenbank)
         let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
-        debugger;
+        //Speichern des Array in app.js
         this._pizzenArray = objectPizzen;
 
         if (korrekt) {
