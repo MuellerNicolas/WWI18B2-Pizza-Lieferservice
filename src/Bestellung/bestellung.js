@@ -137,20 +137,18 @@ class Bestellung{
                 else if ( selectedStueck == "0") {
                     korrekt = false;
                     alert("Bitte geben Sie die gewünschte Stückzahl an.");
-                } else {
-                    //Pizza in Datenbank speichern (GoogleFirebase)
-                    debugger;
-                    this._app.database.savePizza({
-                        "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
-                        "sorte": selectedPizzaSorte,
-                        "groesse": selectedGroesse,
-                        "stueck": selectedStueck
-                    });
                 }
             }
         }
 
         if (korrekt) {
+            this._app.database.savePizza({
+                "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
+                "sorte": selectedPizzaSorte,
+                "groesse": selectedGroesse,
+                "stueck": selectedStueck
+            });
+
             // zu Bestellungsseite wechseln
             location.hash = "#/Lieferung/";
         }
