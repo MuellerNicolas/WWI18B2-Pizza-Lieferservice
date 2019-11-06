@@ -1,21 +1,21 @@
 <h1 class="mittig">Bestellung</h1>
-<div class = "container-fluid">
+<div class="container-fluid box">
     <div class="row">
-        <!-- linke Seite -->
-        <div class="col-md-6">
-            <div class="container-fluid kasten">
+        <!-- Linke Seite -->
+        <div class="col-md-7 abstand">
+            <div class="container-fluid">
                 <h2>Pizzen auswählen</h2>
                 <div id="pizzaFromMenu">
                     <div class="row" id="auswahlZeileMenu1">
                         <div class="col-md-1">
                             <button class="btn-sm" id="deletePizzaFromMenu1">
-                                <i class="icon-cancel"></i>
+                                    <i class="icon-cancel"></i>
                             </button>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-11">
+                            &nbsp
                             Pizza
-                        </div>
-                        <div class="col-md-3">
+                            &nbsp
                             <select name="dropdownPizza" id="dropdownPizza">
                                 <option value="Waehlen">Bitte Wählen</option>
                                 <option value="Margherita">Margherita</option>
@@ -25,8 +25,8 @@
                                 <option value="Prosciutto">Prosciutto</option>
                                 <option value="Salami">Salami</option>
                             </select>
-                        </div>
-                        <div class="col-md-5">
+                            &nbsp
+                            &nbsp
                             <select name="dropdownGroesse" id="dropdownGroesse">
                                 <option value="klein">klein</option>
                                 <option value="gross">groß</option>
@@ -34,85 +34,41 @@
                             &nbsp
                             &nbsp
                             <input id="stueck" type="number" min="0" value="0"> Stück
-                        </div
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div Class="col-md-1">
+                    <div class="col-md-1">
                     </div>
                     <div class="col-md-11">
+                        &nbsp
                         <button class="btn-sm" id="addPizzaFromMenu"> + Pizza </button>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!--rechte Seite-->
-        <div class="col-md-6 abstand">
-            <div class="container-fluid kasten">
-                test
+        <!-- Rechte Seite -->
+        <div class="col-md-5 abstand">
+            <div class="container-fluid">
+                <h2>Bestellübersicht:</h2>
+                <div class="row">
+                    <div class="col-md-12 kasten">
+                        <p>
+                            Pizzen:<br />
+                            Preis:
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-
-    <!--Unterer Bereich-->
+    <!-- Unterer Bereich -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2 zentriert">
             <button  class="btn-sm" id="order"> Bestellen </button>
         </div>
     </div>
 </div>
-
-
-
-<!--
-<h1 class="mittig">Pizzen selbst kreieren</h1>
-<div id="pizzaFromMenu">
-    <div class="row" id="auswahlZeileIndividuell">
-        <div class="col-md-1">
-            <button class="btn-sm" id="deletePizzaFromMenu">
-                <i class="icon-cancel"></i>
-            </button>
-        </div>
-        <div class="col-md-1">
-            Pizza
-        </div>
-        <div class="col-md-2">
-            <input type="checkbox" name="brokkoli" value="brokkoli"> Brokkoli <br>
-            <input type="checkbox" name="lachs" value="lachs"> Lachs <br>
-            <input type="checkbox" name="oliven" value="oliven"> Oliven <br>
-            <input type="checkbox" name="peperoni" value="peperoni"> Peperoni <br>
-            <input type="checkbox" name="salami" value="salami"> Salami <br>
-            <input type="checkbox" name="speck" value="speck"> Speck <br>
-        </div>
-        <div class="col-md-3">
-            <input type="checkbox" name="champignons" value="champignons"> Champignons <br>
-            <input type="checkbox" name="mozarella" value="mozarella"> Mozarella <br>
-            <input type="checkbox" name="paprika" value="paprika"> Paprika <br>
-            <input type="checkbox" name="rucola" value="rucola"> Rucola <br>
-            <input type="checkbox" name="schinken" value="schinken"> Schinken <br>
-            <input type="checkbox" name="zwiebel" value="zwiebel"> Zwiebel <br>
-            <br>
-        </div>
-        <div class="col-md-5">
-            <select name="dropdownGroesseI1">
-                <option value="klein">klein</option>
-                <option value="gross">groß</option>
-            </select>
-            &nbsp
-            &nbsp
-            <input id="stueckI1" type="number" min="0" value="0"> Stück
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-3">
-        <button  class="btn-sm" id="addPizzaIndividual"> + Pizza </button>
-        <br>
-    </div>
-</div>
--->
