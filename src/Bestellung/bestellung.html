@@ -1,11 +1,12 @@
 
 <div class = "container-fluid">
     <div>
-        <h1 class="flex">Pizzen von der Karte</h1>
+        <h1 class="mittig">Bestellung</h1>
+        <h2>Pizzen auswählen</h2>
         <div id="pizzaFromMenu">
             <div class="row" id="auswahlZeileMenu1">
                 <div class="col-md-1">
-                    <button class="btn-sm" id="deletePizzaFromMenu">
+                    <button class="btn-sm" id="deletePizzaFromMenu1">
                         <i class="icon-cancel"></i>
                     </button>
                 </div>
@@ -13,7 +14,7 @@
                     Pizza
                 </div>
                 <div class="col-md-3">
-                    <select name="dropdown">
+                    <select name="dropdownPizza" id="dropdownPizza">
                         <option value="Waehlen">Bitte Wählen</option>
                         <option value="Margherita">Margherita</option>
                         <option value="Funghi">Funghi</option>
@@ -24,14 +25,13 @@
                     </select>
                 </div>
                 <div class="col-md-5">
-                    <label id="kleinGrossM1">
-                        <input id="groesseMEins1" type="radio" name="groesseM1" value="klein" checked="checked"> klein
-                        &nbsp
-                        <input id="groesseMZwei1"type="radio" name="groesseM1" value="gross"> groß
-                        &nbsp
-                        &nbsp
-                        <input id="stueck1" type="number" min="0" value="0"> Stück
-                    </label>
+                    <select name="dropdownGroesse" id="dropdownGroesse">
+                        <option value="klein">klein</option>
+                        <option value="gross">groß</option>
+                    </select>
+                    &nbsp
+                    &nbsp
+                    <input id="stueck" type="number" min="0" value="0"> Stück
                 </div
             </div>
         </div>
@@ -43,8 +43,10 @@
             </div>
         </div>
     </div>
+
     <div>
-        <h1 class="flex">Pizzen selbst kreieren</h1>
+        <!--
+        <h1 class="mittig">Pizzen selbst kreieren</h1>
         <div id="pizzaFromMenu">
             <div class="row" id="auswahlZeileIndividuell">
                 <div class="col-md-1">
@@ -73,14 +75,13 @@
                     <br>
                 </div>
                 <div class="col-md-5">
-                    <label for="PizzaIndividual1">
-                        <input type="radio" name="groesseI1" value="klein" checked="checked"> klein
-                        &nbsp
-                        <input type="radio" name="groesseI1" value="gross"> groß
-                        &nbsp
-                        &nbsp
-                        <input id="stueck2" type="number" min="0" value="0"> Stück
-                    </label>
+                    <select name="dropdownGroesseI1">
+                        <option value="klein">klein</option>
+                        <option value="gross">groß</option>
+                    </select>
+                    &nbsp
+                    &nbsp
+                    <input id="stueckI1" type="number" min="0" value="0"> Stück
                 </div>
             </div>
         </div>
@@ -92,6 +93,7 @@
                 <br>
             </div>
         </div>
+        -->
         <div class="row">
             <div class="col-md-9">
             </div>

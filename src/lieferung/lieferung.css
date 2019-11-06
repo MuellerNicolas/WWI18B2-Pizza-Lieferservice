@@ -4,6 +4,18 @@
     justify-content: center;
     align-items: center;
 }
+.links  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+.rechts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: right;
+}
 
 /* Layout für das Formular */
 form {
@@ -23,7 +35,9 @@ form {
     align-items: center;
     justify-content: center;
 }
-
+input{
+    width:100%;
+}
 /* Ausblenden der Pfeile in Eingabefelder vom Typ number */
 /* Gängige Browser und Chrome */
 input::-webkit-outer-spin-button,
@@ -34,6 +48,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance:textfield;
+}
+
+.abstand{
+    margin-top: 1em;
 }
 
 .unsichtbar{

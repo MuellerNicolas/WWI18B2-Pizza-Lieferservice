@@ -43,6 +43,9 @@ class Lieferung {
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
 
+        if(this._app._bestellt ===true){        //nach erfolgter Bestellung den Bestellbutton ausblenden
+            document.getElementById("bestellbestätigung").classList.add("unsichtbar");
+        }
 
         //////////////////////////////////
         //         Tracking             //
@@ -62,9 +65,9 @@ class Lieferung {
 
         buttonStart.addEventListener("click", () => {
             if(this.status === false && this.bestellt === true){
-                this.status = true;
+                this.status = true;         //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
                 this._app._status = this.status;
-                this.aktiv = true;
+                this.aktiv = true;          //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
                 this._app._aktiv = this.aktiv;
                 letztesUpdate = Date.now();
                 this._app._zaehler = zaehlerInitial;
@@ -208,7 +211,11 @@ class Lieferung {
 
         if(korrekt){
             this.bestellt = true;
-            
+            this._app._bestellt = this.bestellt;
+
+            //nach erfolgter Bestellung den Bestellbutton ausblenden
+            document.getElementById("bestellbestätigung").classList.add("unsichtbar");
+
             //Eingabefelder leeren
             formular.vorname.value = "";
             formular.nachname.value = "";
@@ -220,15 +227,15 @@ class Lieferung {
             //////////////////////////////////
             //   GoogleFirebase speichern   //
             //////////////////////////////////
-            this._app.database.saveBestellung({
-                "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
-                "vorname": formular.vorname.value,
-                "nachname": formular.nachname.value,
-                "plz": formular.plz.value,
-                "ort": formular.ort.value,
-                "strasse": formular.strasse.value,
-                "hausnummer": formular.hausnummer.value
-            });
+            // this._app.database.saveBestellung({
+            //     "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
+            //     "vorname": formular.vorname.value,
+            //     "nachname": formular.nachname.value,
+            //     "plz": formular.plz.value,
+            //     "ort": formular.ort.value,
+            //     "strasse": formular.strasse.value,
+            //     "hausnummer": formular.hausnummer.value
+            // });
         }
     }
 }

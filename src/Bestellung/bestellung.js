@@ -34,15 +34,16 @@ class Bestellung{
         let buttonAddPizzaFromMenu = this._pageDom.querySelector("#addPizzaFromMenu");
         buttonAddPizzaFromMenu.addEventListener("click", () => this._onAddPizzaFromMenuClicked());
 
-        let buttonDeletePizzaFromMenu = this._pageDom.querySelector("#deletePizzaFromMenu");
+        let buttonDeletePizzaFromMenu = this._pageDom.querySelector("#deletePizzaFromMenu1");
         buttonDeletePizzaFromMenu.addEventListener("click", () => this._onDeletePizzaFromMenuClicked());
 
+/*
         let buttonAddPizzaIndividual = this._pageDom.querySelector("#addPizzaIndividual");
         buttonAddPizzaIndividual.addEventListener("click", () => this._onAddIndividualClicked());
+*/
 
         let buttonOrder = this._pageDom.querySelector("#order");
-        buttonOrder.addEventListener("click", () =>
-            location.hash = "#/Lieferung/");
+        buttonOrder.addEventListener("click", () => this._onButtonOrderClicked());
 
         this._app.setPageTitle("Bestellung aufgeben", {isSubPage: true});
         this._app.setPageCss(css);
@@ -50,15 +51,12 @@ class Bestellung{
     }
 
     _onAddPizzaFromMenuClicked(){
-        let new_row_id, base_row_id, new_label_id, base_label_id, new_radio_name, base_radio_name,
-            new_radio_id_eins, base_radio_id_eins, new_radio_id_zwei, base_radio_id_zwei;
-debugger;
+        let new_row_id, base_row_id, new_label_id, base_label_id, base_btn_id, new_btn_id;
+
         //benötigte Elemente auswählen
-        let row = document.querySelector("#auswahlZeileMenu" + this.ele_nr);
+        let row = document.querySelector("#auswahlZeileMenu1");
         let target = document.querySelector("#pizzaFromMenu");
-        let label = document.querySelector("#kleinGrossM" + this.ele_nr);
-        let radioBtn1 = document.querySelector("#groesseMEins" + this.ele_nr);
-        let radioBtn2 = document.querySelector("#groesseMZwei" + this.ele_nr);
+        let btn = document.querySelector("#deletePizzaFromMenu1");
 
         this.ele_nr = ++this.ele_nr;
 
@@ -66,32 +64,25 @@ debugger;
         base_row_id = row.getAttribute("id").replace(/[0-9]/g, "");
         new_row_id = base_row_id + this.ele_nr;
 
-
-        //dynamische id für das label
-        base_label_id = label.getAttribute("id").replace(/[0-9]/g, "");
-        new_label_id = base_label_id + this.ele_nr;
-
-        //dynamischer name für radiobuttons
-        base_radio_name = radioBtn1.getAttribute("name").replace(/[0-9]/g, "");
-        new_radio_name = base_radio_name + this.ele_nr;
-        base_radio_id_eins = radioBtn1.getAttribute("id").replace(/[0-9]/g, "");
-        base_radio_id_zwei = radioBtn2.getAttribute("id").replace(/[0-9]/g, "");
-        new_radio_id_eins = base_radio_id_eins + this.ele_nr;
-        new_radio_id_eins = base_radio_id_zwei + this.ele_nr;
+        //dynamische id für Löschbutton bei Pizza von Menu
+        base_btn_id = btn.getAttribute("id").replace(/[0-9]/g, "");
+        new_btn_id = base_btn_id + this.ele_nr;
 
         //Klon erstellen
-        let clonedRow = row.cloneNode(true);
+        var clonedRow = row.cloneNode(true);
 
         //Attribute setzen
         clonedRow.setAttribute("id", new_row_id);
-        clonedRow.querySelector("#kleinGrossM" + (this.ele_nr-1)).setAttribute("id", new_label_id);
-        //clonedRow.querySelector("groesseMEins" + (this.ele_nr-1)).setAttribute("name", new_radio_name);
-        //clonedRow.querySelector("groesseMZwei" + (this.ele_nr-1)).setAttribute("name", new_radio_name);
-        //clonedRow.querySelector("groesseMEins" + (this.ele_nr-1)).setAttribute("id", new_radio_id);
-        //clonedRow.querySelector("groesseMZwei" + (this.ele_nr-1)).setAttribute("id", new_radio_id);
+        clonedRow.querySelector("#deletePizzaFromMenu1").setAttribute("id", new_btn_id);
+        clonedRow.querySelector("#deletePizzaFromMenu" + this.ele_nr).addEventListener("click", () => this._onDeletePizzaFromMenuClicked(clonedRow));
 
         //Klon hinzufügen
-        target.insertBefore(clonedRow, row.nextSibling);
+        let tempObj=target.lastChild;
+        while(tempObj.nodeType!=1 && tempObj.previousSibling!=null){
+            tempObj=tempObj.previousSibling;
+        }
+        target.insertBefore(clonedRow, tempObj);
+
 
     }
 
@@ -106,7 +97,62 @@ debugger;
         row.parentNode.insertBefore(div, row);
     }
 
-    _onDeletePizzaFromMenuClicked() {
-        alert("Pizza gelöscht")
+
+    _onDeletePizzaFromMenuClicked(clonedRow) {
+        if(clonedRow == null){
+            alert("Die erste Pizza kann aus systemtechnischen Gründen nicht gelöscht werden!")
+        } else {
+        let id_nr = clonedRow.getAttribute("id").replace(/[a-z]/g, "").replace(/[A-Z]/g, "");
+        let target = document.querySelector("#pizzaFromMenu");
+        let row = document.querySelector("#auswahlZeileMenu" + id_nr);
+        target.removeChild(row);
+        }
+    }
+
+    _onButtonOrderClicked(){
+        let korrekt = true;
+        let ausgabe = "";
+        let pizzaSorte, groesse, stueck;
+        let selectedPizzaSorte, selectedGroesse, selectedStueck;
+
+        for(let i = 1; i <= this.ele_nr; i++) {
+            let row = document.querySelector("#auswahlZeileMenu" + i);
+            if(row == null){
+                continue;
+            } else {
+                pizzaSorte = row.querySelector("#dropdownPizza");
+                groesse = row.querySelector("#dropdownGroesse");
+                stueck = row.querySelector("#stueck");
+
+                selectedPizzaSorte = pizzaSorte.options[pizzaSorte.selectedIndex].text;
+                selectedGroesse = groesse.options[groesse.selectedIndex].text;
+                selectedStueck = stueck.value;
+
+                // Pizzasorte muss angegeben sein
+                if ( selectedPizzaSorte == "Bitte Wählen") {
+                    korrekt = false;
+                    alert("Bitte geben Sie die gewünschte Pizzasorte an.");
+                }
+                // Stueckzahl muss angegeben sein
+                else if ( selectedStueck == "0") {
+                    korrekt = false;
+                    alert("Bitte geben Sie die gewünschte Stückzahl an.");
+                } else {
+                    //Pizza in Datenbank speichern (GoogleFirebase)
+                    debugger;
+                    this._app.database.savePizza({
+                        "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
+                        "sorte": selectedPizzaSorte,
+                        "groesse": selectedGroesse,
+                        "stueck": selectedStueck
+                    });
+                }
+            }
+        }
+
+        if (korrekt) {
+            // zu Bestellungsseite wechseln
+            location.hash = "#/Lieferung/";
+        }
     }
 }
