@@ -87,10 +87,13 @@ class Info {
 
               this._app.datenbank.getAllRecords().forEach(pizza => {
                   let html = templateElement.innerHTML;
-                  html = html.replace("{ID}", pizza.id);
+                  html = html.replace("{HREF}", '{pizza.id}');
+//                  html = html.replace("{ID}", pizza.id);
                   html = html.replace("{IMG}", pizza.img);
                   html = html.replace("{NAME}", pizza.name);
                   html = html.replace("{BESCHR}", pizza.beschr);
+                  html = html.replace("{PREISKLEIN}", pizza.preisKlein);
+                  html = html.replace("{PREISGROSS}", pizza.preisGross);
 
                   mainElement.innerHTML += html;
               });
