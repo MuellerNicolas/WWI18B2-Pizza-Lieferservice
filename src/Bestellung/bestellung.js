@@ -114,6 +114,8 @@ class Bestellung{
         let ausgabe = "";
         let pizzaSorte, groesse, stueck;
         let selectedPizzaSorte, selectedGroesse, selectedStueck;
+        let pizzen = new Array;
+        let zaehler = 0;
 
         for(let i = 1; i <= this.ele_nr; i++) {
             let row = document.querySelector("#auswahlZeileMenu" + i);
@@ -137,20 +139,35 @@ class Bestellung{
                 else if ( selectedStueck == "0") {
                     korrekt = false;
                     alert("Bitte geben Sie die gewünschte Stückzahl an.");
+                } else {
+                    let p = new Pizza;
+                    p.sorte = selectedPizzaSorte;
+                    p.groesse = selectedGroesse;
+                    p.stueck = selectedStueck;
+                    pizzen[zaehler] = p;
+                    zaehler++;
                 }
             }
         }
 
+        
+        let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
+
         if (korrekt) {
             this._app.database.savePizza({
                 "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
-                "sorte": selectedPizzaSorte,
-                "groesse": selectedGroesse,
-                "stueck": selectedStueck
+                "pizzen": objectPizzen
             });
-
             // zu Bestellungsseite wechseln
             location.hash = "#/Lieferung/";
         }
+    }
+}
+
+class Pizza{
+    constructor(sorte, groesse, stueck){
+        this.sorte = sorte;
+        this.groesse = groesse;
+        this.stueck = stueck;
     }
 }
