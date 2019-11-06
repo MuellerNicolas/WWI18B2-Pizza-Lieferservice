@@ -4,37 +4,13 @@
     justify-content: center;
     align-items: center;
 }
-.links  {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-}
-.rechts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: right;
-}
-
-/* Layout für das Formular */
-form {
-    max-width: 30em;
-
+/* Layout für Kastenumrandung mit grauem Hintergrund */
+.kasten {
     border: 1px solid #d0d0d0;
     background: #f0f0f0;
     padding: 1em;
 }
 
-.center {
-    margin: auto;
-    width: 50%;
-}
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 input{
     width:100%;
 }
