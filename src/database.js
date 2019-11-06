@@ -39,6 +39,8 @@ class Database {
             // die in etwa den Tabellen einer klassischen Datenbank entsprechen.
             this._db = firebase.firestore();
             this._bestellungen = this._db.collection("bestellungen");
+            this._pizza = this._db.collection("pizza");
+
     //     } catch(e) {
     //
     //     }
@@ -49,6 +51,10 @@ class Database {
      */
     saveBestellung(bestellung) {
         this._bestellungen.doc(bestellung.id).set(bestellung);
+    }
+
+    savePizza(pizza) {
+        this._pizza.doc(pizza.id).set(pizza);
     }
 
     // /**

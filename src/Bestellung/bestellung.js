@@ -37,12 +37,13 @@ class Bestellung{
         let buttonDeletePizzaFromMenu = this._pageDom.querySelector("#deletePizzaFromMenu1");
         buttonDeletePizzaFromMenu.addEventListener("click", () => this._onDeletePizzaFromMenuClicked());
 
+/*
         let buttonAddPizzaIndividual = this._pageDom.querySelector("#addPizzaIndividual");
         buttonAddPizzaIndividual.addEventListener("click", () => this._onAddIndividualClicked());
+*/
 
         let buttonOrder = this._pageDom.querySelector("#order");
-        buttonOrder.addEventListener("click", () =>
-            location.hash = "#/Lieferung/");
+        buttonOrder.addEventListener("click", () => this._onButtonOrderClicked());
 
         this._app.setPageTitle("Bestellung aufgeben", {isSubPage: true});
         this._app.setPageCss(css);
@@ -98,13 +99,60 @@ class Bestellung{
 
 
     _onDeletePizzaFromMenuClicked(clonedRow) {
-        let id_nr = clonedRow.getAttribute("id").replace(/[a-z]/g, "").replace(/[A-Z]/g, "");
-        if(id_nr == 1){
-            alert("Die erste Pizza kann nicht gelöscht werden!")
+        if(clonedRow == null){
+            alert("Die erste Pizza kann aus systemtechnischen Gründen nicht gelöscht werden!")
         } else {
+        let id_nr = clonedRow.getAttribute("id").replace(/[a-z]/g, "").replace(/[A-Z]/g, "");
         let target = document.querySelector("#pizzaFromMenu");
         let row = document.querySelector("#auswahlZeileMenu" + id_nr);
         target.removeChild(row);
+        }
+    }
+
+    _onButtonOrderClicked(){
+        let korrekt = true;
+        let ausgabe = "";
+        let pizzaSorte, groesse, stueck;
+        let selectedPizzaSorte, selectedGroesse, selectedStueck;
+
+        for(let i = 1; i <= this.ele_nr; i++) {
+            let row = document.querySelector("#auswahlZeileMenu" + i);
+            if(row == null){
+                continue;
+            } else {
+                pizzaSorte = row.querySelector("#dropdownPizza");
+                groesse = row.querySelector("#dropdownGroesse");
+                stueck = row.querySelector("#stueck");
+
+                selectedPizzaSorte = pizzaSorte.options[pizzaSorte.selectedIndex].text;
+                selectedGroesse = groesse.options[groesse.selectedIndex].text;
+                selectedStueck = stueck.value;
+
+                // Pizzasorte muss angegeben sein
+                if ( selectedPizzaSorte == "Bitte Wählen") {
+                    korrekt = false;
+                    alert("Bitte geben Sie die gewünschte Pizzasorte an.");
+                }
+                // Stueckzahl muss angegeben sein
+                else if ( selectedStueck == "0") {
+                    korrekt = false;
+                    alert("Bitte geben Sie die gewünschte Stückzahl an.");
+                } else {
+                    //Pizza in Datenbank speichern (GoogleFirebase)
+                    debugger;
+                    this._app.database.savePizza({
+                        "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
+                        "sorte": selectedPizzaSorte,
+                        "groesse": selectedGroesse,
+                        "stueck": selectedStueck
+                    });
+                }
+            }
+        }
+
+        if (korrekt) {
+            // zu Bestellungsseite wechseln
+            location.hash = "#/Lieferung/";
         }
     }
 }
