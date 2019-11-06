@@ -46,6 +46,9 @@ class App {
 
         //Variable für dynamische Bezeichnung der Reihen
         this._ele_nr = 1;
+
+        //Array mit Pizzen der Bestellung
+        this._pizzenArray = new Array;
     }
 
     run() {
