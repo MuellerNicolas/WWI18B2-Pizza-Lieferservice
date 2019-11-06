@@ -90,6 +90,7 @@ class Info {
                   html = html.replace("{ID}", pizza.id);
                   html = html.replace("{IMG}", pizza.img);
                   html = html.replace("{NAME}", pizza.name);
+                  html = html.replace("{BESCHR}", pizza.beschr);
 
                   mainElement.innerHTML += html;
               });

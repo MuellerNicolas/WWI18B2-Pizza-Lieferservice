@@ -39,7 +39,7 @@ class Datenbank {
             },{
                 id:          4,
                 img:        "info/pizzabilder/4.jpg",
-                name:       "Piza Napoli",
+                name:       "Pizza Napoli",
                 beschr:     "Pizza mit hausgemachter Tomatensauce, Sardellen, Kapern, Oliven und Mozarella",
                 preisKlein: "7,00€",
                 preisGross: "9,00€",

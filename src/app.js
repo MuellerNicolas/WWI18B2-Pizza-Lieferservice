@@ -33,8 +33,9 @@ class App {
     constructor(title, pages) {
         this._title = title;
         this._pages = pages;
-        
+
         this.datenbank = new Datenbank();
+        this.database = new Database();
         this._currentPageObject = null;
 
         //Variablen für das Tracking
