@@ -28,15 +28,7 @@ class Info {
             return;
         }
 
-        // Seite zur Anzeige bringen
-        let pageDom = document.createElement("div");
-        pageDom.innerHTML = html;
 
-        this._renderPizzaTiles(pageDom);
-
-        this._app.setPageTitle("Startseite");
-        this._app.setPageCss(css);
-        this._app.setPageContent(this._pageDom);
 
         // Seite zur Anzeige bringen
         this._pageDom = document.createElement("div");
@@ -77,6 +69,10 @@ class Info {
 		                 alert ("Der Button " + id + " wurde abgewählt.");
              }
            }
+
+           this._app.setPageTitle("Startseite");
+           this._app.setPageCss(css);
+           this._app.setPageContent(this._pageDom);
     }
            /**
            * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
