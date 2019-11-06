@@ -28,22 +28,25 @@ class Info {
             return;
         }
 
-
-
         // Seite zur Anzeige bringen
         this._pageDom = document.createElement("div");
         this._pageDom.innerHTML = html;
         this._renderPizzaTiles(this._pageDom);
 
-        let kreierenButton = this._pageDom.querySelector("#kreieren");
-        kreierenButton.addEventListener("click", () => {
-            location.hash = "#/Bestellung/";
-        });
+//        let kreierenButton = this._pageDom.querySelector("#kreieren");
+//        kreierenButton.addEventListener("click", () => {
+//            location.hash = "#/Bestellung/";
+//        });
 
         let bestellenButton = this._pageDom.querySelector("#bestellen");
         bestellenButton.addEventListener("click", () => {
             location.hash = "#/Bestellung/";
         });
+
+//        let kachelKlick = this._pageDom.querySelector("#{ID}");
+//        {ID}.addEventListener("click", () => {
+//            location.hash = "#/Bestellung/";
+//        });
 
 
         let feedbackContainer = this._pageDom.querySelector("#feedback-container");
@@ -96,7 +99,7 @@ class Info {
                   html = html.replace("{PREISKLEIN}", pizza.preisKlein);
                   html = html.replace("{PREISGROSS}", pizza.preisGross);
 
-                  mainElement.innerHTML += html;
+                 mainElement.innerHTML += html;
               });
           }
 }

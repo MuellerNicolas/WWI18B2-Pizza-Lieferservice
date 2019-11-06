@@ -49,10 +49,11 @@
 
 .buttons{
     float: left;
-     width: 30%;
-     margin-right: 30%;
-     padding: 20px;
-     box-sizing: border-box;
+    width: 30%;
+    margin-right: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 5pt;
 }
 
 .auswahl{
@@ -102,6 +103,7 @@ form {
 .text-size{
     font-size:25pt;
     font-family: arial;
+    margin-bottom: 5pt;
 }
 
 .text-pizza-name{
