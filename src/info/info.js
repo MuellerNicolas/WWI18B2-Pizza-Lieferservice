@@ -102,4 +102,59 @@ class Info {
                  mainElement.innerHTML += html;
               });
           }
+
+    //Feedbackeinträge prüfen und in Datenbank Speichern
+    _onFeedbackSubmitClicked(event) {
+        let feedback = event.target;
+        let korrekt = true;
+        let ausgabe = "";
+
+        // Geschmack muss angegeben sein
+        if (feedback.dropdownGeschmack.value != "Wahelen") {
+            korrekt = false;
+            ausgabe += "Bitte Bewerten Sie den Geschmack. <br />";
+        }
+        // Bestellvorgang muss bewertet sein
+        if (feedback.dropdownBestellvorgang.value != "Wahelen") {
+            korrekt = false;
+            ausgabe += "Bitte Bewerten Sie den Bestellvorgang. <br />";
+        }
+        // Bestellvorgang muss bewertet sein
+        if (feedback.dropdownLieferung.value != "Wahelen") {
+            korrekt = false;
+            ausgabe += "Bitte Bewerten Sie die Lieferung. <br />";
+        }
+
+        // Ergebnis anzeigen
+        let ergebnisElement = document.getElementById("ergebnis");
+
+        if (korrekt) {
+            ausgabe = "Vielen Dank für Ihr Feedback";
+            ergebnisElement.classList.add("korrekt");
+        } else {
+            ergebnisElement.classList.remove("korrekt");
+        }
+
+        ergebnisElement.innerHTML = ausgabe;
+
+        event.preventDefault();
+
+        if(korrekt){
+
+            //////////////////////////////////
+            //   GoogleFirebase speichern   //
+            //////////////////////////////////
+            this._app.database.saveFeedback({
+                // "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
+                "dropdownGeschmack": feedback.dropdownGeschmack.value,
+                "dropdownBestellvorgang": feedback.dropdownBestellvorgang.value,
+                "dropdownLieferung": feedback.dropdownLieferung.value,
+                "sonstiges": feedback.sonstiges.value,
+            },
+            {
+                "feedback": this._feedbackArray
+            });
+
+        }
+    }
 }
