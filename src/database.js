@@ -54,7 +54,7 @@ class Database {
     }
 
     savePizza(pizza) {
-        this._pizza.doc(pizza.id).set(pizza);
+        this._pizza.doc(pizza.id).set(Object.assign({}, pizza));
     }
 
     // /**
