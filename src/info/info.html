@@ -6,7 +6,7 @@
     </div>
     <div class="container">
          <div class="mittig">
-              <div class="text">
+              <div class="text-size">
                 Pizza Bella Italia <br />
                 Erzbergerstraße 121<br />
                 76133 Karlsruhe
@@ -15,15 +15,23 @@
     </div>
 </div>
 
+<div class = "title">
+    Unsere Klassiker
+</div>
+
 <main>
 </main>
 
 <div id="template-tile">
     <div class="tile">
-        <a href="{HREF}">
+        <a id="{ID}">
             <img src="{IMG}" alt="" />
-            {NAME} <br />
-            {BESCHR} <br />
+            <div class= title>
+                {NAME} <br />
+            </div>
+            <div class="absatz">
+                {BESCHR} <br />
+            </div>
             klein: {PREISKLEIN} <br />
             groß: {PREISGROSS}
         </a>

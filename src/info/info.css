@@ -3,11 +3,15 @@
 .tile {
     display: inline-block;
 
-    border: 1px solid lightgrey;
+    border: 3px solid lightgrey;
     border-radius: 0.5em;
     background: rgba(250, 250, 250);
     padding: 0.5em;
     margin: 0.5em;
+    max-width: 380pt;
+
+    align-items: center;
+    justify-content: center;
 
     transition: transform 0.5s, background 0.5s;
     transform: scale(1);
@@ -22,6 +26,15 @@
     display: block;
 }
 
+/*Zeilenumbruch und Silbentrennung */
+.absatz{
+   -moz-hyphens: auto;
+   -o-hyphens: auto;
+   -webkit-hyphens: auto;
+   -ms-hyphens: auto;
+   hyphens: auto;
+}
+
 .tile a,
 .tile a:visited {
     color: black;
@@ -34,39 +47,6 @@
     cursor: pointer;
 }
 
-/*    background: white;
-    transform: scale(1.01) rotate(0.5deg);
-    cursor: pointer;
-}
-
-.card {
-    display: inline-block;
-    width: 30%;
-    /* festgesetzte Höhe*/
-/*    height: 480pt;
-    border: 1px solid darkgrey;
-    border-radius: 0.5em;
-    background: rgba(245, 245, 245);
-    padding: 0.5em;
-    margin: 0.5em;
-
-    transition: transform 0.5s, background 0.5s;
-    transform: scale(1);
-}
-
-.card:hover {
-    background: white;
-    transform: scale(1.03);
-    cursor: pointer;
-}
-
-.card img {
-    display: block;
-    width: 100%;
-    margin-bottom: 1em;
-    margin-top: 1em;
-}
-*/
 .buttons{
     float: left;
      width: 30%;
@@ -105,28 +85,22 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 550pt;
 
 }
 .zentrieren {
     margin-left: auto;
     margin-right: auto; .
 }
-.big-title{
-    margin-left: auto;
-    margin-right auto;
-    font-size:23pt;
-    font-weight:bold;
-    font-family:arial,
-}
 
 .title{
-    font-size:19pt;
+    font-size:20pt;
     font-weight:bold;
     font-family:arial,
 }
 
 .text-size{
-    font-size:12pt;
+    font-size:25pt;
     font-family: arial;
 }
 

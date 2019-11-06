@@ -47,7 +47,7 @@ class Datenbank {
                 id:          5,
                 img:        "info/pizzabilder/5.jpg",
                 name:       "Pizza Prosciutto",
-                beschr:     "Pizza mit hausgemachter Tomatensauce, rohem Schinken, frischem Rucola, Parmesan und Mozarella",
+                beschr:     "Pizza mit hausgemachter Tomatensauce, rohem Schinken, Rucola & Parmesan",
                 preisKlein: "7,00€",
                 preisGross: "9,00€",
             },{
