@@ -68,11 +68,11 @@ class Info {
 	           } else{
 		                 alert ("Der Button " + id + " wurde abgewählt.");
              }
-           }
+        }
 
-           this._app.setPageTitle("Startseite");
-           this._app.setPageCss(css);
-           this._app.setPageContent(this._pageDom);
+        this._app.setPageTitle("Startseite");
+        this._app.setPageCss(css);
+        this._app.setPageContent(this._pageDom);
     }
            /**
            * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
@@ -87,10 +87,14 @@ class Info {
 
               this._app.datenbank.getAllRecords().forEach(pizza => {
                   let html = templateElement.innerHTML;
+
+//                  html = html.replace("{HREF}", '{pizza.id}');
                   html = html.replace("{ID}", pizza.id);
                   html = html.replace("{IMG}", pizza.img);
                   html = html.replace("{NAME}", pizza.name);
                   html = html.replace("{BESCHR}", pizza.beschr);
+                  html = html.replace("{PREISKLEIN}", pizza.preisKlein);
+                  html = html.replace("{PREISGROSS}", pizza.preisGross);
 
                   mainElement.innerHTML += html;
               });
