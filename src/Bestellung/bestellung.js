@@ -150,17 +150,22 @@ class Bestellung{
             }
         }
 
-        
+
         let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
+        debugger;
+        this._pizzenArray = objectPizzen;
 
         if (korrekt) {
-            this._app.database.savePizza({
+            /* this._app.database.savePizza({
                 "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
                 "pizzen": objectPizzen
-            });
+            }); */
             // zu Bestellungsseite wechseln
             location.hash = "#/Lieferung/";
         }
+
+
+
     }
 }
 
