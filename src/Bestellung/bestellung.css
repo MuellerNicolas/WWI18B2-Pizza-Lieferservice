@@ -4,6 +4,12 @@ p {
     display:inline;
 }
 
+.kasten {
+    border: 1px solid #d0d0d0;
+    background: #f0f0f0;
+    padding: 1em;
+}
+
 #stueck{
     min-width: 11%;
     width: 11%;
