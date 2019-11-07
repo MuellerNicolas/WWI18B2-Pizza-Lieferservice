@@ -93,13 +93,13 @@ class Bestellung{
         target.insertBefore(clonedRow, target.childNodes[laenge]);
 
         //Preis ungültig machen
-        let newP = document.createElement("p");
-        let oldP = document.querySelector("#preis");
+        let newSpan = document.createElement("span");
+        let oldSpan = document.querySelector("#preis");
         let preisParent = document.querySelector("#preisParent");
         let textNode = "Preis kann nicht berechnet werden. Bitte überprüfen Sie, ob alle Angaben gemacht wurden.";
-        newP.textContent = textNode;
-        newP.setAttribute("id", "preis");
-        preisParent.replaceChild(newP, oldP);
+        newSpan.textContent = textNode;
+        newSpan.setAttribute("id", "preis");
+        preisParent.replaceChild(newSpan, oldSpan);
 
     }
 
@@ -163,7 +163,7 @@ class Bestellung{
         let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
         //Speichern des Array in app.js
         this._app._pizzenArray = objectPizzen;
-        this._pizzenArrayLength = objectPizzen.length;
+        this._pizzenArrayLength = parseInt(objectPizzen.length);
 
 
         if (korrekt) {
@@ -180,8 +180,8 @@ class Bestellung{
 
     _gesamtPreisBerechnenUndAusgeben(){
         let pizzaSorte, groesse, stueck, selectedPizzaSorte, selectedGroesse, selectedStueck;
-        let newP = document.createElement("p");
-        let oldP = document.querySelector("#preis");
+        let newSpan = document.createElement("span");
+        let oldSpan = document.querySelector("#preis");
         let preisParent = document.querySelector("#preisParent");
         let textNode;
         let korrekt = true;
@@ -264,13 +264,13 @@ class Bestellung{
             }
         }
         if (korrekt == false){
-            textNode = "Preis kann nicht berechnet werden. Bitte überprüfen Sie, ob alle Angaben gemacht wurden.";
-            newP.textContent = textNode;
+            textNode = "Ihre Angaben sind unvollständig.";
+            newSpan.textContent = textNode;
         } else {
-            newP.textContent = this._app._summe.toFixed(2) + "€";
+            newSpan.textContent = this._app._summe.toFixed(2) + "€";
         }
-        newP.setAttribute("id", "preis");
-        preisParent.replaceChild(newP, oldP);
+        newSpan.setAttribute("id", "preis");
+        preisParent.replaceChild(newSpan, oldSpan);
     }
 
 }

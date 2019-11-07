@@ -1,13 +1,6 @@
 /* Stylesheet für die Klasse Bestellung*/
-p {
-    margin:0px;
+span {
     display:inline;
-}
-
-.kasten {
-    border: 1px solid #d0d0d0;
-    background: #f0f0f0;
-    padding: 1em;
 }
 
 #stueck{
