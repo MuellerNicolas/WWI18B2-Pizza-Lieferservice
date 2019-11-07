@@ -31,17 +31,21 @@ class Bestellung{
         this._pageDom = document.createElement("div");
         this._pageDom.innerHTML = html;
 
-        let buttonAddPizzaFromMenu = this._pageDom.querySelector("#addPizzaFromMenu");
-        buttonAddPizzaFromMenu.addEventListener("click", () => this._onAddPizzaFromMenuClicked());
+        let buttonAddPizza = this._pageDom.querySelector("#addPizza");
+        buttonAddPizza.addEventListener("click", () => this._onAddPizzaClicked());
 
-        let buttonDeletePizzaFromMenu = this._pageDom.querySelector("#deletePizzaFromMenu1");
-        buttonDeletePizzaFromMenu.addEventListener("click", () => this._onDeletePizzaFromMenuClicked());
+        let buttonDeletePizza = this._pageDom.querySelector("#deletePizza1");
+        buttonDeletePizza.addEventListener("click", () => this._onDeletePizzaClicked());
 
-/*
-        let buttonAddPizzaIndividual = this._pageDom.querySelector("#addPizzaIndividual");
-        buttonAddPizzaIndividual.addEventListener("click", () => this._onAddIndividualClicked());
+        let dropdownPizza = this._pageDom.querySelector("#dropdownPizza");
+        dropdownPizza.addEventListener("change", () => this._onDropdownPizzaChanged(dropdownPizza));
+
+/*        let dropdownGroesse = this._pageDom.querySelector("#dropdownGroesse");
+        dropdownGroesse.addEventListener("select", ())=> this._onDropdownGroesseSelected(dropdownGroesse));
+
+        let inputStueck = this._pageDom.querySelector("#stueck");
+        inputStueck.addEventListener("click", ())=> this._onInputStueckClicked());
 */
-
         let buttonOrder = this._pageDom.querySelector("#order");
         buttonOrder.addEventListener("click", () => this._onButtonOrderClicked());
 
@@ -50,13 +54,13 @@ class Bestellung{
         this._app.setPageContent(this._pageDom);
     }
 
-    _onAddPizzaFromMenuClicked(){
+    _onAddPizzaClicked(){
         let new_row_id, base_row_id, new_label_id, base_label_id, base_btn_id, new_btn_id;
 
         //benötigte Elemente auswählen
-        let row = document.querySelector("#auswahlZeileMenu1");
-        let target = document.querySelector("#pizzaFromMenu");
-        let btn = document.querySelector("#deletePizzaFromMenu1");
+        let row = document.querySelector("#auswahlZeile1");
+        let target = document.querySelector("#pizza");
+        let btn = document.querySelector("#deletePizza1");
 
         this.ele_nr = ++this.ele_nr;
 
@@ -73,8 +77,9 @@ class Bestellung{
 
         //Attribute setzen
         clonedRow.setAttribute("id", new_row_id);
-        clonedRow.querySelector("#deletePizzaFromMenu1").setAttribute("id", new_btn_id);
-        clonedRow.querySelector("#deletePizzaFromMenu" + this.ele_nr).addEventListener("click", () => this._onDeletePizzaFromMenuClicked(clonedRow));
+        clonedRow.querySelector("#deletePizza1").setAttribute("id", new_btn_id);
+        clonedRow.querySelector("#deletePizza" + this.ele_nr).addEventListener("click", () => this._onDeletePizzaClicked(clonedRow));
+        clonedRow.querySelector("#dropdownPizza").addEventListener("change", () => this._onDropdownPizzaChanged());
         clonedRow.querySelector("#stueck").value = "0";
 
         //Klon hinzufügen
@@ -88,25 +93,13 @@ class Bestellung{
 
     }
 
-/*    _onAddIndividualClicked() {
-        let row = document.querySelector("#auswahlZeileIndividuell");
-        let target = document.querySelector("#pizzaIndividuell");
-
-        let clonedRow = row.cloneNode(true);
-        let div = document.createElement("div");
-        div.classList.add("large");
-        div.appendChild(clonedRow);
-        row.parentNode.insertBefore(div, row);
-    }
-*/
-
-    _onDeletePizzaFromMenuClicked(clonedRow) {
+    _onDeletePizzaClicked(clonedRow) {
         if(clonedRow == null){
             alert("Die erste Pizza kann aus systemtechnischen Gründen nicht gelöscht werden!")
         } else {
         let id_nr = clonedRow.getAttribute("id").replace(/[a-z]/g, "").replace(/[A-Z]/g, "");
-        let target = document.querySelector("#pizzaFromMenu");
-        let row = document.querySelector("#auswahlZeileMenu" + id_nr);
+        let target = document.querySelector("#pizza");
+        let row = document.querySelector("#auswahlZeile" + id_nr);
         target.removeChild(row);
         }
     }
@@ -121,7 +114,7 @@ class Bestellung{
 
         //Überprüfung, ob alle benötigten Felder ausgefüllt wurden
         for(let i = 1; i <= this.ele_nr; i++) {
-            let row = document.querySelector("#auswahlZeileMenu" + i);
+            let row = document.querySelector("#auswahlZeile" + i);
             if(row == null){
                 continue;
             } else {
@@ -170,6 +163,111 @@ class Bestellung{
 
 
 
+    }
+    _onDropdownPizzaChanged(){
+        let pizzaSorte, groesse, stueck, selectedPizzaSorte, selectedGroesse, selectedStueck;
+        let newP = document.createElement("p");
+        let oldP = document.querySelector("#preis");
+        let preisParent = document.querySelector("#preisParent");
+        let textNode;
+        let korrekt = true;
+
+        for(let i = 1; i <= this.ele_nr; i++) {
+            let row = document.querySelector("#auswahlZeile" + i);
+            if(row == null){
+                continue;
+            } else {
+                pizzaSorte = row.querySelector("#dropdownPizza");
+                groesse = row.querySelector("#dropdownGroesse");
+                stueck = row.querySelector("#stueck");
+
+                selectedPizzaSorte = pizzaSorte.options[pizzaSorte.selectedIndex].text;
+                selectedGroesse = groesse.options[groesse.selectedIndex].text;
+                selectedStueck = stueck.value;
+
+                switch (selectedPizzaSorte) {
+                    case "Waehlen":
+                        break;
+                    case "Margherita":
+                    debugger;
+                        if (selectedStueck != "0" && selectedGroesse =="klein"){
+                            textNode = "" + (parseFloat(this._app.datenbank.getRecordById(1).preisKlein) * parseInt(selectedStueck));
+                        } else if(selectedStueck != "0" && selectedGroesse =="groß"){
+                            textNode = "" + this._app.datenbank.getRecordById(1).preisGross;
+                        } else {
+                            korrekt = false;
+                        }
+                        break;
+                    case "Funghi":
+                        if (selectedStueck != "0" && selectedGroesse =="klein"){
+                            textNode = "" + this._app.datenbank.getRecordById(2).preisKlein;
+                        } else if(selectedStueck != "0" && selectedGroesse =="groß"){
+                            textNode = "" + this._app.datenbank.getRecordById(2).preisGross;
+                        } else {
+                            korrekt = false;
+                        }
+                        break;
+                    case "Vegetariana":
+                        if (selectedStueck != "0" && selectedGroesse =="klein"){
+                            textNode = "" + this._app.datenbank.getRecordById(3).preisKlein;
+                        } else if(selectedStueck != "0" && selectedGroesse =="groß"){
+                            textNode = "" + this._app.datenbank.getRecordById(3).preisGross;
+                        } else {
+                            korrekt = false;
+                        }
+                        break;
+                    case "Napoli":
+                        if (selectedStueck != "0" && selectedGroesse =="klein"){
+                            textNode = "" + this._app.datenbank.getRecordById(4).preisKlein;
+                        } else if(selectedStueck != "0" && selectedGroesse =="groß"){
+                            textNode = "" + this._app.datenbank.getRecordById(4).preisGross;
+                        } else {
+                            korrekt = false;
+                        }
+                        break;
+                    case "Prosciutto":
+                        if (selectedStueck != "0" && selectedGroesse =="klein"){
+                            textNode = "" + this._app.datenbank.getRecordById(5).preisKlein;
+                        } else if(selectedStueck != "0" && selectedGroesse =="groß"){
+                            textNode = "" + this._app.datenbank.getRecordById(5).preisGross;
+                        } else {
+                            korrekt = false;
+                        }
+                        break;
+                    case "Salami":
+                        if (selectedStueck != "0" && selectedGroesse =="klein"){
+                            textNode = "" + this._app.datenbank.getRecordById(6).preisKlein;
+                        } else if(selectedStueck != "0" && selectedGroesse =="groß"){
+                            textNode = "" + this._app.datenbank.getRecordById(6).preisGross;
+                        } else {
+                            korrekt = false;
+                        }
+                        break;
+                }
+            }
+        }
+        if (korrekt == false){
+            textNode = "Preis kann nicht berechnet werden. Bitte überprüfen Sie, ob alle Angaben gemacht wurden.";
+        }
+        newP.textContent = textNode;
+        newP.setAttribute("id", "preis");
+        preisParent.replaceChild(newP, oldP);
+
+    }
+
+    _onDropdownGroesseSelected(){
+        let ausgefüllt = false;
+        let selectedGroesse = groesse.options[groesse.selectedIndex].text;
+
+        return ausgefuellt;
+
+    }
+
+    _onInputStueckClicked(){
+        let ausgefüllt = false;
+        let selectedStueck = stueck.value;
+
+        return ausgefuellt;
     }
 }
 
