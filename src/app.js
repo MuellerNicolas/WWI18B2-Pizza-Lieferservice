@@ -49,7 +49,7 @@ class App {
 
         //Array mit Pizzen der Bestellung
         this._pizzenArray;
-        this._pizzenArrayLenght;
+        this._pizzenArrayLength;
         this._summe = 0;
     }
 
