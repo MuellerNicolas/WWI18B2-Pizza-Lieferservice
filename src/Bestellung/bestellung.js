@@ -157,7 +157,7 @@ class Bestellung{
         //Umwandlung des pizzaarrays in Object (notwendig für Speicherung in Datenbank)
         let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
         //Speichern des Array in app.js
-        this._pizzenArray = objectPizzen;
+        this._app._pizzenArray = objectPizzen;
 
         if (korrekt) {
             /* this._app.database.savePizza({

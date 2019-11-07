@@ -16,6 +16,11 @@ class Lieferung {
      * Seite anzeigen. Wird von der App-Klasse aufgerufen.
      */
     async show(matches) {
+        this._pizzenArray = this._app._pizzenArray;
+        //TODO: Bestellung anzeigen
+
+
+
         //////////////////////////////////
         //       SinglePageNachladen    //
         //////////////////////////////////
@@ -226,11 +231,10 @@ class Lieferung {
                 "plz": formular.plz.value,
                 "ort": formular.ort.value,
                 "strasse": formular.strasse.value,
-                "hausnummer": formular.hausnummer.value
-            },
-            {
-                "pizzen": this._pizzenArray
-            });
+                "hausnummer": formular.hausnummer.value,
+                "pizzen": this._app._pizzenArray
+            }
+            );
 
             //Eingabefelder leeren
             formular.vorname.value = "";
