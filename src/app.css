@@ -20,7 +20,7 @@ html, body {
 
 html {
     font-family: "Rubik", sans-serif;
-    font-size: 14pt;
+    font-size: 12pt;
     line-height: 1.6;
 
     /* https://pixabay.com/photos/ship-boat-lake-sailing-boat-italy-952292/ */
@@ -227,6 +227,14 @@ header .content h6 {
     .small-screen-hidden {
         display: none;
     }
+
+    h1 {
+        font-size: 200%;
+    }
+
+    h3 {
+        font-size: 150%;
+    }
 }
 
 @media (min-width: 40em) {
@@ -266,13 +274,13 @@ main {
 
 main a,
 main a:visited {
-    color: crimson;
+    color: black;
     text-decoration: underline;
-    transition: color 0.25s;
+    transition: color black;
 }
 
 main a:hover {
-    color: red;
+    color: black;
 }
 
 .mittig{

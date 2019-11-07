@@ -1,19 +1,16 @@
 <h1 class="mittig">Bestellung</h1>
-<div class="container-fluid box">
+<div class="container-fluid p-0">
     <div class="row">
         <!-- Linke Seite -->
         <div class="col-md-7 abstand">
-            <div class="container-fluid kasten">
+            <div class="container-fluid kasten m-0">
                 <h3>Pizzen auswählen</h3>
                 <div id="pizza">
                     <div class="row" id="auswahlZeile1">
-                        <div class="col-md-1">
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-1">
                             <button class="btn-sm" id="deletePizza1">
                                     <i class="icon-cancel"></i>
                             </button>
-                        </div>
-                        <div class="col-md-11">
-                            &nbsp
                             Pizza
                             &nbsp
                             <select name="dropdownPizza" id="dropdownPizza">
@@ -25,13 +22,14 @@
                                 <option value="Prosciutto">Prosciutto</option>
                                 <option value="Salami">Salami</option>
                             </select>
-                            &nbsp
-                            &nbsp
+                        </div>
+                        <div class="col-2 col-xs-0">
+                        </div>
+                        <div class="col-10 col-xs-5 col-sm-6 col-md-6 mb-4">
                             <select name="dropdownGroesse" id="dropdownGroesse">
                                 <option value="klein">klein</option>
                                 <option value="gross">groß</option>
                             </select>
-                            &nbsp
                             &nbsp
                             <input id="stueck" type="number" min="0" value="0"> Stück
                         </div>
@@ -40,8 +38,7 @@
                 <div class="row">
                     <div class="col-md-1">
                     </div>
-                    <div class="col-md-11">
-                        &nbsp
+                    <div class="col-12 col-md-11">
                         <button class="btn-sm" id="addPizza"> + Pizza </button>
                     </div>
                 </div>
@@ -50,7 +47,7 @@
 
         <!-- Rechte Seite -->
         <div class="col-md-5 abstand">
-            <div class="container-fluid kasten">
+            <div class="container-fluid kasten m-0">
                 <h3>Preis</h3>
                 <div class="row">
                     <div class="col-md-12" id="preisParent">

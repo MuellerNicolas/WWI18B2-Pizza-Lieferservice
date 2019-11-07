@@ -96,7 +96,7 @@ class Bestellung{
         let newSpan = document.createElement("span");
         let oldSpan = document.querySelector("#preis");
         let preisParent = document.querySelector("#preisParent");
-        let textNode = "Preis kann nicht berechnet werden. Bitte überprüfen Sie, ob alle Angaben gemacht wurden.";
+        let textNode = "Ihre Angaben sind unvollständig.";
         newSpan.textContent = textNode;
         newSpan.setAttribute("id", "preis");
         preisParent.replaceChild(newSpan, oldSpan);
@@ -198,13 +198,11 @@ class Bestellung{
                 selectedGroesse = groesse.options[groesse.selectedIndex].text;
                 selectedStueck = stueck.value;
 
-                debugger;
                 switch (selectedPizzaSorte) {
                     case "Bitte Wählen":
                             korrekt = false;
                         break;
                     case "Margherita":
-                    debugger;
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
                             this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(1).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
