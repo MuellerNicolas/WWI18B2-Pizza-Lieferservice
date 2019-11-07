@@ -8,3 +8,14 @@ span {
     width: 11%;
     max-width: 11%
 }
+/* Layout für Kastenumrandung mit grauem Hintergrund */
+.kasten {
+    border: 1px solid #d0d0d0;
+    background: #f0f0f0;
+    padding: 1em;
+}
+
+@media (min-width: 40em) {
+    .kasten {
+    }
+}
