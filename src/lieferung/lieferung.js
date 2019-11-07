@@ -52,23 +52,9 @@ class Lieferung {
         //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
         if(this._app._summe === 0){
             document.getElementById("rechteSeite").classList.add("unsichtbar");
+        } else{
+            this._bestelluebersichtAnzeigen(this._app);
         }
-        // this._pizzenArray = this._app._pizzenArray;
-        // let anzahlPizzen = this._pizzenArray.length;
-        // debugger;
-        // let pizzaAnzahl = this._app._pizzenArray.length;
-        debugger;
-        let pizzenArray = this._app._pizzenArray.length;
-        let laenge = pizzenArray.length;
-        //Pizzenzahl anzeigen
-        document.getElementById("pizzenzahl").textContent = "" +  laenge;
-        //Gesamtsumme anzeigen
-        document.getElementById("preis").textContent = this._app._summe + "€";
-        // let newP = document.createElement("span");
-        // let pElement = document.getElementById("bestelluebersicht");
-        // let anzahlText = " " + laenge;
-        // newP.textConent = anzahlText;
-        // pElement.replaceChild(newP, oldP);
         //////////////////////////////////
         //         Tracking             //
         //////////////////////////////////
@@ -261,5 +247,27 @@ class Lieferung {
             formular.strasse.value = "";
             formular.hausnummer.value = "";
         }
+    }
+    //////////////////////////////////
+    //  Bestellübersicht anzeigen  //
+    /////////////////////////////////
+    _bestelluebersichtAnzeigen(app){
+        //Gesamtpreis anzeigen
+        let gesamtpreis = document.getElementById("preis");
+        let pElement = document.createElement("p");
+        gesamtpreis.appendChild(pElement);
+        let pContent = document.createTextNode(this._app._summe + "€")
+        pElement.appendChild(pContent);
+
+        //Übersicht der Pizzen anzeigen
+        let pizzenArray = app._pizzenArray;
+        let pizzenliste = document.getElementById("pizzen");
+        //Für jede einzelne Pizza ein neues Dom-baum-Element einfügen
+        pizzenArray.forEach(pizza => {
+                let pElement = document.createElement("p");
+                pizzenliste.appendChild(pElement);
+                let pContent = document.createTextNode(pizza.sorte + " " + pizza.groesse + " " + pizza.stueck + " Stk.")
+                pElement.appendChild(pContent);
+        });
     }
 }

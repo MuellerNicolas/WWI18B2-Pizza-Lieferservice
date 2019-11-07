@@ -163,8 +163,6 @@ class Bestellung{
         let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
         //Speichern des Array in app.js
         this._app._pizzenArray = objectPizzen;
-        this._pizzenArrayLength = parseInt(objectPizzen.length);
-
 
         if (korrekt) {
             // zu Bestellungsseite wechseln

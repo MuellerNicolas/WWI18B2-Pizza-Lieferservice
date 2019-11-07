@@ -22,6 +22,7 @@
 <main>
 </main>
 
+
 <div id="template-tile">
     <div class="tile">
         <a href="{HREF}">
@@ -33,8 +34,8 @@
                 <div class="absatz">
                     {BESCHR} <br />
                 </div>
-                klein: {PREISKLEIN} <br />
-                groß: {PREISGROSS}
+                klein: {PREISKLEIN}€ <br />
+                groß: {PREISGROSS}€
             </div>
         </a>
     </div>
@@ -64,7 +65,7 @@
             Lassen Sie uns gerne Ihr Feedback da, sodass wir uns weiterhin verbessern können.
             Vielen Dank im Voraus!
         </div>
-        
+
         <div class="buttons">
             <button class="btn-lg" type = "button" id="feedback">Feedback abgeben</button>
         </div>
@@ -132,15 +133,19 @@
 <!--Abfrage Sonstiges mit Textfeld -->
             <div class= "row">
                 <div class="col-md-6">
-                    <label for="sonstiges">
+                    <label for="sonstiges" >
                         Sonstiges:
                     </label>
                 </div>
                 <div class="col-md-6">
-                    <input name="sonstiges" type="text"/>
+                    <input name="sonstiges" id="sonstiges" type="text"/>
                 </div>
             </div>
-            <div id="ergebnis"></div>
+            <div class= "row">
+                <div class="col-md-12">
+                    <label class="warning" for="ergebnis" id="ergebnis"> </label>
+                </div>
+            </div>
 <!--Button zum Absenden des Feedback-Bogens -->
             <div class="row">
                 <form>
