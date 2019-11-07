@@ -53,10 +53,10 @@ class Info {
         });
 
 //Klick-Event für Kacheln, um auf Bestellen-Seite zu kommen
-        let kachelKlick = this._pageDom.querySelector("#test");
+        /*let kachelKlick = this._pageDom.querySelector("#test");
                kachelKlick.addEventListener("click", () => {
                location.hash = "#/Bestellung/";
-        });
+        });*/
 
         let feedbackContainer = this._pageDom.querySelector("#feedback-container");
         let feedbackButton = this._pageDom.querySelector("#feedback");
@@ -100,7 +100,7 @@ class Info {
               this._app.datenbank.getAllRecords().forEach(pizza => {
                   let html = templateElement.innerHTML;
 
-                  html = html.replace("{HREF}", `#/Bestellung/${pizza.id}`);
+                  html = html.replace("{HREF}", `#/Bestellung/`);
                   html = html.replace("{ID}", pizza.id);
                   html = html.replace("{IMG}", pizza.img);
                   html = html.replace("{NAME}", pizza.name);
