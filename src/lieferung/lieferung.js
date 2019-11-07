@@ -60,9 +60,11 @@ class Lieferung {
         debugger;
         let pizzenArray = this._app._pizzenArray.length;
         let laenge = pizzenArray.length;
+        //Pizzenzahl anzeigen
+        document.getElementById("pizzenzahl").textContent = "" +  laenge;
+        //Gesamtsumme anzeigen
+        document.getElementById("preis").textContent = this._app._summe + "€";
         // let newP = document.createElement("span");
-        let oldP = document.getElementById("pizzenzahl");
-        oldP.textContent = "" +  laenge;
         // let pElement = document.getElementById("bestelluebersicht");
         // let anzahlText = " " + laenge;
         // newP.textConent = anzahlText;
