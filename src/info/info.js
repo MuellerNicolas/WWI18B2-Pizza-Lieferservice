@@ -10,12 +10,19 @@ class Info {
      */
     constructor(app) {
         this._app = app;
+//kann evtl raus
+//        this._recordId = -1;
+//        this._data = null;
     }
 
     /**
      * Seite anzeigen. Wird von der App-Klasse aufgerufen.
      */
     async show() {
+        // URL-Parameter auswerten
+//        this._recordId = matches[1];
+//        this._data = this._app.database.getRecordById(this._recordId);
+
         // Anzuzeigenden Seiteninhalt nachladen
         let html = await fetch("info/info.html");
         let css = await fetch("info/info.css");
@@ -38,16 +45,18 @@ class Info {
 //            location.hash = "#/Bestellung/";
 //        });
 
+
+//Klick-Event für den Bestellen-Button
         let bestellenButton = this._pageDom.querySelector("#bestellen");
         bestellenButton.addEventListener("click", () => {
             location.hash = "#/Bestellung/";
         });
 
-//        let kachelKlick = this._pageDom.querySelector("#{ID}");
-//        {ID}.addEventListener("click", () => {
-//            location.hash = "#/Bestellung/";
-//        });
-
+//Klick-Event für Kacheln, um auf Bestellen-Seite zu kommen
+        let kachelKlick = this._pageDom.querySelector("#test");
+               kachelKlick.addEventListener("click", () => {
+               location.hash = "#/Bestellung/";
+        });
 
         let feedbackContainer = this._pageDom.querySelector("#feedback-container");
         let feedbackButton = this._pageDom.querySelector("#feedback");
@@ -98,7 +107,7 @@ class Info {
               this._app.datenbank.getAllRecords().forEach(pizza => {
                   let html = templateElement.innerHTML;
 
-//                  html = html.replace("{HREF}", '{pizza.id}');
+                  html = html.replace("{HREF}", `#/Bestellung/${pizza.id}`);
                   html = html.replace("{ID}", pizza.id);
                   html = html.replace("{IMG}", pizza.img);
                   html = html.replace("{NAME}", pizza.name);
@@ -107,6 +116,63 @@ class Info {
                   html = html.replace("{PREISGROSS}", pizza.preisGross);
 
                  mainElement.innerHTML += html;
+
+
               });
           }
+
+    //Feedbackeinträge prüfen und in Datenbank Speichern
+    _onFeedbackSubmitClicked(event) {
+        let feedback = event.target;
+        let korrekt = true;
+        let ausgabe = "";
+
+        // Geschmack muss angegeben sein
+        if (feedback.dropdownGeschmack.value != "Wahelen") {
+            korrekt = false;
+            ausgabe += "Bitte Bewerten Sie den Geschmack. <br />";
+        }
+        // Bestellvorgang muss bewertet sein
+        if (feedback.dropdownBestellvorgang.value != "Wahelen") {
+            korrekt = false;
+            ausgabe += "Bitte Bewerten Sie den Bestellvorgang. <br />";
+        }
+        // Bestellvorgang muss bewertet sein
+        if (feedback.dropdownLieferung.value != "Wahelen") {
+            korrekt = false;
+            ausgabe += "Bitte Bewerten Sie die Lieferung. <br />";
+        }
+
+        // Ergebnis anzeigen
+        let ergebnisElement = document.getElementById("ergebnis");
+
+        if (korrekt) {
+            ausgabe = "Vielen Dank für Ihr Feedback";
+            ergebnisElement.classList.add("korrekt");
+        } else {
+            ergebnisElement.classList.remove("korrekt");
+        }
+
+        ergebnisElement.innerHTML = ausgabe;
+
+        event.preventDefault();
+
+        if(korrekt){
+
+            //////////////////////////////////
+            //   GoogleFirebase speichern   //
+            //////////////////////////////////
+            this._app.database.saveFeedback({
+                // "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
+                "dropdownGeschmack": feedback.dropdownGeschmack.value,
+                "dropdownBestellvorgang": feedback.dropdownBestellvorgang.value,
+                "dropdownLieferung": feedback.dropdownLieferung.value,
+                "sonstiges": feedback.sonstiges.value,
+            },
+            {
+                "feedback": this._feedbackArray
+            });
+
+        }
+    }
 }

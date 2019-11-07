@@ -78,11 +78,12 @@ class Bestellung{
         clonedRow.querySelector("#stueck").value = "0";
 
         //Klon hinzufügen
-        let tempObj=target.lastChild;
+        /*let tempObj=target.lastChild;
         while(tempObj.nodeType!=1 && tempObj.previousSibling!=null){
             tempObj=tempObj.previousSibling;
-        }
-        target.insertBefore(clonedRow, tempObj);
+        }*/
+        let laenge = target.childNodes.length
+        target.insertBefore(clonedRow, target.childNodes[laenge]);
 
 
     }

@@ -53,16 +53,16 @@
     margin-right: 30%;
     padding: 20px;
     box-sizing: border-box;
-    margin-top: 5pt;
+/*    margin-top: 5pt; */
 }
 
 .auswahl{
-    margin-top: 3em;
+    margin-top: 5em;
     margin-bottom: 3em;
 }
 
 .abfrageFeedback{
-    margin-top: 5em;
+    margin-top: 15em;
     margin-right: 30%;
     padding: 20px;
 }
@@ -95,7 +95,7 @@ form {
 }
 
 .title{
-    font-size:20pt;
+    font-size:25pt;
     font-weight:bold;
     font-family:arial,
 }

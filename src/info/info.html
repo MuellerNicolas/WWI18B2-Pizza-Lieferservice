@@ -24,30 +24,35 @@
 
 <div id="template-tile">
     <div class="tile">
-        <a id="{ID}">
-            <img src="{IMG}" alt="" />
-            <div class= title>
-                {NAME} <br />
+        <div id= "test">
+            <div id="{ID}">
+                <img src="{IMG}" alt="" />
+                <div class= title>
+                    {NAME} <br />
+                </div>
+                <div class="absatz">
+                    {BESCHR} <br />
+                </div>
+                klein: {PREISKLEIN} <br />
+                groß: {PREISGROSS}
             </div>
-            <div class="absatz">
-                {BESCHR} <br />
-            </div>
-            klein: {PREISKLEIN} <br />
-            groß: {PREISGROSS}
-        </a>
+        </div>
     </div>
 </div>
 
+<div>
+    <div class="auswahl">
+        <br />
+        <div class="title">Hunger?</div>
+        <div class="text-size">
+            Kein Problem! Hier geht's zur Bestellung!
+        </div>
 
-<div class="auswahl">
-    <div class="title">Hunger?</div>
-    <div class="text-size">
-        Kein Problem! Hier geht's zur Bestellung!
-    </div>
-    <div class="buttons">
-        <form>
-            <button class="btn-lg" type = "button" id="bestellen">Pizza bestellen</button>
-        </form>
+        <div class= "buttons">
+            <form>
+                <button class="btn-lg" type = "button" id="bestellen">Pizza bestellen</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -60,7 +65,7 @@
             Vielen Dank im Voraus!
         </div>
     </div>
-    <div class="buttons"
+    <div class="buttons">
         <form>
             <button class="btn-lg" type = "button" id="feedback">Feedback abgeben</button>
         </form>
@@ -68,9 +73,9 @@
 </div>
 
 <!--Feedback-Container -->
-<div id="feedback-container" class="conatiner hidden">
+<div id="feedback-container" class="conatiner-fluid box">
     <div class="zentrieren">
-        <form id="formular">
+        <form id="feedback">
 <!--Überschrift -->
             <div class="row">
                 <div class="col">
@@ -136,6 +141,7 @@
                     <input name="sonstiges" type="text"/>
                 </div>
             </div>
+            <div id="ergebnis"></div>
 <!--Button zum Absenden des Feedback-Bogens -->
             <div class="row">
                 <form>
