@@ -13,7 +13,12 @@
     justify-content: center;
 
     transition: transform 0.5s, background 0.5s;
-    transform: scale(1);
+    transform: scale(1);+
+
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .tile img {
@@ -71,6 +76,13 @@
     color: red;
 }
 
+.zentriert  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Layout für das Formular */
 form {
@@ -115,4 +127,19 @@ form {
     font-size:16pt;
     font-weight:bold;
     font-family:arial,
+}
+
+@media (min-width: 50em) {
+    .page-heading {
+        display: flex;
+    }
+
+    .boat-info .field {
+        display: inline-block;
+        padding-right: 5em;
+    }
+    .buttons{
+        width: 100%;
+    }
+
 }
