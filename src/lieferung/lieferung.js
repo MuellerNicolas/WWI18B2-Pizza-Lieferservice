@@ -266,7 +266,7 @@ class Lieferung {
         pizzenArray.forEach(pizza => {
                 let pElement = document.createElement("p");
                 pizzenliste.appendChild(pElement);
-                let pContent = document.createTextNode(pizza.sorte + " " + pizza.groesse + " " + pizza.stueck + " Stk.")
+                let pContent = document.createTextNode(pizza.stueck + "x " + pizza.sorte + " " + pizza.groesse)
                 pElement.appendChild(pContent);
         });
     }
