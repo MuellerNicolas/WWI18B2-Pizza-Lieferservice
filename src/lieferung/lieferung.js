@@ -58,14 +58,15 @@ class Lieferung {
         // debugger;
         // let pizzaAnzahl = this._app._pizzenArray.length;
         debugger;
-        let pizzenArray = this._app._pizzenArray;
+        let pizzenArray = this._app._pizzenArray.length;
         let laenge = pizzenArray.length;
-        let newP = document.createElement("p");
+        // let newP = document.createElement("span");
         let oldP = document.getElementById("pizzenzahl");
-        let pElement = document.getElementById("bestelluebersicht");
-        let anzahlText = " " + laenge;
-        newP.textConent = anzahlText;
-        pElement.replaceChild(newP, oldP);
+        oldP.textContent = "" +  laenge;
+        // let pElement = document.getElementById("bestelluebersicht");
+        // let anzahlText = " " + laenge;
+        // newP.textConent = anzahlText;
+        // pElement.replaceChild(newP, oldP);
         //////////////////////////////////
         //         Tracking             //
         //////////////////////////////////
