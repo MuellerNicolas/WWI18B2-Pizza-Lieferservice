@@ -48,7 +48,7 @@ class App {
         this._ele_nr = 1;
 
         //Array mit Pizzen der Bestellung
-        this._pizzenArray = new Array;
+        this._pizzenArray;
     }
 
     run() {

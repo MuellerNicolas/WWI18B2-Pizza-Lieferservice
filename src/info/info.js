@@ -52,11 +52,6 @@ class Info {
             location.hash = "#/Bestellung/";
         });
 
-//Klick-Event für Kacheln, um auf Bestellen-Seite zu kommen
-        /*let kachelKlick = this._pageDom.querySelector("#test");
-               kachelKlick.addEventListener("click", () => {
-               location.hash = "#/Bestellung/";
-        });*/
 
         let feedbackContainer = this._pageDom.querySelector("#feedback-container");
         let feedbackButton = this._pageDom.querySelector("#feedback");
@@ -68,6 +63,14 @@ class Info {
 
         let sendenButton = this._pageDom.querySelector("#senden");
         sendenButton.addEventListener("click", () => {
+            // Nicolas hinzugefügt:
+            // dropdownGeschmack = document.getElementById("dropdownGeschmack").value;
+            //     this._app.database.saveFeedback({
+            //     "geschmack": dropdownGeschmack,
+            //
+            // });
+            //Nicolas Ende
+            _onButtonFeedbackClicked();
             feedbackButton.classList.remove("hidden");
             feedbackContainer.classList.add("hidden");
             alert("Vielen Dank für Ihr Feedback!");
@@ -110,62 +113,51 @@ class Info {
 
                  mainElement.innerHTML += html;
 
-
               });
+              //Vorlageelement für Schleife aus dem DOM-Baum entfernen
+              templateElement.parentNode.removeChild(templateElement);
           }
 
-    //Feedbackeinträge prüfen und in Datenbank Speichern
-    _onFeedbackSubmitClicked(event) {
-        let feedback = event.target;
-        let korrekt = true;
-        let ausgabe = "";
+          _onButtonFeedbackClicked(){
+              let korrekt = true;
+              let ausgabe = "";
+              let geschmack, bestellung, lieferung, sonstiges;
+              let selectedGeschmack, selectedBestellung, selectedLieferung, textSonstiges;
 
-        // Geschmack muss angegeben sein
-        if (feedback.dropdownGeschmack.value != "Wahelen") {
-            korrekt = false;
-            ausgabe += "Bitte Bewerten Sie den Geschmack. <br />";
-        }
-        // Bestellvorgang muss bewertet sein
-        if (feedback.dropdownBestellvorgang.value != "Wahelen") {
-            korrekt = false;
-            ausgabe += "Bitte Bewerten Sie den Bestellvorgang. <br />";
-        }
-        // Bestellvorgang muss bewertet sein
-        if (feedback.dropdownLieferung.value != "Wahelen") {
-            korrekt = false;
-            ausgabe += "Bitte Bewerten Sie die Lieferung. <br />";
-        }
+                      geschmack = row.querySelector("#dropdownGeschmack");
+                      bestellung = row.querySelector("#dropdownBestellvorgang");
+                      lieferung = row.querySelector("#dropdownLieferung");
+                      sonstiges = row.querySelector("#sonstiges");
 
-        // Ergebnis anzeigen
-        let ergebnisElement = document.getElementById("ergebnis");
+                      selectedGeschmack = geschmack.options[geschmack.selectedIndex].text;
+                      selectedBestellung = bestellung.options[bestellung.selectedIndex].text;
+                      selectedLieferung = lieferung.options[lieferung.selectedIndex].text;
+                      textSonstiges = sonstiges.value;
 
-        if (korrekt) {
-            ausgabe = "Vielen Dank für Ihr Feedback";
-            ergebnisElement.classList.add("korrekt");
-        } else {
-            ergebnisElement.classList.remove("korrekt");
-        }
+                      // Pizzasorte muss angegeben sein
+                      if ( selectedGeschmack == "Bitte Ausählen") {
+                          korrekt = false;
+                          alert("Bitte bewerten Sie den Geschmack.");
+                      }
+                      // Stueckzahl muss angegeben sein
+                      else if ( selectedBestellung == "Bitte Ausählen") {
+                          korrekt = false;
+                          alert("Bitte bewerten Sie den Bestllvorgang.");
+                      }
+                      else if( selectedLieferung == "Bitte Ausählen") {
+                          korrekt = false;
+                          alert("Bitte bewerten Sie die Lieferung.");
+                      }
 
-        ergebnisElement.innerHTML = ausgabe;
+                      if (korrekt) {
+                          this._app.database.saveFeedback({
+                              "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
+                              "geschmack": selectedGeschmack,
+                              "bestellung": selectedBestellung,
+                              "lieferung": selectedLieferung,
+                              "sonstiges": sonstiges.value,
+                          });
+                      }
+            }
 
-        event.preventDefault();
-
-        if(korrekt){
-
-            //////////////////////////////////
-            //   GoogleFirebase speichern   //
-            //////////////////////////////////
-            this._app.database.saveFeedback({
-                // "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
-                "dropdownGeschmack": feedback.dropdownGeschmack.value,
-                "dropdownBestellvorgang": feedback.dropdownBestellvorgang.value,
-                "dropdownLieferung": feedback.dropdownLieferung.value,
-                "sonstiges": feedback.sonstiges.value,
-            },
-            {
-                "feedback": this._feedbackArray
-            });
-
-        }
-    }
 }
