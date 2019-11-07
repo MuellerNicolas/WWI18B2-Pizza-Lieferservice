@@ -49,6 +49,8 @@ class App {
 
         //Array mit Pizzen der Bestellung
         this._pizzenArray;
+        this._pizzenArrayLength;
+        this._summe = 0;
     }
 
     run() {

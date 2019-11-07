@@ -16,11 +16,6 @@ class Lieferung {
      * Seite anzeigen. Wird von der App-Klasse aufgerufen.
      */
     async show(matches) {
-        this._pizzenArray = this._app._pizzenArray;
-        //TODO: Bestellung anzeigen
-
-
-
         //////////////////////////////////
         //       SinglePageNachladen    //
         //////////////////////////////////
@@ -51,7 +46,29 @@ class Lieferung {
         if(this._app._bestellt ===true){        //nach erfolgter Bestellung den Bestellbutton ausblenden
             document.getElementById("bestellbestätigung").classList.add("unsichtbar");
         }
-
+        //////////////////////////////////
+        //      Bestellübersicht        //
+        //////////////////////////////////
+        //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
+        if(this._app._summe === 0){
+            document.getElementById("rechteSeite").classList.add("unsichtbar");
+        }
+        // this._pizzenArray = this._app._pizzenArray;
+        // let anzahlPizzen = this._pizzenArray.length;
+        // debugger;
+        // let pizzaAnzahl = this._app._pizzenArray.length;
+        debugger;
+        let pizzenArray = this._app._pizzenArray.length;
+        let laenge = pizzenArray.length;
+        //Pizzenzahl anzeigen
+        document.getElementById("pizzenzahl").textContent = "" +  laenge;
+        //Gesamtsumme anzeigen
+        document.getElementById("preis").textContent = this._app._summe + "€";
+        // let newP = document.createElement("span");
+        // let pElement = document.getElementById("bestelluebersicht");
+        // let anzahlText = " " + laenge;
+        // newP.textConent = anzahlText;
+        // pElement.replaceChild(newP, oldP);
         //////////////////////////////////
         //         Tracking             //
         //////////////////////////////////
