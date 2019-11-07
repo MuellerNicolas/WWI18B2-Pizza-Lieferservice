@@ -117,8 +117,9 @@ class Info {
 
                  mainElement.innerHTML += html;
 
-
               });
+              //Vorlageelement für Schleife aus dem DOM-Baum entfernen
+              templateElement.parentNode.removeChild(templateElement);
           }
 
     //Feedbackeinträge prüfen und in Datenbank Speichern
