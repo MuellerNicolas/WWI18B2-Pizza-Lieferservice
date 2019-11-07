@@ -89,7 +89,7 @@ class Bestellung{
         while(tempObj.nodeType!=1 && tempObj.previousSibling!=null){
             tempObj=tempObj.previousSibling;
         }*/
-        let laenge = target.childNodes.length
+        let laenge = target.childNodes.length;
         target.insertBefore(clonedRow, target.childNodes[laenge]);
 
         //Preis ungültig machen
@@ -202,6 +202,7 @@ class Bestellung{
                 selectedGroesse = groesse.options[groesse.selectedIndex].text;
                 selectedStueck = stueck.value;
 
+                debugger;
                 switch (selectedPizzaSorte) {
                     case "Bitte Wählen":
                             korrekt = false;
@@ -209,54 +210,54 @@ class Bestellung{
                     case "Margherita":
                     debugger;
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(1).preisKlein) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(1).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(1).preisGross) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(1).preisGross) * Number(selectedStueck));
                         } else {
                             korrekt = false;
                         }
                         break;
                     case "Funghi":
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(2).preisKlein) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(2).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(2).preisGross) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(2).preisGross) * Number(selectedStueck));
                         } else {
                             korrekt = false;
                         }
                         break;
                     case "Vegetariana":
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(3).preisKlein) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(3).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(3).preisGross) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(3).preisGross) * Number(selectedStueck));
                         } else {
                             korrekt = false;
                         }
                         break;
                     case "Napoli":
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(4).preisKlein) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(4).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(4).preisGross) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(4).preisGross) * Number(selectedStueck));
                         } else {
                             korrekt = false;
                         }
                         break;
                     case "Prosciutto":
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(5).preisKlein) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(5).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(5).preisGross) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(5).preisGross) * Number(selectedStueck));
                         } else {
                             korrekt = false;
                         }
                         break;
                     case "Salami":
                         if (selectedStueck != "0" && selectedGroesse =="klein"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(6).preisKlein) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(6).preisKlein) * Number(selectedStueck));
                         } else if(selectedStueck != "0" && selectedGroesse =="groß"){
-                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(6).preisGross) * parseInt(selectedStueck));
+                            this._app._summe = this._app._summe + (Number(this._app.datenbank.getRecordById(6).preisGross) * Number(selectedStueck));
                         } else {
                             korrekt = false;
                         }
@@ -268,7 +269,7 @@ class Bestellung{
             textNode = "Preis kann nicht berechnet werden. Bitte überprüfen Sie, ob alle Angaben gemacht wurden.";
             newP.textContent = textNode;
         } else {
-            newP.textContent = this._app._summe;
+            newP.textContent = this._app._summe.toFixed(2) + "€";
         }
         newP.setAttribute("id", "preis");
         preisParent.replaceChild(newP, oldP);

@@ -1,5 +1,8 @@
 /* Stylesheet für die Klasse Bestellung*/
-
+p {
+    margin:0px;
+    display:inline;
+}
 
 #stueck{
     min-width: 11%;
