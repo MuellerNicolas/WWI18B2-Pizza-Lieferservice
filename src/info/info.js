@@ -63,6 +63,13 @@ class Info {
 
         let sendenButton = this._pageDom.querySelector("#senden");
         sendenButton.addEventListener("click", () => {
+            // Nicolas hinzugefügt:
+            // dropdownGeschmack = document.getElementById("dropdownGeschmack").value;
+            //     this._app.database.saveFeedback({
+            //     "geschmack": dropdownGeschmack,
+            //
+            // });
+            //Nicolas Ende
             feedbackButton.classList.remove("hidden");
             feedbackContainer.classList.add("hidden");
             alert("Vielen Dank für Ihr Feedback!");
@@ -105,8 +112,9 @@ class Info {
 
                  mainElement.innerHTML += html;
 
-
               });
+              //Vorlageelement für Schleife aus dem DOM-Baum entfernen
+              templateElement.parentNode.removeChild(templateElement);
           }
 
           _onButtonOrderClicked(){
