@@ -40,11 +40,6 @@ class Info {
         this._pageDom.innerHTML = html;
         this._renderPizzaTiles(this._pageDom);
 
-//        let kreierenButton = this._pageDom.querySelector("#kreieren");
-//        kreierenButton.addEventListener("click", () => {
-//            location.hash = "#/Bestellung/";
-//        });
-
 
 //Klick-Event für den Bestellen-Button
         let bestellenButton = this._pageDom.querySelector("#bestellen");
@@ -56,11 +51,16 @@ class Info {
         let feedbackContainer = this._pageDom.querySelector("#feedback-container");
         let feedbackButton = this._pageDom.querySelector("#feedback");
 
+//Formular ist zu Beginn hidden
+        feedbackContainer.classList.add("hidden");
+
+//mit Klick auf den Feedback-Button wird das Formular angezeigt
         feedbackButton.addEventListener("click", () => {
             feedbackButton.classList.add("hidden");
             feedbackContainer.classList.remove("hidden");
         });
 
+//Button-Listener für den Feedback-Senden-Button
         let sendenButton = this._pageDom.querySelector("#senden");
         sendenButton.addEventListener("click", () => {
             // Nicolas hinzugefügt:
@@ -70,12 +70,11 @@ class Info {
             //
             // });
             //Nicolas Ende
-            _onButtonFeedbackClicked();
-            feedbackButton.classList.remove("hidden");
-            feedbackContainer.classList.add("hidden");
-            alert("Vielen Dank für Ihr Feedback!");
-        });
+            this._onButtonFeedbackClicked();
+            feedbackButton.classList.add("hidden");
 
+
+        });
 
         function button_click(id) {
 	           if (feedback-container.getElementById(id).checked == true) {
@@ -114,39 +113,45 @@ class Info {
                  mainElement.innerHTML += html;
 
               });
-              //Vorlageelement für Schleife aus dem DOM-Baum entfernen
+//Vorlageelement für Schleife aus dem DOM-Baum entfernen
               templateElement.parentNode.removeChild(templateElement);
           }
 
+//Methode für das Auslesen der ausgewählten Drop-Down-Menüs und Aufnahme in der Datenbank
           _onButtonFeedbackClicked(){
               let korrekt = true;
               let ausgabe = "";
-              let geschmack, bestellung, lieferung, sonstiges;
+              let geschmack, bestellung, lieferung, sonstiges, ergebnis;
               let selectedGeschmack, selectedBestellung, selectedLieferung, textSonstiges;
+              //let feedback = document.querySelector("#feedback");
 
-                      geschmack = row.querySelector("#dropdownGeschmack");
-                      bestellung = row.querySelector("#dropdownBestellvorgang");
-                      lieferung = row.querySelector("#dropdownLieferung");
-                      sonstiges = row.querySelector("#sonstiges");
+                    ergebnis= document.querySelector("#ergebnis");
+                      geschmack = document.querySelector("#dropdownGeschmack");
+                      bestellung = document.querySelector("#dropdownBestellvorgang");
+                      lieferung = document.querySelector("#dropdownLieferung");
+                      sonstiges = document.querySelector("#sonstiges");
+                     let feedbackContainer= document.querySelector("#feedback-container");
+                     let feedbackButton= document.querySelector("#senden");
 
                       selectedGeschmack = geschmack.options[geschmack.selectedIndex].text;
                       selectedBestellung = bestellung.options[bestellung.selectedIndex].text;
                       selectedLieferung = lieferung.options[lieferung.selectedIndex].text;
                       textSonstiges = sonstiges.value;
-
+debugger;
                       // Pizzasorte muss angegeben sein
-                      if ( selectedGeschmack == "Bitte Ausählen") {
+                      if ( selectedGeschmack == "Bitte Auswählen") {
                           korrekt = false;
-                          alert("Bitte bewerten Sie den Geschmack.");
+//                          ergebnis.setText("Bitte bewerten Sie den Geschmack");
+                          ergebnis.textContent = "Ihr Feedback kann nicht gesendet werden. Bitte bewerten Sie den Geschmack!";
                       }
                       // Stueckzahl muss angegeben sein
-                      else if ( selectedBestellung == "Bitte Ausählen") {
+                      else if ( selectedBestellung == "Bitte Auswählen") {
                           korrekt = false;
-                          alert("Bitte bewerten Sie den Bestllvorgang.");
+                          ergebnis.textContent = "Ihr Feedback kann nicht gesendet werden. Bitte bewerten Sie den Bestellvorgang!";
                       }
-                      else if( selectedLieferung == "Bitte Ausählen") {
+                      else if( selectedLieferung == "Bitte Auswählen") {
                           korrekt = false;
-                          alert("Bitte bewerten Sie die Lieferung.");
+                          ergebnis.textContent = "Ihr Feedback kann nicht gesendet werden. Bitte bewerten Sie die Lieferung!"
                       }
 
                       if (korrekt) {
@@ -157,7 +162,16 @@ class Info {
                               "lieferung": selectedLieferung,
                               "sonstiges": sonstiges.value,
                           });
+                          
+//wenn alle Eingaben korrekt sind: Bedanken für das Feedback mit pop-up
+                          alert("Vielen Dank für Ihr Feedback!");
+
+/* Container wird nach Ausfüllen des Formulars wieder hidden gemacht. Feedback kann auch nur 1x ausgewählt werden.
+der Button zum Auswählen bleibt auf hidden und dadurch kann das Formular auch nicht wieder angezeigt werden um
+Mehrfach-Sendung von Feedbacks zu vermeiden. */
+                          feedbackContainer.classList.add("hidden");
                       }
+
             }
 
 }

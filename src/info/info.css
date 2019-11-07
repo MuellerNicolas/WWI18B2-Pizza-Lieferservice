@@ -66,6 +66,11 @@
     padding: 20px;
 }
 
+.warning{
+    font-family: arial;
+    color: red;
+}
+
 
 /* Layout für das Formular */
 form {
