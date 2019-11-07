@@ -70,6 +70,7 @@ class Info {
             //
             // });
             //Nicolas Ende
+            _onButtonFeedbackClicked();
             feedbackButton.classList.remove("hidden");
             feedbackContainer.classList.add("hidden");
             alert("Vielen Dank für Ihr Feedback!");
@@ -117,7 +118,7 @@ class Info {
               templateElement.parentNode.removeChild(templateElement);
           }
 
-          _onButtonOrderClicked(){
+          _onButtonFeedbackClicked(){
               let korrekt = true;
               let ausgabe = "";
               let geschmack, bestellung, lieferung, sonstiges;
@@ -143,7 +144,7 @@ class Info {
                           korrekt = false;
                           alert("Bitte bewerten Sie den Bestllvorgang.");
                       }
-                      else if ( selectedLieferung == "Bitte Ausählen") {
+                      else if( selectedLieferung == "Bitte Ausählen") {
                           korrekt = false;
                           alert("Bitte bewerten Sie die Lieferung.");
                       }
@@ -151,10 +152,10 @@ class Info {
                       if (korrekt) {
                           this._app.database.saveFeedback({
                               "id": "" + Math.random() * 1000000,     //eindeutige ID für die Pizza
-                              "geschmack": geschmack,
-                              "bestellung": bestellung,
-                              "lieferung": lieferung,
-                              "sonstiges": sonstiges,
+                              "geschmack": selectedGeschmack,
+                              "bestellung": selectedBestellung,
+                              "lieferung": selectedLieferung,
+                              "sonstiges": sonstiges.value,
                           });
                       }
             }
