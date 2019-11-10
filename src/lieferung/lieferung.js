@@ -39,9 +39,17 @@ class Lieferung {
         formElement.addEventListener("submit", event => this._onFormSubmitClicked(event));  //Ohne anonyme Funktion mit _onFormSubmitClicked würde er hier
                                                                                             //als das this Element das Formularelement ansehen, wodruch nicht auf _app zugegriffen werden kann
 
+
         this._app.setPageTitle("Lieferung verfolgen", {isSubPage: true});
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
+
+        //Trackingbutton Funktion registrieren, Sichtbarmachen des Countdowns und Bildes
+        let trackbutton = document.getElementById("startCountdown");
+        trackbutton.addEventListener("click", () => {
+            document.getElementById("countdown").classList.remove("unsichtbar");
+            document.getElementById("statusDiv").classList.remove("unsichtbar");
+        });
 
         if(this._app._bestellt ===true){        //nach erfolgter Bestellung den Bestellbutton ausblenden
             document.getElementById("bestellbestätigung").classList.add("unsichtbar");
@@ -69,18 +77,10 @@ class Lieferung {
 
         //Variablen Anzeige
         let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde
-        let letztesUpdate = 0;
+        let letztesUpdate = this._app._letztesUpdate;
 
         buttonStart.addEventListener("click", () => {
-            if(this.status === false && this.bestellt === true){
-                this.status = true;         //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
-                this._app._status = this.status;
-                this.aktiv = true;          //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
-                this._app._aktiv = this.aktiv;
-                letztesUpdate = Date.now();
-                this._app._zaehler = zaehlerInitial;
-                window.requestAnimationFrame(countdownAktualisieren);
-            }
+
         });
 
         //Ständiges aktualisieren des Displays
@@ -246,8 +246,21 @@ class Lieferung {
             formular.ort.value = "";
             formular.strasse.value = "";
             formular.hausnummer.value = "";
+
+            //Countdown starten
+            // if(this.status === false && this.bestellt === true){
+                // this.status = true;         //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
+                // this._app._status = this.status;
+            this.aktiv = true;          //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
+            this._app._aktiv = this.aktiv;
+            this._app._letztesUpdate = Date.now();
+            this._app._zaehler = 1800000
+            this.show();
+                // window.requestAnimationFrame(countdownAktualisieren);
+            // }
         }
     }
+
     //////////////////////////////////
     //  Bestellübersicht anzeigen  //
     /////////////////////////////////
