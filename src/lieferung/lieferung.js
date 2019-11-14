@@ -5,9 +5,8 @@ class Lieferung {
      */
     constructor (app) {
         this._app = app;
+        //Variablen des Countdowns
         this.zaehler = app._zaehler;
-        //Verhindern Race Condition im Countdown:
-        this.status = app._status;
         this.bestellt = app.bestellt;
         this.aktiv = app.aktiv;
     }
@@ -35,15 +34,22 @@ class Lieferung {
         this._pageDom = document.createElement("div");
         this._pageDom.innerHTML = html;
 
+        // Registrierung Abschicken Button des Bestellformulars
         let formElement = this._pageDom.querySelector("form");
-        formElement.addEventListener("submit", event => this._onFormSubmitClicked(event));  //Ohne anonyme Funktion mit _onFormSubmitClicked würde er hier
-                                                                                            //als das this Element das Formularelement ansehen, wodruch nicht auf _app zugegriffen werden kann
-
+        formElement.addEventListener("submit", event => this._onFormSubmitClicked(event));
 
         this._app.setPageTitle("Lieferung verfolgen", {isSubPage: true});
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
 
+        // Formularanzeige & Ausgabebereich der Formularprüfung
+        if(this._app._ausgabe != "") {
+            if(this._app._bestellt === true) {
+                document.getElementById("linkeSeite").classList.add("unsichtbar");
+                document.getElementById("ergebnis").classList.add("korrekt");
+            }
+            document.getElementById("ergebnis").innerHTML = this._app._ausgabe;
+        }
         //Trackingbutton Funktion registrieren, Sichtbarmachen des Countdowns und Bildes
         let trackbutton = document.getElementById("startCountdown");
         trackbutton.addEventListener("click", () => {
@@ -51,9 +57,6 @@ class Lieferung {
             document.getElementById("statusDiv").classList.remove("unsichtbar");
         });
 
-        if(this._app._bestellt ===true){        //nach erfolgter Bestellung den Bestellbutton ausblenden
-            document.getElementById("bestellbestätigung").classList.add("unsichtbar");
-        }
         //////////////////////////////////
         //      Bestellübersicht        //
         //////////////////////////////////
@@ -63,30 +66,24 @@ class Lieferung {
         } else{
             this._bestelluebersichtAnzeigen(this._app);
         }
+
         //////////////////////////////////
         //         Tracking             //
         //////////////////////////////////
-
         //Variablen
         let countdown = document.getElementById("countdown");
-        let buttonStart = document.getElementById("startCountdown");
         let statusBild = document.getElementById("statusBild");
         let statusText = document.getElementById("statusText")
         let bestellStatus = "";
         let bestellStatusGeaendert;
 
         //Variablen Anzeige
-        let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde
+        let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde -> also eine halbe Stunde
         let letztesUpdate = this._app._letztesUpdate;
-
-        buttonStart.addEventListener("click", () => {
-
-        });
-
         //Ständiges aktualisieren des Displays
         let countdownAktualisieren = () => {
             let zaehler = this._app._zaehler;
-            //Performanceboost: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
+            //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
                 return;
             }
@@ -108,13 +105,13 @@ class Lieferung {
 
             //Anpassung des Ausgabeformats
             let sekunden = parseInt((zaehler/1000)%60)
-            , minuten = parseInt((zaehler/(1000*60))%60);
+            let minuten = parseInt((zaehler/(1000*60))%60);
             if (minuten < 10) {
                 minuten = "0" + minuten + " Minuten "
             } else {
                 minuten = minuten + " Minuten "
             }
-            if (sekunden < 10){
+            if (sekunden < 10) {
                 sekunden = "0" + sekunden + " Sekunden"
             } else {
                 sekunden = sekunden + " Sekunden"
@@ -125,15 +122,15 @@ class Lieferung {
             countdown.textContent = zaehlerFormat;
 
             //Abfrage zum aktualisieren des Bildes
-            //Um nicht dauerhaft das Bild zu aktualisieren erfolgt,
+            //Um nicht dauerhaft das Bild zu aktualisieren, erfolgt
             //die Aktualisierung nur wenn der Bestellungsstatus geändert wurde
-            if(zaehler == 0){
+            if(zaehler == 0) {
                 bestellStatus = "zugestellt";
                 bestellStatusGeaendert = true;
-            }else if(zaehler < (zaehlerInitial * (2/3))){  //nach 1/3 der Zeit erfolgt die Zustellung
+            } else if(zaehler < (zaehlerInitial * (2/3))) {  //nach 1/3 der Zeit erfolgt die Zustellung
                 bestellStatus = "in_Zustellung";
                 bestellStatusGeaendert = true;
-            } else if(zaehler < zaehlerInitial){
+            } else if(zaehler < zaehlerInitial) {
                 bestellStatus = "in_Zubereitung";
                 bestellStatusGeaendert = true;
             }
@@ -173,48 +170,57 @@ class Lieferung {
         let korrekt = true;
         let ausgabe = "";
 
-        // Vorname muss angegeben sein
-        if (formular.vorname.value == "") {
+        // Bestellung ohne ausgewählte Pizzen verhindern
+        if (this._app._summe === 0){
             korrekt = false;
-            ausgabe += "Bitte geben Sie ihren Vornamen ein. <br />";
-        }
-        // Nachname muss angegeben sein
-        if (formular.nachname.value == "") {
-            korrekt = false;
-            ausgabe += "Bitte geben Sie ihren Nachnamen ein. <br />";
-        }
-        // Postleitzahl muss angegeben sein
-        if (formular.plz.value == "" || formular.plz.value.toString().length != 5) {
-            korrekt = false;
-            ausgabe += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
-        }
-        // Ort muss angegeben sein
-        if (formular.ort.value == "") {
-            korrekt = false;
-            ausgabe += "Bitte geben Sie einen korrekten Ort ein. <br />";
-        }
-        // Straße muss angegeben sein
-        if (formular.strasse.value == "") {
-            korrekt = false;
-            ausgabe += "Bitte geben Sie eine korrekte Straße ein. <br />";
-        }
-        // Hausnummer muss angegeben sein
-        if (formular.hausnummer.value == "") {
-            korrekt = false;
-            ausgabe += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
-        }
-        // Ergebnis anzeigen
-        let ergebnisElement = document.getElementById("ergebnis");
-
-        if (korrekt) {
-            ausgabe = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
-            ergebnisElement.classList.add("korrekt");
+            ausgabe += "Bitte wählen Sie unter \"Bestellung\" Ihre gewünschten Pizzen aus!";
         } else {
-            ergebnisElement.classList.remove("korrekt");
+            // Vorname muss angegeben sein
+            if (formular.vorname.value == "") {
+                korrekt = false;
+                ausgabe += "Bitte geben Sie ihren Vornamen ein. <br />";
+            }
+            // Nachname muss angegeben sein
+            if (formular.nachname.value == "") {
+                korrekt = false;
+                ausgabe += "Bitte geben Sie ihren Nachnamen ein. <br />";
+            }
+            // Postleitzahl muss angegeben sein
+            if (formular.plz.value == "" || formular.plz.value.toString().length != 5) {
+                korrekt = false;
+                ausgabe += "Bitte geben Sie eine korrekte Postleitzahl ein. <br />";
+            } else if (formular.plz.value != 76133 ){
+                korrekt = false;
+                ausgabe += "Lieferung leider nur nach 76133 Karlsruhe Innenstadt-West möglich! <br />";
+            }
+            // Ort muss angegeben sein
+            if (formular.ort.value == "") {
+                korrekt = false;
+                ausgabe += "Bitte geben Sie einen korrekten Ort ein. <br />";
+            }
+            // Straße muss angegeben sein
+            if (formular.strasse.value == "") {
+                korrekt = false;
+                ausgabe += "Bitte geben Sie eine korrekte Straße ein. <br />";
+            }
+            // Hausnummer muss angegeben sein
+            if (formular.hausnummer.value == "") {
+                korrekt = false;
+                ausgabe += "Bitte geben Sie eine korrekte Hausnummer ein. <br />";
+            }
+            // Ergebnis anzeigen
+            let ergebnis = document.getElementById("ergebnis");
+            if (korrekt) {
+                ausgabe = "Vielen Dank für Ihre Bestellung! </br> Sie können ihre Lieferung nun tracken.";
+                ergebnis.classList.add("korrekt");
+            } else {
+                ergebnis.classList.remove("korrekt");
+            }
         }
+        ergebnis.innerHTML = ausgabe;
+        this._app._ausgabe = ausgabe;
 
-        ergebnisElement.innerHTML = ausgabe;
-
+        //Verhindern des Absendes
         event.preventDefault();
 
         if(korrekt){
@@ -248,16 +254,11 @@ class Lieferung {
             formular.hausnummer.value = "";
 
             //Countdown starten
-            // if(this.status === false && this.bestellt === true){
-                // this.status = true;         //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
-                // this._app._status = this.status;
             this.aktiv = true;          //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
             this._app._aktiv = this.aktiv;
             this._app._letztesUpdate = Date.now();
             this._app._zaehler = 1800000
             this.show();
-                // window.requestAnimationFrame(countdownAktualisieren);
-            // }
         }
     }
 
@@ -275,7 +276,7 @@ class Lieferung {
         //Übersicht der Pizzen anzeigen
         let pizzenArray = app._pizzenArray;
         let pizzenliste = document.getElementById("pizzen");
-        //Für jede einzelne Pizza ein neues Dom-baum-Element einfügen
+        //Für jede einzelne Pizza ein neues Dombaum-Element einfügen
         pizzenArray.forEach(pizza => {
                 let pElement = document.createElement("p");
                 pizzenliste.appendChild(pElement);

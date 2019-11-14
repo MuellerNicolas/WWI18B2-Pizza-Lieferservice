@@ -44,6 +44,7 @@ class App {
         this._bestellt = false;
         this._aktiv = false;
         this._letztesUpdate = 0;
+        this._ausgabe = "";
         //Variable für dynamische Bezeichnung der Reihen
         this._ele_nr = 1;
 
