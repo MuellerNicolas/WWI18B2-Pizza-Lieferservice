@@ -45,7 +45,7 @@ class Lieferung {
         // Formularanzeige & Ausgabebereich der Formularprüfung
         if(this._app._ausgabe != "") {
             if(this._app._bestellt === true) {
-                document.getElementById("linkeSeite").classList.add("unsichtbar");
+                document.getElementById("linkeSeite").classList.add("hidden");
                 document.getElementById("ergebnis").classList.add("korrekt");
             }
             document.getElementById("ergebnis").innerHTML = this._app._ausgabe;
@@ -53,8 +53,8 @@ class Lieferung {
         //Trackingbutton Funktion registrieren, Sichtbarmachen des Countdowns und Bildes
         let trackbutton = document.getElementById("startCountdown");
         trackbutton.addEventListener("click", () => {
-            document.getElementById("countdown").classList.remove("unsichtbar");
-            document.getElementById("statusDiv").classList.remove("unsichtbar");
+            document.getElementById("countdown").classList.remove("hidden");
+            document.getElementById("statusDiv").classList.remove("hidden");
         });
 
         //////////////////////////////////
@@ -62,7 +62,7 @@ class Lieferung {
         //////////////////////////////////
         //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
         if(this._app._summe === 0){
-            document.getElementById("rechteSeite").classList.add("unsichtbar");
+            document.getElementById("rechteSeite").classList.add("hidden");
         } else{
             this._bestelluebersichtAnzeigen(this._app);
         }
@@ -238,7 +238,7 @@ class Lieferung {
             this._app._bestellt = this.bestellt;
 
             //nach erfolgter Bestellung den Bestellbutton ausblenden
-            document.getElementById("bestellbestätigung").classList.add("unsichtbar");
+            document.getElementById("bestellbestätigung").classList.add("hidden");
 
             //////////////////////////////////
             //   GoogleFirebase speichern   //

@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
 }
+
 /* Layout für Kastenumrandung mit grauem Hintergrund */
 .kasten {
     border: 1px solid #d0d0d0;
@@ -11,9 +12,11 @@
     padding: 1em;
 }
 
-input{
+/* Rechteckige Form */
+input {
     width:100%;
 }
+
 /* Ausblenden der Pfeile in Eingabefelder vom Typ number */
 /* Gängige Browser und Chrome */
 input::-webkit-outer-spin-button,
@@ -26,17 +29,21 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
-.abstand{
+.abstand {
     margin-top: 1em;
 }
 
-.unsichtbar{
-    display: none !important;
-}
-
-#ergebnis{
+/* Formularprüfungsergebnis */
+#ergebnis {
     color: red;
 }
-#ergebnis.korrekt{
+#ergebnis.korrekt {
     color: green;
+}
+
+/* Bestellbutton */
+#bestellbestätigung {
+    margin-top: 1em;
+    background-color: rgb(17, 68, 121);
+    color: white;
 }
