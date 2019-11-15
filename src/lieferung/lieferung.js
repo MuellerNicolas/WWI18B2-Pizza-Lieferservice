@@ -82,11 +82,12 @@ class Lieferung {
         let letztesUpdate = this._app._letztesUpdate;
         //Ständiges aktualisieren des Displays
         let countdownAktualisieren = () => {
+            debugger;
             let zaehler = this._app._zaehler;
             //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
                 //zugestellt setzen
-                statusBild.src = "pics/haus.png";
+                statusBild.src = "/lieferung/pics/haus.png";
                 statusText.textContent = "Zugestellt";
                 bestellStatusGeaendert = false;
                 return;
@@ -148,17 +149,17 @@ class Lieferung {
             if(bestellStatusGeaendert === true){
                 switch (bestellStatus) {
                     case "in_Zubereitung":
-                        statusBild.src = "pics/zubereitung_koch.png";
+                        statusBild.src = "/lieferung/pics/zubereitung_koch.png";
                         statusText.textContent = "In Zubereitung";
                         bestellStatusGeaendert = false;
                         break;
                         case "in_Zustellung":
-                        statusBild.src = "pics/lieferant.png";
+                        statusBild.src = "/lieferung/pics/lieferant.png";
                         statusText.textContent = "In Zustellung";
                         bestellStatusGeaendert = false;
                         break;
                     case "zugestellt":
-                        statusBild.src = "pics/haus.png";
+                        statusBild.src = "/lieferung/pics/haus.png";
                         statusText.textContent = "Zugestellt";
                         bestellStatusGeaendert = false;
                         countdown.textContent = "";
