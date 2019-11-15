@@ -23,7 +23,6 @@ html {
     font-size: 12pt;
     line-height: 1.6;
 
-    /* https://pixabay.com/photos/ship-boat-lake-sailing-boat-italy-952292/ */
     background-color: black;
     background-image: url(background.jpg);
     background-size: cover;
@@ -100,7 +99,6 @@ body {
 /* Allgemeine Darstellung der Menüzeile */
 header {
     --text-color: white;
-    /* --icon-color: rgb(0, 90, 115); */
     --icon-color: white;
 }
 header nav {
