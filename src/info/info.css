@@ -60,8 +60,8 @@
 }
 
 .auswahl{
-    margin-top: 5em;
-    margin-bottom: 3em;
+/*    margin-top: 5em;
+    margin-bottom: 3em; */
     padding: 20px;
 }
 
@@ -71,10 +71,10 @@
     padding: 20px;
 }
 
-.warning{
+/*.warning{
     font-family: arial;
     color: red;
-}
+} */
 
 .zentriert  {
     display: flex;
@@ -111,18 +111,18 @@ form {
 }
 
 .title{
-    font-size:25pt;
+    magrgin-top: 100pt;
     font-weight:bold;
     font-family:arial,
     padding-left: 10pt;
 }
 
-.text-size{
+/* .text-size{
     font-size:25pt;
     font-family: arial;
     padding-left: 10pt;
 }
-
+*/
 .text-pizza-name{
     font-size:16pt;
     font-weight:bold;
