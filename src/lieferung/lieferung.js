@@ -82,7 +82,6 @@ class Lieferung {
         let letztesUpdate = this._app._letztesUpdate;
         //Ständiges aktualisieren des Displays
         let countdownAktualisieren = () => {
-            debugger;
             let zaehler = this._app._zaehler;
             //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
