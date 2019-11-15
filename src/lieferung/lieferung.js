@@ -85,6 +85,10 @@ class Lieferung {
             let zaehler = this._app._zaehler;
             //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
+                //zugestellt setzen
+                statusBild.src = "pics/haus.png";
+                statusText.textContent = "Zugestellt";
+                bestellStatusGeaendert = false;
                 return;
             }
             //Zeitpunkt
@@ -104,18 +108,23 @@ class Lieferung {
             }
 
             //Anpassung des Ausgabeformats
-            let sekunden = parseInt((zaehler/1000)%60)
+            let sekunden = parseInt((zaehler/1000)%60);
             let minuten = parseInt((zaehler/(1000*60))%60);
-            if (minuten < 10) {
-                minuten = "0" + minuten + " Minuten "
+            if (minuten === 0) {
+                minuten = "";
             } else {
-                minuten = minuten + " Minuten "
+                if (minuten < 10) {
+                    minuten = "0" + minuten + " Minuten ";
+                } else {
+                    minuten = minuten + " Minuten ";
+                }
             }
             if (sekunden < 10) {
-                sekunden = "0" + sekunden + " Sekunden"
+                sekunden = "0" + sekunden + " Sekunden";
             } else {
-                sekunden = sekunden + " Sekunden"
+                sekunden = sekunden + " Sekunden";
             }
+
             let zaehlerFormat = minuten + sekunden;
 
             //Countdown anzeigen
@@ -152,6 +161,7 @@ class Lieferung {
                         statusBild.src = "pics/haus.png";
                         statusText.textContent = "Zugestellt";
                         bestellStatusGeaendert = false;
+                        countdown.textContent = "";
                         break;
                 }
             }
