@@ -183,7 +183,10 @@ class Bestellung{
 
     }
     _onChanged(){
+        let ausgabe = "";
         this._gesamtPreisBerechnenUndAusgeben();
+        ergebnis.innerHTML = ausgabe;
+
     }
 
     _gesamtPreisBerechnenUndAusgeben(){

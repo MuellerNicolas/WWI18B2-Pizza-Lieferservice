@@ -67,7 +67,7 @@ class App {
         this._handleRouting();
     }
 
-    toggleHamburgerMenu() {
+    toggleHamburgerMenu(event) {
         // Menü ein- oder ausblenden
         let menuList = document.querySelector("header nav .menu-right");
 
@@ -75,6 +75,12 @@ class App {
             menuList.classList.remove("small-screen-hidden");
         } else {
             menuList.classList.add("small-screen-hidden");
+        }
+
+        // Weitere Behandlung des Click-Events unterbinden, da wir hier keine
+        // neue Seite anfordern wollen.
+        if (event) {
+            event.preventDefault();
         }
     }
 
