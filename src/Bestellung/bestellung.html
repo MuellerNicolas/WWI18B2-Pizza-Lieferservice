@@ -1,73 +1,75 @@
-<h1 class="mittig">Bestellung</h1>
-<div class="container-fluid">
-    <div class="row">
-        <!-- Linke Seite -->
-        <div class="col-md-7">
-            <div class="container-fluid kasten">
-                <h3>Pizzen auswählen</h3>
-                <div id="pizza">
-                    <div class="row bottom-buffer" id="auswahlZeile1">
-                        <div class="col-md-6">
-                            <button class="btn-sm" id="deletePizza1">
-                                    <i class="icon-cancel"></i>
-                            </button>
-                            Pizza
-                            &nbsp
-                            <select name="dropdownPizza" id="dropdownPizza">
-                                <option value="Bitte Wählen">Bitte Wählen</option>
-                                <option value="Margherita">Margherita</option>
-                                <option value="Funghi">Funghi</option>
-                                <option value="Vegetariana">Vegetariana</option>
-                                <option value="Napoli">Napoli</option>
-                                <option value="Prosciutto">Prosciutto</option>
-                                <option value="Salami">Salami</option>
-                            </select>
+<div id="save">
+    <h1 class="mittig">Bestellung</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Linke Seite -->
+            <div class="col-md-7">
+                <div class="container-fluid kasten">
+                    <h3>Pizzen auswählen</h3>
+                    <div id="pizza">
+                        <div class="row bottom-buffer" id="auswahlZeile1">
+                            <div class="col-md-6">
+                                <button class="btn-sm" id="deletePizza1">
+                                        <i class="icon-cancel"></i>
+                                </button>
+                                Pizza
+                                &nbsp
+                                <select name="dropdownPizza" id="dropdownPizza">
+                                    <option value="Bitte Wählen">Bitte Wählen</option>
+                                    <option value="Margherita">Margherita</option>
+                                    <option value="Funghi">Funghi</option>
+                                    <option value="Vegetariana">Vegetariana</option>
+                                    <option value="Napoli">Napoli</option>
+                                    <option value="Prosciutto">Prosciutto</option>
+                                    <option value="Salami">Salami</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="dropdownGroesse" id="dropdownGroesse">
+                                    <option value="klein">klein</option>
+                                    <option value="groß">groß</option>
+                                </select>
+                                &nbsp
+                                <input id="stueck" type="number" min="0" value="0"> Stück
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <select name="dropdownGroesse" id="dropdownGroesse">
-                                <option value="klein">klein</option>
-                                <option value="gross">groß</option>
-                            </select>
-                            &nbsp
-                            <input id="stueck" type="number" min="0" value="0"> Stück
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-11">
+                            <button class="btn-sm" id="addPizza"> + Pizza </button>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-11">
-                        <button class="btn-sm" id="addPizza"> + Pizza </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="ergebnis"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="ergebnis"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Rechte Seite -->
-        <div class="col-md-5">
-            <div class="container-fluid kasten">
-                <h3>Preis</h3>
-                <div class="row">
-                    <div class="col-md-12" id="preisParent">
-                        <span id="preis">
-                            Ihre Angaben sind unvollständig.
-                        </span>
+            <!-- Rechte Seite -->
+            <div class="col-md-5">
+                <div class="container-fluid kasten">
+                    <h3>Preis</h3>
+                    <div class="row">
+                        <div class="col-md-12" id="preisParent">
+                            <span id="preis">
+                                Ihre Angaben sind unvollständig.
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Unterer Bereich -->
-    <div class="row">
-        <div class="col-md-10">
-        </div>
-        <div class="col-md-2">
-            <button  class="btn-sm" id="order"> Bestellen </button>
+        <!-- Unterer Bereich -->
+        <div class="row">
+            <div class="col-md-10">
+            </div>
+            <div class="col-md-2">
+                <button  class="btn-sm" id="order"> Bestellen </button>
+            </div>
         </div>
     </div>
 </div>

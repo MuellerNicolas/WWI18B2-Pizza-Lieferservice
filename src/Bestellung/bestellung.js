@@ -16,6 +16,7 @@ class Bestellung{
      */
     async show(matches) {
         // Anzuzeigenden Seiteninhalt nachladen
+
         let html = await fetch("bestellung/bestellung.html");
         let css = await fetch("bestellung/bestellung.css");
 
@@ -29,7 +30,13 @@ class Bestellung{
 
         // Seite zur Anzeige bringen
         this._pageDom = document.createElement("div");
-        this._pageDom.innerHTML = html;
+        this._pageDom.setAttribute("id", "save");
+
+        if (typeof this._app._daten === "undefined"){
+            this._pageDom.innerHTML = html;
+        } else {
+            this._pageDom.innerHTML = this._app._daten;
+        }
 
         let buttonAddPizza = this._pageDom.querySelector("#addPizza");
         buttonAddPizza.addEventListener("click", () => this._onAddPizzaClicked());
@@ -52,6 +59,22 @@ class Bestellung{
         this._app.setPageTitle("Bestellung aufgeben", {isSubPage: true});
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
+
+        let array = JSON.parse(sessionStorage.getItem("daten"));
+        if (typeof array === "undefined"){
+            //do nothing
+        } else {
+            for(let i = 0; i < array.length;  i++){
+                let row = document.querySelector("#auswahlZeile" + (i+1));
+                if(row == null){
+                    continue;
+                } else {
+                    row.querySelector("#dropdownPizza").value = array[i].sorte;
+                    row.querySelector("#dropdownGroesse").value = array[i].groesse;
+                    row.querySelector("#stueck").value = array[i].stueck;
+                }
+            }
+        }
     }
 
     _onAddPizzaClicked(){
@@ -101,9 +124,12 @@ class Bestellung{
         newSpan.setAttribute("id", "preis");
         preisParent.replaceChild(newSpan, oldSpan);
 
+        this._saveSession();
+        this._app._daten = document.querySelector("#save").innerHTML;
     }
 
     _onDeletePizzaClicked(clonedRow) {
+        debugger;
         if(clonedRow == null){
             alert("Die erste Pizza kann aus systemtechnischen Gründen nicht gelöscht werden!")
         } else {
@@ -114,6 +140,8 @@ class Bestellung{
         }
         this._gesamtPreisBerechnenUndAusgeben();
 
+        this._app._daten = document.querySelector("#save").innerHTML;
+        this._saveSession();
     }
 
     _onButtonOrderClicked(){
@@ -178,15 +206,14 @@ class Bestellung{
             // zu Bestellungsseite wechseln
             location.hash = "#/Lieferung/";
         }
-
-
-
     }
+
     _onChanged(){
         let ausgabe = "";
         this._gesamtPreisBerechnenUndAusgeben();
         ergebnis.innerHTML = ausgabe;
 
+        this._saveSession();
     }
 
     _gesamtPreisBerechnenUndAusgeben(){
@@ -280,6 +307,37 @@ class Bestellung{
         }
         newSpan.setAttribute("id", "preis");
         preisParent.replaceChild(newSpan, oldSpan);
+    }
+
+    _saveSession(){
+        let zaehler = 0;
+        let daten = new Array;
+        let pizzaSorte, groesse, stueck, selectedPizzaSorte, selectedGroesse, selectedStueck;
+        //Sessionspeicherung
+
+        for(let i = 1; i <= this.ele_nr; i++) {
+            let row = document.querySelector("#auswahlZeile" + i);
+            if(row == null){
+                continue;
+            } else {
+                pizzaSorte = row.querySelector("#dropdownPizza");
+                groesse = row.querySelector("#dropdownGroesse");
+                stueck = row.querySelector("#stueck");
+
+                selectedPizzaSorte = pizzaSorte.options[pizzaSorte.selectedIndex].text;
+                selectedGroesse = groesse.options[groesse.selectedIndex].text;
+                selectedStueck = stueck.value;
+
+                let p = new Pizza;
+                p.sorte = selectedPizzaSorte;
+                p.groesse = selectedGroesse;
+                p.stueck = selectedStueck;
+                daten[i-1] = p;
+            }
+        }
+        sessionStorage.clear();
+        sessionStorage.setItem("daten", JSON.stringify(daten));
+        console.log(JSON.parse(sessionStorage.getItem("daten")));
     }
 
 }

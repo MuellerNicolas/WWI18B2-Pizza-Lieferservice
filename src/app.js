@@ -51,6 +51,9 @@ class App {
         //Array mit Pizzen der Bestellung
         this._pizzenArray;
         this._summe = 0;
+
+        //Daten in der Session speichern
+        this._daten;
     }
 
     run() {
