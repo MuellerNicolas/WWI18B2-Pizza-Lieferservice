@@ -72,6 +72,10 @@ class Bestellung{
                     row.querySelector("#dropdownPizza").value = array[i].sorte;
                     row.querySelector("#dropdownGroesse").value = array[i].groesse;
                     row.querySelector("#stueck").value = array[i].stueck;
+
+                    if(i != 0){
+                    row.querySelector("#deletePizza" + (i+1)).addEventListener("click", () => this._onDeletePizzaClicked(row));
+                    }
                 }
             }
         }
@@ -140,8 +144,8 @@ class Bestellung{
         }
         this._gesamtPreisBerechnenUndAusgeben();
 
-        this._app._daten = document.querySelector("#save").innerHTML;
         this._saveSession();
+        this._app._daten = document.querySelector("#save").innerHTML;
     }
 
     _onButtonOrderClicked(){
