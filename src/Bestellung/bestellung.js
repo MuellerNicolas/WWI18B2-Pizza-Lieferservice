@@ -123,6 +123,7 @@ class Bestellung{
         let selectedPizzaSorte, selectedGroesse, selectedStueck;
         let pizzen = new Array;
         let zaehler = 0;
+        let popUp = false;
 
         //Überprüfung, ob alle benötigten Felder ausgefüllt wurden
         for(let i = 1; i <= this.ele_nr; i++) {
@@ -141,12 +142,18 @@ class Bestellung{
                 // Pizzasorte muss angegeben sein
                 if ( selectedPizzaSorte == "Bitte Wählen") {
                     korrekt = false;
-                    alert("Bitte geben Sie die gewünschte Pizzasorte an.");
+                    if (popUp == false){
+                        ausgabe = "<br> Bitte geben Sie die gewünschte Pizzasorte an.";
+                        popUp = true;
+                    }
                 }
                 // Stueckzahl muss angegeben sein
                 else if ( selectedStueck == "0") {
                     korrekt = false;
-                    alert("Bitte geben Sie die gewünschte Stückzahl an.");
+                    if (popUp == false){
+                        ausgabe = "<br> Bitte geben Sie die gewünschte Stückzahl an.";
+                        popUp = true;
+                    }
                 } else {
                     //Speichern der Pizzadaten in einem Array
                     let p = new Pizza;
@@ -159,8 +166,11 @@ class Bestellung{
             }
         }
 
+        ergebnis.innerHTML = ausgabe;
+
         //Umwandlung des pizzaarrays in Object (notwendig für Speicherung in Datenbank)
         let objectPizzen = pizzen.map((obj)=> {return Object.assign({}, obj)})
+
         //Speichern des Array in app.js
         this._app._pizzenArray = objectPizzen;
 

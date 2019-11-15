@@ -280,7 +280,7 @@ class Lieferung {
         let gesamtpreis = document.getElementById("preis");
         let pElement = document.createElement("p");
         gesamtpreis.appendChild(pElement);
-        let pContent = document.createTextNode(this._app._summe + "€")
+        let pContent = document.createTextNode(this._app._summe.toFixed(2) + "€")
         pElement.appendChild(pContent);
 
         //Übersicht der Pizzen anzeigen
