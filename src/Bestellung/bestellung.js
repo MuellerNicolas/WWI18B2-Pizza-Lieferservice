@@ -8,7 +8,6 @@ class Bestellung{
      */
     constructor (app) {
         this._app = app;
-        //this.ele_nr = app._ele_nr;
     }
 
     /**
@@ -37,6 +36,7 @@ class Bestellung{
             this._pageDom.innerHTML = this._app._daten;
         }
 
+        // Listener hinzufügen
         let buttonAddPizza = this._pageDom.querySelector("#addPizza");
         buttonAddPizza.addEventListener("click", () => this._onAddPizzaClicked());
 
@@ -59,6 +59,7 @@ class Bestellung{
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
 
+        //notwendiger Code, um Daten, die in sessionStorage gespeichert sind, zu laden
         if (sessionStorage.length == 0){
             //do nothing
         } else {
@@ -84,6 +85,10 @@ class Bestellung{
         }
     }
 
+    /**
+    * Die Methode wird ausgeführt, sobald man auf den "+ Pizza"-Button drückt
+    * Die Methode fügt eine weitere html-Zeile automatisch hinzu, um eine weitere Pizza auswählen zu können
+    */
     _onAddPizzaClicked(){
         let new_row_id, base_row_id, new_label_id, base_label_id, base_btn_id, new_btn_id;
 
@@ -114,11 +119,6 @@ class Bestellung{
         clonedRow.querySelector("#stueck").addEventListener("change", ()=> this._onChanged());
         clonedRow.querySelector("#stueck").value = "0";
 
-        //Klon hinzufügen
-        /*let tempObj=target.lastChild;
-        while(tempObj.nodeType!=1 && tempObj.previousSibling!=null){
-            tempObj=tempObj.previousSibling;
-        }*/
         let laenge = target.childNodes.length;
         target.insertBefore(clonedRow, target.childNodes[laenge]);
 
@@ -136,6 +136,10 @@ class Bestellung{
 
     }
 
+    /**
+    * Die Methode wird ausgeführt, sobald man auf den Löschen-Button drückt.
+    * Die Methode löscht die entsprechende Pizza in der auswahlZeile
+    */
     _onDeletePizzaClicked(clonedRow) {
         if(clonedRow == null){
             alert("Die erste Pizza kann aus systemtechnischen Gründen nicht gelöscht werden!")
@@ -151,6 +155,10 @@ class Bestellung{
         this._app._daten = document.querySelector("#app-main-area").innerHTML;
     }
 
+    /**
+    * Die Methode wird ausgeführt, sobald man auf den "Bestellen"-Button drückt
+    * Die Methode speichert die eingegebenen Daten und wechelt zur Lieferungsseite
+    */
     _onButtonOrderClicked(){
         let korrekt = true;
         let ausgabe = "";
@@ -215,14 +223,19 @@ class Bestellung{
         }
     }
 
+    /**
+    * Die Methode wird ausgeführt, sobald ein Parameter in der Pizzabestellung geändert wird (Sorte, Größe, Stückzahl).
+    * Die Methode ruft die Methode zur Berechnung des Preises aufgeben
+    */
     _onChanged(){
-        //let ausgabe = "";
         this._gesamtPreisBerechnenUndAusgeben();
-        //ergebnis.innerHTML = ausgabe;
 
         this._saveSession();
     }
 
+    /**
+    * Die Methode berechnet des Preis anhand der angegeben Parameter (Sorte, Größe, Stückzahl)
+    */
     _gesamtPreisBerechnenUndAusgeben(){
         let pizzaSorte, groesse, stueck, selectedPizzaSorte, selectedGroesse, selectedStueck;
         let newSpan = document.createElement("span");
@@ -316,11 +329,13 @@ class Bestellung{
         preisParent.replaceChild(newSpan, oldSpan);
     }
 
+    /**
+    * Die Methode speichert die Daten in der Session, sodass auch nach Tabwechsel darauf zurgegriffen werden kann
+    */
     _saveSession(){
         let zaehler = 0;
         let daten = new Array;
         let pizzaSorte, groesse, stueck, selectedPizzaSorte, selectedGroesse, selectedStueck;
-        //Sessionspeicherung
 
         for(let i = 1; i <= this._app._ele_nr; i++) {
             let row = document.querySelector("#auswahlZeile" + i);
