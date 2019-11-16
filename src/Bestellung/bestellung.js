@@ -8,7 +8,7 @@ class Bestellung{
      */
     constructor (app) {
         this._app = app;
-        this.ele_nr = app._ele_nr;
+        //this.ele_nr = app._ele_nr;
     }
 
     /**
@@ -29,8 +29,8 @@ class Bestellung{
         }
 
         // Seite zur Anzeige bringen
+        debugger;
         this._pageDom = document.createElement("div");
-        this._pageDom.setAttribute("id", "save");
 
         if (typeof this._app._daten === "undefined"){
             this._pageDom.innerHTML = html;
@@ -75,6 +75,10 @@ class Bestellung{
 
                     if(i != 0){
                     row.querySelector("#deletePizza" + (i+1)).addEventListener("click", () => this._onDeletePizzaClicked(row));
+                    row.querySelector("#dropdownPizza").addEventListener("click", () => this._onChanged());
+                    row.querySelector("#dropdownGroesse").addEventListener("click", () => this._onChanged());
+                    row.querySelector("#stueck").addEventListener("click", () => this._onChanged());
+                    this._gesamtPreisBerechnenUndAusgeben();
                     }
                 }
             }
@@ -89,15 +93,15 @@ class Bestellung{
         let target = document.querySelector("#pizza");
         let btn = document.querySelector("#deletePizza1");
 
-        this.ele_nr = ++this.ele_nr;
+        this._app._ele_nr = ++this._app._ele_nr;
 
         //dynamische id für die ganze Zeile
         base_row_id = row.getAttribute("id").replace(/[0-9]/g, "");
-        new_row_id = base_row_id + this.ele_nr;
+        new_row_id = base_row_id + this._app._ele_nr;
 
         //dynamische id für Löschbutton bei Pizza von Menu
         base_btn_id = btn.getAttribute("id").replace(/[0-9]/g, "");
-        new_btn_id = base_btn_id + this.ele_nr;
+        new_btn_id = base_btn_id + this._app._ele_nr;
 
         //Klon erstellen
         var clonedRow = row.cloneNode(true);
@@ -105,7 +109,7 @@ class Bestellung{
         //Attribute setzen
         clonedRow.setAttribute("id", new_row_id);
         clonedRow.querySelector("#deletePizza1").setAttribute("id", new_btn_id);
-        clonedRow.querySelector("#deletePizza" + this.ele_nr).addEventListener("click", () => this._onDeletePizzaClicked(clonedRow));
+        clonedRow.querySelector("#deletePizza" + this._app._ele_nr).addEventListener("click", () => this._onDeletePizzaClicked(clonedRow));
         clonedRow.querySelector("#dropdownPizza").addEventListener("change", () => this._onChanged());
         clonedRow.querySelector("#dropdownGroesse").addEventListener("change", ()=> this._onChanged());
         clonedRow.querySelector("#stueck").addEventListener("change", ()=> this._onChanged());
@@ -129,11 +133,11 @@ class Bestellung{
         preisParent.replaceChild(newSpan, oldSpan);
 
         this._saveSession();
-        this._app._daten = document.querySelector("#save").innerHTML;
+        this._app._daten = document.querySelector("#app-main-area").innerHTML;
+
     }
 
     _onDeletePizzaClicked(clonedRow) {
-        debugger;
         if(clonedRow == null){
             alert("Die erste Pizza kann aus systemtechnischen Gründen nicht gelöscht werden!")
         } else {
@@ -145,7 +149,7 @@ class Bestellung{
         this._gesamtPreisBerechnenUndAusgeben();
 
         this._saveSession();
-        this._app._daten = document.querySelector("#save").innerHTML;
+        this._app._daten = document.querySelector("#app-main-area").innerHTML;
     }
 
     _onButtonOrderClicked(){
@@ -158,7 +162,7 @@ class Bestellung{
         let popUp = false;
 
         //Überprüfung, ob alle benötigten Felder ausgefüllt wurden
-        for(let i = 1; i <= this.ele_nr; i++) {
+        for(let i = 1; i <= this._app._ele_nr; i++) {
             let row = document.querySelector("#auswahlZeile" + i);
             if(row == null){
                 continue;
@@ -213,9 +217,9 @@ class Bestellung{
     }
 
     _onChanged(){
-        let ausgabe = "";
+        //let ausgabe = "";
         this._gesamtPreisBerechnenUndAusgeben();
-        ergebnis.innerHTML = ausgabe;
+        //ergebnis.innerHTML = ausgabe;
 
         this._saveSession();
     }
@@ -229,7 +233,7 @@ class Bestellung{
         let korrekt = true;
         this._app._summe = 0;
 
-        for(let i = 1; i <= this.ele_nr; i++) {
+        for(let i = 1; i <= this._app._ele_nr; i++) {
             let row = document.querySelector("#auswahlZeile" + i);
             if(row == null){
                 continue;
@@ -319,7 +323,7 @@ class Bestellung{
         let pizzaSorte, groesse, stueck, selectedPizzaSorte, selectedGroesse, selectedStueck;
         //Sessionspeicherung
 
-        for(let i = 1; i <= this.ele_nr; i++) {
+        for(let i = 1; i <= this._app._ele_nr; i++) {
             let row = document.querySelector("#auswahlZeile" + i);
             if(row == null){
                 continue;
