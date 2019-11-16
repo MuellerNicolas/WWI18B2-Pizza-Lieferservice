@@ -14,6 +14,9 @@ class Bestellung{
      * Seite anzeigen. Wird von der App-Klasse aufgerufen.
      */
     async show(matches) {
+        window.onbeforeunload = function (evt) {
+            sessionStorage.clear();
+        }
         // Anzuzeigenden Seiteninhalt nachladen
 
         let html = await fetch("bestellung/bestellung.html");
