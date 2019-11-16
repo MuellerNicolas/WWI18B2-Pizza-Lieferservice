@@ -2,15 +2,17 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Linke Seite -->
-            <div class="col-md-7">
+            <div class="col-xl-7">
                 <div class="container-fluid kasten">
                     <h3>Pizzen auswählen</h3>
                     <div id="pizza">
                         <div class="row bottom-buffer" id="auswahlZeile1">
-                            <div class="col-md-6">
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2">
                                 <button class="btn-sm" id="deletePizza1">
                                         <i class="icon-cancel"></i>
                                 </button>
+                            </div>
+                            <div class="col-xl-5 col-lg-4 col-md-5 col-sm-5 col-10">
                                 Pizza
                                 &nbsp
                                 <select name="dropdownPizza" id="dropdownPizza">
@@ -23,7 +25,7 @@
                                     <option value="Salami">Salami</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xl-6 col-lg-7 col-md-6 col-sm-6 col-12">
                                 <select name="dropdownGroesse" id="dropdownGroesse">
                                     <option value="klein">klein</option>
                                     <option value="groß">groß</option>
@@ -34,14 +36,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11">
                             <button class="btn-sm" id="addPizza"> + Pizza </button>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-xl-12">
                             <div id="ergebnis"></div>
                         </div>
                     </div>
@@ -49,11 +51,11 @@
             </div>
 
             <!-- Rechte Seite -->
-            <div class="col-md-5">
+            <div class="col-xl-5">
                 <div class="container-fluid kasten">
                     <h3>Preis</h3>
                     <div class="row">
-                        <div class="col-md-12" id="preisParent">
+                        <div class="col-xl-12" id="preisParent">
                             <span id="preis">
                                 Ihre Angaben sind unvollständig.
                             </span>
@@ -64,9 +66,9 @@
         </div>
         <!-- Unterer Bereich -->
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-9">
             </div>
-            <div class="col-md-2">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3">
                 <button  class="btn-sm" id="order"> Bestellen </button>
             </div>
         </div>

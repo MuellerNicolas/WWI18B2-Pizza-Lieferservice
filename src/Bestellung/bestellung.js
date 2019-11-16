@@ -29,7 +29,6 @@ class Bestellung{
         }
 
         // Seite zur Anzeige bringen
-        debugger;
         this._pageDom = document.createElement("div");
 
         if (typeof this._app._daten === "undefined"){
