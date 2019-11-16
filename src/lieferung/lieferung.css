@@ -33,6 +33,11 @@ input[type=number] {
     margin-top: 1em;
 }
 
+/* Kein Absatz zwischen den Pizzen */
+.pizzenliste {
+    margin: 0px;
+}
+
 /* Formularprüfungsergebnis */
 #ergebnis {
     color: red;

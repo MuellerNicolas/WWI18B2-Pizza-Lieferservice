@@ -53,17 +53,17 @@ class Lieferung {
         //Trackingbutton Funktion registrieren, Sichtbarmachen des Countdowns und Bildes
         let trackbutton = document.getElementById("startCountdown");
         trackbutton.addEventListener("click", () => {
-            document.getElementById("countdown").classList.remove("hidden");
-            document.getElementById("statusDiv").classList.remove("hidden");
+                document.getElementById("countdown").classList.remove("hidden");
+                document.getElementById("statusDiv").classList.remove("hidden");
         });
 
         //////////////////////////////////
         //      Bestellübersicht        //
         //////////////////////////////////
         //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
-        if(this._app._summe === 0){
+        if(this._app._summe === 0) {
             document.getElementById("rechteSeite").classList.add("hidden");
-        } else{
+        } else {
             this._bestelluebersichtAnzeigen(this._app);
         }
 
@@ -85,10 +85,13 @@ class Lieferung {
             let zaehler = this._app._zaehler;
             //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0){
-                //zugestellt setzen
-                statusBild.src = "/lieferung/pics/haus.png";
-                statusText.textContent = "Zugestellt";
-                bestellStatusGeaendert = false;
+                if(this._app._aktiv === true){
+                    //zugestellt setzen, nur wenn der Countdown aktiv ist und abgelaufen
+                    statusBild.src = "/lieferung/pics/haus.png";
+                    statusText.textContent = "Zugestellt";
+                    bestellStatusGeaendert = false;
+                    countdown.textContent = "";
+                }
                 return;
             }
             //Zeitpunkt
@@ -152,7 +155,7 @@ class Lieferung {
                         statusText.textContent = "In Zubereitung";
                         bestellStatusGeaendert = false;
                         break;
-                        case "in_Zustellung":
+                    case "in_Zustellung":
                         statusBild.src = "/lieferung/pics/lieferant.png";
                         statusText.textContent = "In Zustellung";
                         bestellStatusGeaendert = false;
@@ -241,10 +244,9 @@ class Lieferung {
             document.getElementById("bestellbestätigung").classList.add("hidden");
 
             //////////////////////////////////
-            //   GoogleFirebase speichern   //
+            //  In GoogleFirebase speichern //
             //////////////////////////////////
             this._app.database.saveBestellung({
-                // "id": "" + Math.random() * 1000000,     //eindeutige ID für die Bestellung
                 "vorname": formular.vorname.value,
                 "nachname": formular.nachname.value,
                 "plz": formular.plz.value,
@@ -267,7 +269,7 @@ class Lieferung {
             this.aktiv = true;          //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
             this._app._aktiv = this.aktiv;
             this._app._letztesUpdate = Date.now();
-            this._app._zaehler = 1800000
+            this._app._zaehler = 1800000    //halbe Stunde
             this.show();
         }
     }
@@ -292,6 +294,8 @@ class Lieferung {
                 pizzenliste.appendChild(pElement);
                 let pContent = document.createTextNode(pizza.stueck + "x " + pizza.sorte + " " + pizza.groesse)
                 pElement.appendChild(pContent);
+                // Kein Absatz zwischen den Elementen
+                pElement.classList.add("pizzenliste");
         });
     }
 }
