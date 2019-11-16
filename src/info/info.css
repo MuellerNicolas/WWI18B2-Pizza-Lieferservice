@@ -60,13 +60,18 @@
 }
 
 .auswahl{
-    padding: 20px;
+    padding: 30px;
 }
 
 .textblock{
     margin-top: 5em;
-    margin-right: 30%;
+    margin-right: 20%;
     padding: 20px;
+}
+
+.disclaimer{
+    text-align: center;
+    color: #A52A2A;
 }
 
 .warning{
@@ -115,12 +120,6 @@ form {
     padding-left: 10pt;
 }
 
-/* .text-size{
-    font-size:25pt;
-    font-family: arial;
-    padding-left: 10pt;
-}
-*/
 .text-pizza-name{
     font-size:16pt;
     font-weight:bold;
