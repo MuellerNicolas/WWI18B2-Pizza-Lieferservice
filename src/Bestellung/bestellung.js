@@ -60,10 +60,10 @@ class Bestellung{
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
 
-        let array = JSON.parse(sessionStorage.getItem("daten"));
-        if (typeof array === "undefined"){
+        if (sessionStorage.length == 0){
             //do nothing
         } else {
+            let array = JSON.parse(sessionStorage.getItem("daten"));
             for(let i = 0; i < array.length;  i++){
                 let row = document.querySelector("#auswahlZeile" + (i+1));
                 if(row == null){
