@@ -117,7 +117,6 @@ class Info {
               let ausgabe = "";
               let geschmack, bestellung, lieferung, sonstiges, ergebnis;
               let selectedGeschmack, selectedBestellung, selectedLieferung, textSonstiges;
-              //let feedback = document.querySelector("#feedback");
 
                     ergebnis= document.querySelector("#ergebnis");
                     geschmack = document.querySelector("#dropdownGeschmack");
@@ -142,6 +141,7 @@ class Info {
                           korrekt = false;
                           ergebnis.textContent = "Ihr Feedback kann nicht gesendet werden. Bitte bewerten Sie den Bestellvorgang!";
                       }
+                      // Lieferung muss ausgewaehlt sein
                       else if( selectedLieferung == "Bitte Auswählen") {
                           korrekt = false;
                           ergebnis.textContent = "Ihr Feedback kann nicht gesendet werden. Bitte bewerten Sie die Lieferung!"
