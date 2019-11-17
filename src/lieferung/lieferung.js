@@ -8,7 +8,7 @@ class Lieferung {
         //Variablen des Countdowns
         this.zaehler = app._zaehler;
         this.bestellt = app._bestellt;
-        this.aktiv = app._aktiv;
+        this.aktiv = false; //verhindern einer race condtition beim internen Tabwechsel
     }
 
     /**
