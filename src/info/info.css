@@ -32,10 +32,10 @@
 
 /*Zeilenumbruch und Silbentrennung */
 .absatz{
-   -moz-hyphens: auto;
-   -o-hyphens: auto;
-   -webkit-hyphens: auto;
-   -ms-hyphens: auto;
+   moz-hyphens: auto;
+   o-hyphens: auto;
+   webkit-hyphens: auto;
+   ms-hyphens: auto;
    hyphens: auto;
 }
 

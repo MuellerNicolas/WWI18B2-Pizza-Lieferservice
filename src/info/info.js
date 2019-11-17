@@ -10,20 +10,13 @@ class Info {
      */
     constructor(app) {
         this._app = app;
-//kann evtl raus
-//        this._recordId = -1;
-//        this._data = null;
     }
 
     /**
      * Seite anzeigen. Wird von der App-Klasse aufgerufen.
      */
     async show() {
-        // URL-Parameter auswerten
-//        this._recordId = matches[1];
-//        this._data = this._app.database.getRecordById(this._recordId);
-
-        // Anzuzeigenden Seiteninhalt nachladen
+// Anzuzeigenden Seiteninhalt nachladen
         let html = await fetch("info/info.html");
         let css = await fetch("info/info.css");
 
@@ -35,7 +28,7 @@ class Info {
             return;
         }
 
-        // Seite zur Anzeige bringen
+// Seite zur Anzeige bringen
         this._pageDom = document.createElement("div");
         this._pageDom.innerHTML = html;
         this._renderPizzaTiles(this._pageDom);
@@ -88,13 +81,14 @@ class Info {
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
     }
-           /**
-           * Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
-           * der Startseite erzeugt.
-           *
-           * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
-           * mit den HTML-Templates dieser Seite.
-           */
+
+/**
+* Hilfsmethode, welche den HTML-Code zur Darstellung der Kacheln auf
+* der Startseite erzeugt.
+*
+* @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
+* mit den HTML-Templates dieser Seite.
+*/
           _renderPizzaTiles(pageDom) {
               let mainElement = pageDom.querySelector("main");
               let templateElement = pageDom.querySelector("#template-tile");
@@ -117,7 +111,7 @@ class Info {
               templateElement.parentNode.removeChild(templateElement);
           }
 
-//Methode für das Auslesen der ausgewählten Drop-Down-Menüs und Aufnahme in der Datenbank
+//Methode für das Auslesen der ausgewählten Drop-Down-Menüs aus dem Feedbackbogen und Aufnahme in der Datenbank
           _onButtonFeedbackClicked(){
               let korrekt = true;
               let ausgabe = "";
@@ -126,22 +120,21 @@ class Info {
               //let feedback = document.querySelector("#feedback");
 
                     ergebnis= document.querySelector("#ergebnis");
-                      geschmack = document.querySelector("#dropdownGeschmack");
-                      bestellung = document.querySelector("#dropdownBestellvorgang");
-                      lieferung = document.querySelector("#dropdownLieferung");
-                      sonstiges = document.querySelector("#sonstiges");
-                     let feedbackContainer= document.querySelector("#feedback-container");
-                     let feedbackButton= document.querySelector("#senden");
+                    geschmack = document.querySelector("#dropdownGeschmack");
+                    bestellung = document.querySelector("#dropdownBestellvorgang");
+                    lieferung = document.querySelector("#dropdownLieferung");
+                    sonstiges = document.querySelector("#sonstiges");
+                    let feedbackContainer= document.querySelector("#feedback-container");
+                    let feedbackButton= document.querySelector("#senden");
 
                       selectedGeschmack = geschmack.options[geschmack.selectedIndex].text;
                       selectedBestellung = bestellung.options[bestellung.selectedIndex].text;
                       selectedLieferung = lieferung.options[lieferung.selectedIndex].text;
                       textSonstiges = sonstiges.value;
-debugger;
+
                       // Pizzasorte muss angegeben sein
                       if ( selectedGeschmack == "Bitte Auswählen") {
                           korrekt = false;
-//                          ergebnis.setText("Bitte bewerten Sie den Geschmack");
                           ergebnis.textContent = "Ihr Feedback kann nicht gesendet werden. Bitte bewerten Sie den Geschmack!";
                       }
                       // Stueckzahl muss angegeben sein
@@ -162,7 +155,7 @@ debugger;
                               "lieferung": selectedLieferung,
                               "sonstiges": sonstiges.value,
                           });
-                          
+
 //wenn alle Eingaben korrekt sind: Bedanken für das Feedback mit pop-up
                           alert("Vielen Dank für Ihr Feedback!");
 
@@ -171,7 +164,5 @@ der Button zum Auswählen bleibt auf hidden und dadurch kann das Formular auch n
 Mehrfach-Sendung von Feedbacks zu vermeiden. */
                           feedbackContainer.classList.add("hidden");
                       }
-
             }
-
 }
