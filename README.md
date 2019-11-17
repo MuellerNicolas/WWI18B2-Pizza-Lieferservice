@@ -1,4 +1,6 @@
+
 # Kurs WWI18B2, DHBW Karlsruhe - Programmierprojekt der Vorlesung Webprogrammierung
+=======
 
 Gruppe: Lea Burkard, Leonie Sinn und Nicolas Müller.
 
