@@ -7,8 +7,8 @@ class Lieferung {
         this._app = app;
         //Variablen des Countdowns
         this.zaehler = app._zaehler;
-        this.bestellt = app.bestellt;
-        this.aktiv = app.aktiv;
+        this.bestellt = app._bestellt;
+        this.aktiv = app._aktiv;
     }
 
     /**
@@ -61,7 +61,6 @@ class Lieferung {
         //      Bestellübersicht        //
         //////////////////////////////////
         //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
-        debugger;
         if(typeof this._app._pizzenArray === "undefined" || this._app._pizzenArray === null) {
             document.getElementById("rechteSeite").classList.add("hidden");
         } else {
@@ -85,8 +84,8 @@ class Lieferung {
         let countdownAktualisieren = () => {
             let zaehler = this._app._zaehler;
             //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
-            if(zaehler==0){
-                if(this._app._aktiv === true){
+            if(zaehler==0 ) {
+                if(this._app._aktiv === true) {
                     //zugestellt setzen, nur wenn der Countdown aktiv ist und abgelaufen
                     statusBild.src = "/lieferung/pics/haus.png";
                     statusText.textContent = "Zugestellt";
@@ -149,7 +148,7 @@ class Lieferung {
             }
 
             //Bestellungsstatus hat sich geändert, richtiges Bild zuweisen
-            if(bestellStatusGeaendert === true){
+            if(bestellStatusGeaendert === true) {
                 switch (bestellStatus) {
                     case "in_Zubereitung":
                         statusBild.src = "/lieferung/pics/zubereitung_koch.png";
@@ -185,7 +184,7 @@ class Lieferung {
         let ausgabe = "";
 
         // Bestellung ohne ausgewählte Pizzen verhindern
-        if (this._app._summe === 0){
+        if (this._app._summe === 0) {
             korrekt = false;
             ausgabe += "Bitte wählen Sie unter \"Bestellung\" Ihre gewünschten Pizzen aus!";
         } else {
@@ -237,7 +236,7 @@ class Lieferung {
         //Verhindern des Absendes
         event.preventDefault();
 
-        if(korrekt){
+        if(korrekt) {
             this.bestellt = true;
             this._app._bestellt = this.bestellt;
 
@@ -278,7 +277,7 @@ class Lieferung {
     //////////////////////////////////
     //  Bestellübersicht anzeigen  //
     /////////////////////////////////
-    _bestelluebersichtAnzeigen(app){
+    _bestelluebersichtAnzeigen(app) {
         //Gesamtpreis anzeigen
         let gesamtpreis = document.getElementById("preis");
         let pElement = document.createElement("p");

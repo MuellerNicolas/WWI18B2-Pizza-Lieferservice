@@ -40,7 +40,6 @@ class App {
 
         //Variablen für das Tracking
         this._zaehler = 0;
-        this._status = false;
         this._bestellt = false;
         this._aktiv = false;
         this._letztesUpdate = 0;
