@@ -79,8 +79,8 @@ class Bestellung{
 
                     if(i != 0){
                     row.querySelector("#deletePizza" + (i+1)).addEventListener("click", () => this._onDeletePizzaClicked(row));
-                    row.querySelector("#dropdownPizza").addEventListener("click", () => this._onChanged());
-                    row.querySelector("#dropdownGroesse").addEventListener("click", () => this._onChanged());
+                    row.querySelector("#dropdownPizza").addEventListener("change", () => this._onChanged());
+                    row.querySelector("#dropdownGroesse").addEventListener("change", () => this._onChanged());
                     row.querySelector("#stueck").addEventListener("click", () => this._onChanged());
                     }
                 }
@@ -241,7 +241,6 @@ class Bestellung{
     * Die Methode ruft die Methode zur Berechnung des Preises aufgeben
     */
     _onChanged(){
-        debugger;
         if(this.bestellt === false){
             this._gesamtPreisBerechnenUndAusgeben();
             this._saveSession();
