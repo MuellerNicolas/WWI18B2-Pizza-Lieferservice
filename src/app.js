@@ -7,11 +7,6 @@
  * Klassen bereitgestellt wird.
  */
 class App {
-
-    //// Funktionert so nicht!
-    // database = new Database();
-    // halloString = "Hallo, Welt";
-
     /**
      * Konstruktor. Im Parameter pages muss eine Liste mit den vorhandenen
      * Seiten der App übergeben werden. Die Liste muss folgendes Format haben:
@@ -34,7 +29,9 @@ class App {
         this._title = title;
         this._pages = pages;
 
+        //Pizzabilder der Infoseite
         this.datenbank = new Datenbank();
+        //GoogleFirebase
         this.database = new Database();
         this._currentPageObject = null;
 
