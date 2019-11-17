@@ -247,6 +247,7 @@ class Bestellung{
             this._saveSession();
         } else {
             let selectedItem;
+            let row;
             let id = event.target.id;
             let idZeile = event.target.parentElement.parentElement.id;
             let idNummer = Number(idZeile.replace(/[a-z]/g, "").replace(/[A-Z]/g, ""));
@@ -254,15 +255,20 @@ class Bestellung{
             switch (id) {
                 case "dropdownPizza":
                     selectedItem = array[idNummer-1].sorte;
+                    row = document.querySelector("#" + idZeile);
+                    row.querySelector("#" + id).value = selectedItem;
                     break;
                 case "dropdownGroesse":
                     selectedItem = array[idNummer-1].groesse;
+                    row = document.querySelector("#" + idZeile);
+                    row.querySelector("#" + id).value = selectedItem;
                     break;
                 case "stueck":
                     selectedItem = array[idNummer-1].stueck;
+                    row = document.querySelector("#" + idZeile);
+                    row.querySelector("#" + id).value = selectedItem;
                     break;
             }
-            event.target.value = selectedItem;
             let ausgabe = "<br> Ihre Bestellung wurde schon verschickt. Nachträgliche Änderungen sind nur telefonisch möglich.";
             ergebnis.innerHTML = ausgabe;
         }
