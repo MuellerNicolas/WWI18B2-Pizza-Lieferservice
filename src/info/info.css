@@ -23,8 +23,8 @@
 
 .tile img {
     border-radius: 0.5em;
-    width: 20em;
-    height: 20em;
+    width: auto;
+    height: auto;
     max-width: 100%;
     object-fit: cover;
     display: block;
