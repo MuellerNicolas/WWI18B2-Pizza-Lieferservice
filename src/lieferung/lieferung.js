@@ -8,7 +8,7 @@ class Lieferung {
         //Variablen des Countdowns
         this.zaehler = app._zaehler;
         this.bestellt = app._bestellt;
-        this.aktiv = false; //verhindern einer race condtition beim internen Tabwechsel
+        this.aktiv = false; //verhindern einer Race Condition beim internen Tabwechsel
     }
 
     /**
@@ -42,7 +42,7 @@ class Lieferung {
         this._app.setPageCss(css);
         this._app.setPageContent(this._pageDom);
 
-        // Formularanzeige & Ausgabebereich der Formularprüfung
+        // Formular ausblenden & Ausgabebereich der Formularprüfung anzeigen
         if(this._app._ausgabe != "") {
             if(this._app._bestellt === true) {
                 document.getElementById("linkeSeite").classList.add("hidden");
@@ -61,7 +61,7 @@ class Lieferung {
         //      Bestellübersicht        //
         //////////////////////////////////
         //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
-        if(typeof this._app._pizzenArray === "undefined" || this._app._pizzenArray === null) {
+        if(typeof this._app._pizzenArray === "undefined" || this._app._pizzenArray === null || this._app._summe === 0) {
             document.getElementById("rechteSeite").classList.add("hidden");
         } else {
             this._bestelluebersichtAnzeigen(this._app);
@@ -77,16 +77,17 @@ class Lieferung {
         let bestellStatus = "";
         let bestellStatusGeaendert;
 
-        //Variablen Anzeige
         let zaehlerInitial = 1800000;   //1000 entspricht einer Sekunde -> also eine halbe Stunde
         let letztesUpdate = this._app._letztesUpdate;
+
         //Ständiges aktualisieren des Displays
         let countdownAktualisieren = () => {
             let zaehler = this._app._zaehler;
+
             //Performance: Nach ablaufen der Zeit erzwungenes aktualisieren stoppen
             if(zaehler==0 ) {
                 if(this._app._aktiv === true) {
-                    //zugestellt setzen, nur wenn der Countdown aktiv ist und abgelaufen
+                    //zugestellt setzen, nur wenn der Countdown aktiv war und abgelaufen ist
                     statusBild.src = "/lieferung/pics/haus.png";
                     statusText.textContent = "Zugestellt";
                     bestellStatusGeaendert = false;
@@ -184,9 +185,9 @@ class Lieferung {
         let ausgabe = "";
 
         // Bestellung ohne ausgewählte Pizzen verhindern
-        if (this._app._summe === 0) {
+        if (typeof this._app._pizzenArray === "undefined" || this._app._pizzenArray === null || this._app._summe === 0) {
             korrekt = false;
-            ausgabe += "Bitte wählen Sie unter \"Bestellung\" Ihre gewünschten Pizzen aus!";
+            ausgabe += "Bitte wählen Sie unter \"Bestellung\" Ihre gewünschten Pizzen aus und bestätigen Sie diese durch den Button \"Bestellen\"!";
         } else {
             // Vorname muss angegeben sein
             if (formular.vorname.value == "") {
@@ -233,9 +234,10 @@ class Lieferung {
         ergebnis.innerHTML = ausgabe;
         this._app._ausgabe = ausgabe;
 
-        //Verhindern des Absendes
+        //Verhindern des Absendens
         event.preventDefault();
 
+        // Wenn das Formular korrekt ausgefüllt wurde, das Speichern im Server veranlassen
         if(korrekt) {
             this.bestellt = true;
             this._app._bestellt = this.bestellt;
@@ -266,7 +268,7 @@ class Lieferung {
             formular.hausnummer.value = "";
 
             //Countdown starten
-            this.aktiv = true;          //Flag, das vielfaches herunter zählen beim Tabwechsel verhindert
+            this.aktiv = true;
             this._app._aktiv = this.aktiv;
             this._app._letztesUpdate = Date.now();
             this._app._zaehler = 1800000    //halbe Stunde

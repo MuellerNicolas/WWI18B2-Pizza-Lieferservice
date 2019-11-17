@@ -1,7 +1,7 @@
 <h1 class="mittig">Bestellbestätigung & Lieferverfolgung</h1>
 <div class="container-fluid box">
     <div class="row">
-        <!-- Linke Seite -->
+        <!-- Linke Seite - Formular-->
         <div class="col-md-6 abstand">
             <form id="formular" class="kasten">
                 <div class="container-fluid" id = "linkeSeite">
@@ -53,17 +53,18 @@
                             <input name="hausnummer" type="number" min="1"/>
                         </div>
                     </div>
-
+                    <!-- Jetzt Bestellen-Button -->
                     <div class="row">
                         <div class="col">
                             <input id="bestellbestätigung" class = "btn-sm" type="submit" value="Jetzt bestellen" />
                         </div>
                     </div>
                 </div>
+                <!-- Ergebnis der Formularprüfung -->
                 <div id="ergebnis"></div>
             </form>
         </div>
-        <!-- Rechte Seite -->
+        <!-- Rechte Seite - Bestellübersicht -->
         <div class="col-md-6 abstand" id="rechteSeite">
             <div class="container-fluid">
                 <div class="row">
@@ -79,12 +80,14 @@
             </div>
         </div>
     </div>
-    <!-- Unterer Bereich -->
+    <!-- Unterer Bereich - Tracking -->
     <div class="row">
         <div class="col-md-12 zentriert">
+            <!-- Button zum Anzeigen des Trackings -->
             <button id="startCountdown" class="btn-lg abstand">Lieferung tracken</button>
+            <!-- Countdown -->
             <div id="countdown" class="hidden"></div>
-
+            <!-- Statusbild und Statustext -->
             <div id="statusDiv" class="zentriert hidden">
                 <img id="statusBild" height="100%" width="40%"/>
                 <div>

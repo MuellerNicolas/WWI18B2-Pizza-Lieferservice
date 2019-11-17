@@ -12,12 +12,12 @@
     padding: 1em;
 }
 
-/* Rechteckige Form */
+/* Gleichmäßig rechteckige Form */
 input {
     width:100%;
 }
 
-/* Ausblenden der Pfeile in Eingabefelder vom Typ number */
+/* Ausblenden der Pfeile in Eingabefeldern vom Typ number */
 /* Gängige Browser und Chrome */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -46,7 +46,7 @@ input[type=number] {
     color: green;
 }
 
-/* Bestellbutton */
+/* Bestellbutton Style*/
 #bestellbestätigung {
     margin-top: 1em;
     background-color: rgb(17, 68, 121);
