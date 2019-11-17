@@ -61,7 +61,8 @@ class Lieferung {
         //      Bestellübersicht        //
         //////////////////////////////////
         //Bestellübersicht nur anzeigen, wenn Pizzen bereits ausgewählt sind
-        if(this._app._summe === 0) {
+        debugger;
+        if(typeof this._app._pizzenArray === "undefined" || this._app._pizzenArray === null) {
             document.getElementById("rechteSeite").classList.add("hidden");
         } else {
             this._bestelluebersichtAnzeigen(this._app);
